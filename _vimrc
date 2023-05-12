@@ -68,13 +68,6 @@ set shiftwidth=4		" Number of spaces to use for autoindent.
 set backspace=2			" Fix backspace behavior on most terminals.
 set background=dark     " Set to dark mode.
 
-" Set up persistent undo across all files.
-set undofile
-if !isdirectory("$HOME/.vim/undodir")
-    call mkdir("$HOME/.vim/undodir", "p")
-endif
-set undodir="$HOME/.vim/undodir"
-
 packloadall             " Load all plugins.
 silent! helptags ALL    " Load help files for all plugins.
 
@@ -119,7 +112,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 call plug#end()
 
 " Install vim-plug if it's not already installed.
-if empty(glob('~/.vim/autoload/plug.vim'))
+if empty(glob('C:\tools\vim\~\.vim\autoload'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
                 \ https://raw.github.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
