@@ -39,6 +39,8 @@ function MyDiff()
   endif
 endfunction
 
+set encoding=utf-8
+
 " Set clipboard
 set clipboard=unnamed
 set mouse=a 
@@ -77,13 +79,14 @@ noremap <c-j> <c-w><c-j>
 noremap <c-k> <c-w><c-k>
 noremap <c-l> <c-w><c-l>
 
-command! Bd :bp | :sp | :bn | :bd " Close buffer without closing window.
+" Close buffer without closing window.
+command! Bd :bp | :sp | :bn | :bd
 
 set foldmethod=indent
 
-set wildmenu                    " Enable enhanced tab autocomplete
-set wildmode=list:longest,full  " Complete till longest string,
-                                " then open the wildmenu.
+" Enable enhanced tab autocomplete
+set wildmenu                    
+set wildmode=list:longest,full
 
 let NERDTreeHijackNetrw = 0
 
@@ -94,7 +97,7 @@ set incsearch
 
 set clipboard=unnamed           " Copy into system (*) register.
 
-" Manage plugins with vim-plug.
+" Manage plugins with vim-plug
 call plug#begin()
 
 Plug 'scrooloose/nerdtree'
@@ -105,13 +108,11 @@ Plug 'mileszs/ack.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/vim-plug'
 Plug 'doums/darcula'
-
-let g:plug_timeout = 300    " Increase vim-plug timeout for YouCompleteMe.
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'tomasiser/vim-code-dark'
 
 call plug#end()
 
-" Install vim-plug if it's not already installed.
+" Install vim-plug if it's not already installed
 if empty(glob('C:\tools\vim\~\.vim\autoload'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
                 \ https://raw.github.com/junegunn/vim-plug/master/plug.vim
@@ -120,10 +121,10 @@ endif
 
 noremap ; : " Use ; in addition to : to type commands.
 
-" Immediately add a closing quotes or braces in insert mode.
+" Immediately add a closing quotes or braces in insert mode
 inoremap ( ()<esc>i
 inoremap { {}<esc>i
 inoremap [ []<esc>i
 
 set termguicolors
-colorscheme darcula     " Set color scheme.
+colorscheme codedark 
