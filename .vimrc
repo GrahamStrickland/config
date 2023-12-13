@@ -62,6 +62,8 @@ Plug 'mileszs/ack.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/vim-plug'
 Plug 'doums/darcula'
+Plug 'tomasiser/vim-code-dark'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 let g:plug_timeout = 300    " Increase vim-plug timeout for YouCompleteMe.
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
@@ -82,4 +84,4 @@ inoremap ( ()<esc>i
 inoremap { {}<esc>i
 inoremap [ []<esc>i
 
-colorscheme darcula     " Set color scheme.
+colorscheme codedark    " Set color scheme.
