@@ -100,15 +100,18 @@ set clipboard=unnamed           " Copy into system (*) register.
 " Manage plugins with vim-plug
 call plug#begin()
 
+Plug 'junegunn/vim-plug'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'vim-syntastic/syntastic'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mileszs/ack.vim'
 Plug 'easymotion/vim-easymotion'
-Plug 'junegunn/vim-plug'
 Plug 'doums/darcula'
 Plug 'tomasiser/vim-code-dark'
+Plug 'sainnhe/everforest'
 
 call plug#end()
 
@@ -125,6 +128,21 @@ noremap ; : " Use ; in addition to : to type commands.
 inoremap ( ()<esc>i
 inoremap { {}<esc>i
 inoremap [ []<esc>i
+"
+" Linting settings for make
+autocmd filetype python setlocal makeprg=pylint\ --reports=n\ --msg-template=\"{path}:{line}:\ {msg_id}\ {symbol},\ {obj}\ {msg}\"\ %:p
+autocmd filetype python setlocal errorformat=%f:%l:\ %m
+
+" Syntastic recommended settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 set termguicolors
-colorscheme codedark 
+colorscheme everforest  " Set color scheme.
+
