@@ -7,6 +7,7 @@ syntax on			        " Enable syntax highlighting.
 filetype plugin indent on	" Enable file type based indentation.
 
 set number              " Add line numbers to document.
+set relativenumber      " Add relative line numbers to document.
 set autoread            " Automatically reload files.
 set autoindent			" Respect indentation when starting a new line.
 set expandtab			" Expand tabs to spaces. Essential in Python.
@@ -30,6 +31,10 @@ noremap <c-h> <c-w><c-h>
 noremap <c-j> <c-w><c-j>
 noremap <c-k> <c-w><c-k>
 noremap <c-l> <c-w><c-l>
+
+" Page down/up and center
+noremap <c-d> <c-d>zz
+noremap <c-u> <c-u>zz
 
 command! Bd :bp | :sp | :bn | :bd " Close buffer without closing window.
 
@@ -61,7 +66,6 @@ Plug 'junegunn/vim-plug'
 Plug 'doums/darcula'
 Plug 'tomasiser/vim-code-dark'
 Plug 'morhetz/gruvbox'
-Plug 'sainnhe/everforest'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'christoomey/vim-tmux-navigator'
 
@@ -92,7 +96,7 @@ noremap <leader>] :YcmCompleter GoTo<cr>
 " Look for a tags file recursively in parent directories.
 set tags=tags;
 "Regenerate tags when saving Python files.
-autocmd BufWritePost *.c,*.cpp,*.h,*.py silent! !ctags -R &   
+autocmd BufWritePost *.c,*.cpp,*.h,*.java,*.class,*.py silent! !ctags -R &   
 
-colorscheme everforest  " Set color scheme.
+colorscheme gruvbox
 
