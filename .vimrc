@@ -59,6 +59,7 @@ call plug#begin()
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mileszs/ack.vim'
 Plug 'easymotion/vim-easymotion'
@@ -68,6 +69,23 @@ Plug 'tomasiser/vim-code-dark'
 Plug 'morhetz/gruvbox'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'christoomey/vim-tmux-navigator'
+
+" Lean support (https://github.com/Julian/lean.nvim/)
+if has('nvim')
+    Plug 'Julian/lean.nvim'
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'nvim-lua/plenary.nvim'
+
+    " Optional Dependencies:
+
+    Plug 'hrsh7th/nvim-cmp'        " For LSP completion
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'hrsh7th/cmp-buffer'
+    Plug 'hrsh7th/vim-vsnip'       " For snippets
+    Plug 'andrewradev/switch.vim'  " For Lean switch support
+    Plug 'tomtom/tcomment_vim'     " For commenting motions
+    Plug 'nvim-telescope/telescope.nvim' " For Loogle search
+endif
 
 let g:plug_timeout = 300    " Increase vim-plug timeout for YouCompleteMe.
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
