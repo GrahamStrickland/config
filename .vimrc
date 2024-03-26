@@ -100,3 +100,6 @@ autocmd BufWritePost *.c,*.cpp,*.h,*.java,*.class,*.py silent! !ctags -R &
 
 colorscheme gruvbox
 
+" FZF settings
+set rtp+=/usr/local/opt/fzf
+
