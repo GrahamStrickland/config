@@ -1,3 +1,4 @@
+" Windows Vim Configuration
 " Vim with all enhancements
 source $VIMRUNTIME/vimrc_example.vim
 
