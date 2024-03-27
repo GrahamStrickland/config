@@ -1,3 +1,4 @@
+" MacOS Neovim Configuration
 " Save a file with leader-w.
 noremap <leader>w :w<cr>
 

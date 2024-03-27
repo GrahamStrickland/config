@@ -1,6 +1,6 @@
-" Windows Vim Configuration
+" Windows Neovim Configuration
 " Vim with all enhancements
-source $VIMRUNTIME/vimrc_example.vim
+" source $VIMRUNTIME/vimrc_example.vim
 
 " Use the internal diff if available.
 " Otherwise use the special 'diffexpr' for Windows.
@@ -63,6 +63,7 @@ syntax on			        " Enable syntax highlighting.
 filetype plugin indent on	" Enable file type based indentation.
 
 set number              " Add line numbers to document.
+set relativenumber      " Add relative line numbers to document.
 set autoread            " Automatically reload files.
 set autoindent			" Respect indentation when starting a new line.
 set expandtab			" Expand tabs to spaces. Essential in Python.
@@ -79,6 +80,10 @@ noremap <c-h> <c-w><c-h>
 noremap <c-j> <c-w><c-j>
 noremap <c-k> <c-w><c-k>
 noremap <c-l> <c-w><c-l>
+
+" Page down/up and center
+noremap <c-d> <c-d>zz
+noremap <c-u> <c-u>zz
 
 " Close buffer without closing window.
 command! Bd :bp | :sp | :bn | :bd
@@ -107,12 +112,14 @@ Plug 'vim-syntastic/syntastic'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mileszs/ack.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'doums/darcula'
 Plug 'tomasiser/vim-code-dark'
 Plug 'sainnhe/everforest'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
@@ -145,5 +152,5 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 set termguicolors
-colorscheme everforest  " Set color scheme.
+colorscheme gruvbox " Set color scheme.
 
