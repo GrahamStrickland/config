@@ -1,4 +1,8 @@
 " MacOS Neovim Configuration
+" Map the leader key to a space.
+let mapleader = "\<space>"
+let maplocalleader = "\<space>\<space>"
+
 " Save a file with leader-w.
 noremap <leader>w :w<cr>
 
@@ -70,6 +74,7 @@ Plug 'tomasiser/vim-code-dark'
 Plug 'morhetz/gruvbox'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Lean support (https://github.com/Julian/lean.nvim/)
 if has('nvim')
@@ -86,10 +91,8 @@ if has('nvim')
     Plug 'andrewradev/switch.vim'  " For Lean switch support
     Plug 'tomtom/tcomment_vim'     " For commenting motions
     Plug 'nvim-telescope/telescope.nvim' " For Loogle search
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 endif
-
-let g:plug_timeout = 300    " Increase vim-plug timeout for YouCompleteMe.
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 
 call plug#end()
 
@@ -107,9 +110,6 @@ noremap ; : " Use ; in addition to : to type commands.
 inoremap ( ()<esc>i
 inoremap { {}<esc>i
 inoremap [ []<esc>i
-
-" YouCompleteMe settings
-noremap <leader>] :YcmCompleter GoTo<cr>
 
 " Exuberant Ctags settings
 " Look for a tags file recursively in parent directories.
