@@ -76,13 +76,11 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" Lean support (https://github.com/Julian/lean.nvim/)
 if has('nvim')
+    " Lean support (https://github.com/Julian/lean.nvim/)
     Plug 'Julian/lean.nvim'
     Plug 'neovim/nvim-lspconfig'
     Plug 'nvim-lua/plenary.nvim'
-
-    " Optional Dependencies:
 
     Plug 'hrsh7th/nvim-cmp'        " For LSP completion
     Plug 'hrsh7th/cmp-nvim-lsp'
@@ -92,6 +90,10 @@ if has('nvim')
     Plug 'tomtom/tcomment_vim'     " For commenting motions
     Plug 'nvim-telescope/telescope.nvim' " For Loogle search
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'kosayoda/nvim-lightbulb'
+    Plug 'rmagatti/goto-preview'
+    Plug 'nvim-lua/lsp-status.nvim'
+    Plug 'mfussenegger/nvim-dap'
 endif
 
 call plug#end()
@@ -102,6 +104,11 @@ if empty(glob('~/.vim/autoload/plug.vim'))
                 \ https://raw.github.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Key mappings
 noremap ; : " Use ; in addition to : to type commands.
