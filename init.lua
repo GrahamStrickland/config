@@ -1,10 +1,10 @@
 -- MacOS Neovim Configuration
 -- KEY MAPPINGS --
--- Map the leader key to a space.
+-- Map the leader key to a space
 vim.g.mapleader = " "
 vim.g.maplocalleader = "  "
 
--- Save a file with leader-w.
+-- Save a file with leader-w
 vim.api.nvim_set_keymap(
     "n",
     "<leader>w",
@@ -12,7 +12,7 @@ vim.api.nvim_set_keymap(
     { noremap = true }
 )
 
--- Open NERDTree for viewing files.
+-- Open NERDTree for viewing files
 vim.api.nvim_set_keymap(
     "n",
     "<leader>n",
@@ -68,15 +68,7 @@ vim.api.nvim_set_keymap(
     { noremap = true }
 )
 
--- Use ; in addition to : to type commands.
-vim.api.nvim_set_keymap(
-    "n",
-    ";",
-    ":",
-    { noremap = true }
-)
-
--- Immediately add a closing quotes or braces in insert mode.
+-- Immediately add closing quotes or braces in insert mode
 vim.api.nvim_set_keymap(
     "i",
     "(",
@@ -96,12 +88,19 @@ vim.api.nvim_set_keymap(
     { noremap = true }
 )
 
--- Remap terminal mode escape.
+-- Remap terminal mode escape
 vim.api.nvim_set_keymap(
     "t",
     "<esc>",
     "<c-\\><c-n>",
     { noremap = true }
+)
+
+-- Open diagnostics in floating window
+vim.keymap.set(
+    "n",
+    "<leader>o",
+    function() vim.diagnostic.open_float() end
 )
 
 -- DAP Mappings
@@ -285,11 +284,19 @@ require("nvim-lightbulb").setup({
 require("goto-preview").setup({})
 
 -- LSP SETUP
-require"lspconfig".clangd.setup{}
-require"lspconfig".cmake.setup{}
-require"lspconfig".hls.setup{}
-require"lspconfig".pyright.setup{}
-require"lspconfig".texlab.setup{}
+local lspconfig = require("lspconfig")
+
+lspconfig.clangd.setup({
+    name = "clangd",
+    cmd = {"clangd", "--background-index", "--clang-tidy", "--log=verbose"},
+    initialization_options = {
+        fallback_flags = { "-std=c++20" },
+    },
+})
+lspconfig.cmake.setup{}
+lspconfig.hls.setup{}
+lspconfig.pyright.setup{}
+lspconfig.texlab.setup{}
 
 -- DAP ADAPTER/CONFIGURATION SETUP 
 -- GDB
