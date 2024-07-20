@@ -1,8 +1,8 @@
 -- MacOS Neovim Configuration
 -- KEY MAPPINGS --
 -- Map the leader key to a space.
-vim.g.mapleader = "<space>"
-vim.g.maplocalleader = "<space><space>"
+vim.g.mapleader = " "
+vim.g.maplocalleader = "  "
 
 -- Save a file with leader-w.
 vim.api.nvim_set_keymap(
@@ -206,8 +206,32 @@ require("nvim-lightbulb").setup({
 
 require("goto-preview").setup({})
 
--- LSP setup
+-- LSP SETUP
 require'lspconfig'.clangd.setup{}
+require'lspconfig'.cmake.setup{}
 require'lspconfig'.hls.setup{}
 require'lspconfig'.pyright.setup{}
+require'lspconfig'.texlab.setup{}
+
+-- DAP ADAPTER/CONFIGURATION SETUP 
+-- GDB
+local dap = require("dap")
+dap.adapters.gdb = {
+    type = "executable",
+    command = "gdb",
+    args = { "-i", "dap" }
+}
+dap.configurations.cpp = {
+  {
+    name = "Launch",
+    type = "gdb",
+    request = "launch",
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    cwd = "${workspaceFolder}",
+    stopAtBeginningOfMainSubprogram = false,
+  },
+}
+dap.configurations.c = dap.configurations.cpp
 
