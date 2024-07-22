@@ -315,7 +315,7 @@ local dap = require("dap")
 -- debugpy
 dap.adapters.python = {
     type = "executable";
-    command = os.getenv("HOME") .. "\\dev\\hbxsharpconvert\\.venv\\Scripts\\python.exe";
+    command = os.getenv("UserProfile") .. "\\dev\\hbxsharpconvert\\.venv\\Scripts\\python.exe";
     args = { "-m", "debugpy.adapter" };
 }
 dap.configurations.python = {
@@ -323,9 +323,9 @@ dap.configurations.python = {
         type = "python";
         request = "launch";
         name = "Launch debugpy";
-        program = os.getenv("HOME") .. "\\dev\\hbxsharpconvert\\hbxsharpconvert.py";
+        program = os.getenv("UserProfile") .. "\\dev\\hbxsharpconvert\\hbxsharpconvert.py";
         pythonPath = function()
-            return os.getenv("HOME") .. "\\dev/hbxsharpconvert\\.venv\\Scripts\\python.exe"
+            return os.getenv("UserProfile") .. "\\dev/hbxsharpconvert\\.venv\\Scripts\\python.exe"
         end,
         args = {
             "--input=..\\easipos\\EasiPOSX\\easiutil", 
