@@ -1,5 +1,5 @@
 -- MacOS Neovim Configuration
--- KEY MAPPINGS --
+-- PRE-PLUGIN KEY MAPPINGS --
 -- Map the leader key to a space
 vim.g.mapleader = " "
 vim.g.maplocalleader = "  "
@@ -12,6 +12,44 @@ vim.api.nvim_set_keymap(
     { noremap = true }
 )
 
+-- PLUGIN MANAGEMENT --
+-- Manage plugins with vim-plug.
+local vim = vim
+local Plug = vim.fn["plug#"]
+vim.call("plug#begin")
+
+Plug("scrooloose/nerdtree")
+Plug("tpope/vim-unimpaired")
+Plug("tpope/vim-vinegar")
+Plug("tpope/vim-fugitive")
+Plug("ctrlpvim/ctrlp.vim")
+Plug("mileszs/ack.vim")
+Plug("easymotion/vim-easymotion")
+Plug("doums/darcula")
+Plug("tomasiser/vim-code-dark")
+Plug("morhetz/gruvbox")
+Plug("christoomey/vim-tmux-navigator")
+Plug("tomtom/tcomment_vim")
+Plug("neovim/nvim-lspconfig")
+Plug("nvim-lua/lsp-status.nvim")
+Plug("glepnir/lspsaga.nvim")
+Plug("hrsh7th/nvim-cmp")
+Plug("hrsh7th/cmp-nvim-lsp")
+Plug("hrsh7th/cmp-buffer")
+Plug("hrsh7th/vim-vsnip")
+Plug("nvim-lua/plenary.nvim")
+Plug("nvim-telescope/telescope.nvim")
+Plug("kosayoda/nvim-lightbulb")
+Plug("rmagatti/goto-preview")
+Plug("mfussenegger/nvim-dap")
+Plug("Julian/lean.nvim")
+Plug("andrewradev/switch.vim")
+Plug("nvim-treesitter/nvim-treesitter", { ["do"] = function()
+    vim.fn["TSUpdate"]()
+end })
+
+-- MORE KEY MAPPINGS --
+vim.call("plug#end")
 -- Open NERDTree for viewing files
 vim.api.nvim_set_keymap(
     "n",
@@ -106,27 +144,27 @@ vim.keymap.set(
 -- DAP Mappings
 vim.keymap.set(
     "n", 
-    "<leader>dpc", 
+    "<leader>dc", 
     function() require("dap").continue() end
 )
 vim.keymap.set(
     "n", 
-    "<leader>dpl", 
+    "<leader>ds", 
     function() require("dap").step_over() end
 )
 vim.keymap.set(
     "n", 
-    "<leader>dpk", 
+    "<leader>di", 
     function() require("dap").step_into() end
 )
 vim.keymap.set(
     "n", 
-    "<leader>dpj", 
+    "<leader>dt", 
     function() require("dap").step_out() end
 )
 vim.keymap.set(
     "n", 
-    "<leader>dpt", 
+    "<leader>dt", 
     function() require("dap").toggle_breakpoint() end
 )
 vim.keymap.set(
@@ -136,7 +174,7 @@ vim.keymap.set(
 )
 vim.keymap.set(
     "n", 
-    "<leader>dpg", 
+    "<leader>dl", 
     function() require("dap").set_breakpoint(
             nil, 
             nil, 
@@ -146,27 +184,27 @@ vim.keymap.set(
 )
 vim.keymap.set(
     "n", 
-    "<leader>dpr", 
+    "<leader>dr", 
     function() require("dap").repl.open() end
 )
 vim.keymap.set(
     "n", 
-    "<leader>dpa", 
+    "<leader>da", 
     function() require("dap").run_last() end
 )
 vim.keymap.set(
     {"n", "v"}, 
-    "<leader>dph", 
+    "<leader>dh", 
     function() require("dap.ui.widgets").hover() end
 )
 vim.keymap.set(
     {"n", "v"}, 
-    "<leader>dpp", 
+    "<leader>dp", 
     function() require("dap.ui.widgets").preview() end
 )
 vim.keymap.set(
     "n", 
-    "<leader>dpf", 
+    "<leader>df", 
     function()
         local widgets = require("dap.ui.widgets")
         widgets.centered_float(widgets.frames)
@@ -174,50 +212,57 @@ vim.keymap.set(
 )
 vim.keymap.set(
     "n", 
-    "<leader>dps", 
+    "<leader>ds", 
     function()
         local widgets = require("dap.ui.widgets")
         widgets.centered_float(widgets.scopes)
     end
 )
 
--- PLUGIN MANAGEMENT --
--- Manage plugins with vim-plug.
-local vim = vim
-local Plug = vim.fn["plug#"]
-vim.call("plug#begin")
-
-Plug("scrooloose/nerdtree")
-Plug("tpope/vim-unimpaired")
-Plug("tpope/vim-vinegar")
-Plug("tpope/vim-fugitive")
-Plug("ctrlpvim/ctrlp.vim")
-Plug("mileszs/ack.vim")
-Plug("easymotion/vim-easymotion")
-Plug("doums/darcula")
-Plug("tomasiser/vim-code-dark")
-Plug("morhetz/gruvbox")
-Plug("christoomey/vim-tmux-navigator")
-Plug("tomtom/tcomment_vim")             -- For commenting motions
-Plug("neovim/nvim-lspconfig")
-Plug("nvim-lua/lsp-status.nvim")
-Plug("glepnir/lspsaga.nvim")
-Plug("hrsh7th/nvim-cmp")                -- For LSP completion
-Plug("hrsh7th/cmp-nvim-lsp")
-Plug("hrsh7th/cmp-buffer")
-Plug("hrsh7th/vim-vsnip")               -- For snippets
-Plug("nvim-telescope/telescope.nvim")   -- For Loogle search
-Plug("kosayoda/nvim-lightbulb")
-Plug("rmagatti/goto-preview")
-Plug("mfussenegger/nvim-dap")
-Plug("Julian/lean.nvim")
-Plug("nvim-lua/plenary.nvim")
-Plug("andrewradev/switch.vim")          -- For Lean switch support
-Plug("nvim-treesitter/nvim-treesitter", { ["do"] = function()
-    vim.fn["TSUpdate"]()
-end })
-
-vim.call("plug#end")
+-- Telescope settings
+local builtin = require("telescope.builtin")
+vim.keymap.set(
+    "n",    
+    "<leader>ff", 
+    builtin.find_files, 
+    {}
+)
+vim.keymap.set(
+    "n", 
+    "<leader>fg", 
+    builtin.live_grep, 
+    {}
+)
+vim.keymap.set(
+    "n", 
+    "<leader>fb", 
+    builtin.buffers, 
+    {}
+)
+vim.keymap.set(
+    "n", 
+    "<leader>fh", 
+    builtin.help_tags, 
+    {}
+)
+vim.keymap.set(
+    "n",
+    "<leader>fd",
+    builtin.lsp_definitions,
+    {}
+)
+vim.keymap.set(
+    "n",
+    "<leader>fi",
+    builtin.lsp_implementations,
+    {}
+)
+vim.keymap.set(
+    "n",
+    "<leader>fr",
+    builtin.lsp_references,
+    {}
+)
 
 -- OPTION SETUP --
 vim.g.NERDTreeHijackNetrw = 0
@@ -323,26 +368,18 @@ dap.configurations.c = dap.configurations.cpp
 -- debugpy
 dap.adapters.python = {
     type = "executable";
-    command = os.getenv("HOME") .. "/dev/hbxsharpconvert/.venv/bin/python3.11";
+    command = os.getenv("HOME") .. "/dev/easipos/EasiQTX/.venv/bin/python3.11";
     args = { "-m", "debugpy.adapter" };
 }
 dap.configurations.python = {
     {
         type = "python";
         request = "launch";
+        module = "EasiQTX";
         name = "Launch debugpy";
-        program = os.getenv("HOME") .. "/dev/hbxsharpconvert/hbxsharpconvert.py";
         pythonPath = function()
-            return os.getenv("HOME") .. "/dev/hbxsharpconvert/.venv/bin/python3.11"
+            return os.getenv("HOME") .. "/dev/easipos/EasiQTX/.venv/bin/python3.11"
         end,
-        args = {
-            "--input=../easipos/EasiPOSX/easiutil", 
-            "--output=out",
-            "--include-dir=../easipos/EasiPOSX/include",
-            "--name=testprog",
-            "-f",
-            "-l"
-        }
     },
 }
 
