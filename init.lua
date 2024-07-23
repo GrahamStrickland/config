@@ -317,7 +317,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	end,
 })
 
--- COMMANDS --
+-- FURTHER SETUP --
 vim.cmd("colorscheme gruvbox")
 
 require("lean").setup({
@@ -331,20 +331,72 @@ require("nvim-lightbulb").setup({
 
 require("goto-preview").setup({})
 
--- LSP SETUP
-local lspconfig = require("lspconfig")
+-- nvim-cmp setup
+local cmp = require"cmp"
 
+cmp.setup({
+    snippet = {
+        expand = function(args)
+            require("luasnip").lsp_expand(args.body)
+        end,
+    },
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+    },
+    mapping = cmp.mapping.preset.insert({
+        ["<c-b>"] = cmp.mapping.scroll_docs(-4),
+        ["<c-f>"] = cmp.mapping.scroll_docs(4),
+        ["<c-Space>"] = cmp.mapping.complete(),
+        ["<c-e>"] = cmp.mapping.abort(),
+        ["<cr>"] = cmp.mapping.confirm({ select = true }),
+    }),
+    sources = cmp.config.sources({
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
+    }, {
+        { name = "buffer" },
+    })
+})
+cmp.setup.cmdline({ "/", "?" }, {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+        { name = "buffer" }
+    }
+})
+cmp.setup.cmdline(":", {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+        { name = "path" }
+    }, {
+        { name = "cmdline" }
+    }),
+    matching = { disallow_symbol_nonprefix_matching = false }
+})
+
+-- LSP SETUP
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local lspconfig = require("lspconfig")
 lspconfig.clangd.setup({
     name = "clangd",
     cmd = {"clangd", "--background-index", "--clang-tidy", "--log=verbose"},
     initialization_options = {
         fallback_flags = { "-std=c++20" },
     },
+    capabilities = capabilities
 })
-lspconfig.cmake.setup{}
-lspconfig.hls.setup{}
-lspconfig.pyright.setup{}
-lspconfig.texlab.setup{}
+lspconfig.cmake.setup({
+    capabilities = capabilities
+})
+lspconfig.hls.setup({
+    capabilities = capabilities
+})
+lspconfig.pyright.setup({
+    capabilities = capabilities
+})
+lspconfig.texlab.setup({
+    capabilities = capabilities
+})
 
 -- DAP ADAPTER/CONFIGURATION SETUP 
 -- GDB
