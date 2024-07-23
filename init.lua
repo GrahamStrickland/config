@@ -12,63 +12,6 @@ vim.api.nvim_set_keymap(
     { noremap = true }
 )
 
--- PLUGIN MANAGEMENT --
--- Manage plugins with vim-plug.
-local vim = vim
-local Plug = vim.fn["plug#"]
-vim.call("plug#begin")
-
-Plug("scrooloose/nerdtree")
-Plug("tpope/vim-unimpaired")
-Plug("tpope/vim-vinegar")
-Plug("tpope/vim-fugitive")
-Plug("ctrlpvim/ctrlp.vim")
-Plug("mileszs/ack.vim")
-Plug("easymotion/vim-easymotion")
-Plug("doums/darcula")
-Plug("tomasiser/vim-code-dark")
-Plug("morhetz/gruvbox")
-Plug("christoomey/vim-tmux-navigator")
-Plug("tomtom/tcomment_vim")
-Plug("neovim/nvim-lspconfig")
-Plug("nvim-lua/lsp-status.nvim")
-Plug("glepnir/lspsaga.nvim")
-Plug("hrsh7th/cmp-nvim-lsp")
-Plug("hrsh7th/cmp-buffer")
-Plug("hrsh7th/cmp-path")
-Plug("hrsh7th/cmp-cmdline")
-Plug("hrsh7th/nvim-cmp")
-Plug("L3MON4D3/LuaSnip")
-Plug("saadparwaiz1/cmp_luasnip")
-Plug("nvim-lua/plenary.nvim")
-Plug("nvim-telescope/telescope.nvim")
-Plug("kosayoda/nvim-lightbulb")
-Plug("rmagatti/goto-preview")
-Plug("mfussenegger/nvim-dap")
-Plug("Julian/lean.nvim")
-Plug("andrewradev/switch.vim")
-Plug("nvim-treesitter/nvim-treesitter", { ["do"] = function()
-    vim.fn["TSUpdate"]()
-end })
-
--- MORE KEY MAPPINGS --
-vim.call("plug#end")
--- Open NERDTree for viewing files
-vim.api.nvim_set_keymap(
-    "n",
-    "<leader>n",
-    ":NERDTreeToggle<cr>",
-    { noremap = true }
-)
-
--- Map Ctrlp buffer mode to Ctrl + B
-vim.api.nvim_set_keymap(
-    "n",
-    "<c-b>",
-    "CtrlPBuffer<cr>",
-    { noremap = true }
-)
-
 -- Fast split navigation with <Ctrl> + hjkl
 vim.api.nvim_set_keymap(
     "n",
@@ -144,7 +87,65 @@ vim.keymap.set(
     function() vim.diagnostic.open_float() end
 )
 
--- DAP Mappings
+-- PLUGIN MANAGEMENT --
+-- Manage plugins with vim-plug.
+local vim = vim
+local Plug = vim.fn["plug#"]
+vim.call("plug#begin")
+
+Plug("scrooloose/nerdtree")
+Plug("tpope/vim-unimpaired")
+Plug("tpope/vim-vinegar")
+Plug("tpope/vim-fugitive")
+Plug("ctrlpvim/ctrlp.vim")
+Plug("mileszs/ack.vim")
+Plug("easymotion/vim-easymotion")
+Plug("doums/darcula")
+Plug("tomasiser/vim-code-dark")
+Plug("morhetz/gruvbox")
+Plug("christoomey/vim-tmux-navigator")
+Plug("tomtom/tcomment_vim")
+Plug("neovim/nvim-lspconfig")
+Plug("nvim-lua/lsp-status.nvim")
+Plug("glepnir/lspsaga.nvim")
+Plug("hrsh7th/cmp-nvim-lsp")
+Plug("hrsh7th/cmp-buffer")
+Plug("hrsh7th/cmp-path")
+Plug("hrsh7th/cmp-cmdline")
+Plug("hrsh7th/nvim-cmp")
+Plug("L3MON4D3/LuaSnip")
+Plug("saadparwaiz1/cmp_luasnip")
+Plug("nvim-lua/plenary.nvim")
+Plug("nvim-telescope/telescope.nvim")
+Plug("kosayoda/nvim-lightbulb")
+Plug("rmagatti/goto-preview")
+Plug("mfussenegger/nvim-dap")
+Plug("Julian/lean.nvim")
+Plug("andrewradev/switch.vim")
+Plug("nvim-treesitter/nvim-treesitter", { ["do"] = function()
+    vim.fn["TSUpdate"]()
+end })
+
+vim.call("plug#end")
+
+-- PLUGIN-DEPENDENT KEY MAPPINGS --
+-- Open NERDTree for viewing files
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader>n",
+    ":NERDTreeToggle<cr>",
+    { noremap = true }
+)
+
+-- Map Ctrlp buffer mode to Ctrl + B
+vim.api.nvim_set_keymap(
+    "n",
+    "<c-b>",
+    "CtrlPBuffer<cr>",
+    { noremap = true }
+)
+
+-- DAP mappings
 vim.keymap.set(
     "n", 
     "<leader>dc", 
@@ -222,7 +223,7 @@ vim.keymap.set(
     end
 )
 
--- Telescope settings
+-- Telescope key bindings
 local builtin = require("telescope.builtin")
 vim.keymap.set(
     "n",    
