@@ -120,6 +120,9 @@ Plug("nvim-telescope/telescope.nvim")
 Plug("kosayoda/nvim-lightbulb")
 Plug("rmagatti/goto-preview")
 Plug("mfussenegger/nvim-dap")
+Plug("nvim-neotest/nvim-nio")
+Plug("rcarriga/nvim-dap-ui")
+Plug("folke/neodev.nvim")
 Plug("Julian/lean.nvim")
 Plug("andrewradev/switch.vim")
 Plug("nvim-treesitter/nvim-treesitter", { ["do"] = function()
@@ -145,7 +148,7 @@ vim.api.nvim_set_keymap(
     { noremap = true }
 )
 
--- DAP mappings
+-- DAP Mappings
 vim.keymap.set(
     "n", 
     "<leader>dc", 
@@ -163,12 +166,12 @@ vim.keymap.set(
 )
 vim.keymap.set(
     "n", 
-    "<leader>dt", 
+    "<leader>do", 
     function() require("dap").step_out() end
 )
 vim.keymap.set(
     "n", 
-    "<leader>dt", 
+    "<leader>dpt", 
     function() require("dap").toggle_breakpoint() end
 )
 vim.keymap.set(
@@ -178,7 +181,7 @@ vim.keymap.set(
 )
 vim.keymap.set(
     "n", 
-    "<leader>dl", 
+    "<leader>dpl", 
     function() require("dap").set_breakpoint(
             nil, 
             nil, 
@@ -188,27 +191,27 @@ vim.keymap.set(
 )
 vim.keymap.set(
     "n", 
-    "<leader>dr", 
+    "<leader>dpr", 
     function() require("dap").repl.open() end
 )
 vim.keymap.set(
     "n", 
-    "<leader>da", 
+    "<leader>dpa", 
     function() require("dap").run_last() end
 )
 vim.keymap.set(
     {"n", "v"}, 
-    "<leader>dh", 
+    "<leader>dph", 
     function() require("dap.ui.widgets").hover() end
 )
 vim.keymap.set(
     {"n", "v"}, 
-    "<leader>dp", 
+    "<leader>dpp", 
     function() require("dap.ui.widgets").preview() end
 )
 vim.keymap.set(
     "n", 
-    "<leader>df", 
+    "<leader>dpf", 
     function()
         local widgets = require("dap.ui.widgets")
         widgets.centered_float(widgets.frames)
@@ -216,11 +219,26 @@ vim.keymap.set(
 )
 vim.keymap.set(
     "n", 
-    "<leader>ds", 
+    "<leader>dps", 
     function()
         local widgets = require("dap.ui.widgets")
         widgets.centered_float(widgets.scopes)
     end
+)
+vim.keymap.set(
+    "n",
+    "<leader>duo",
+    function() require("dapui").open() end
+)
+vim.keymap.set(
+    "n",
+    "<leader>duc",
+    function() require("dapui").close() end
+)
+vim.keymap.set(
+    "n",
+    "<leader>dut",
+    function() require("dapui").toggle() end
 )
 
 -- Telescope key bindings
@@ -399,7 +417,13 @@ lspconfig.texlab.setup({
     capabilities = capabilities
 })
 
--- DAP ADAPTER/CONFIGURATION SETUP 
+-- DAP ADAPTER SETUP/CONFIGURATION
+-- UI setup
+require("neodev").setup({
+  library = { plugins = { "nvim-dap-ui" }, types = true },
+})
+require("dapui").setup()
+
 -- GDB
 local dap = require("dap")
 dap.adapters.gdb = {
@@ -424,18 +448,25 @@ dap.configurations.c = dap.configurations.cpp
 -- debugpy
 dap.adapters.python = {
     type = "executable";
-    command = os.getenv("HOME") .. "/dev/easipos/EasiQTX/.venv/bin/python3.11";
+    command = os.getenv("HOME") .. "/dev/hbxsharpconvert/.venv/bin/python3.11";
     args = { "-m", "debugpy.adapter" };
 }
 dap.configurations.python = {
     {
         type = "python";
         request = "launch";
-        module = "EasiQTX";
         name = "Launch debugpy";
+        program = os.getenv("HOME") .. "/dev/hbxsharpconvert/hbxsharpconvert.py";
         pythonPath = function()
-            return os.getenv("HOME") .. "/dev/easipos/EasiQTX/.venv/bin/python3.11"
+            return os.getenv("HOME") .. "/dev/hbxsharpconvert/.venv/bin/python3.11"
         end,
+        args = {
+            "--input=../easipos/EasiPOSX/easiutil/adt.prg", 
+            "--output=out_debug",
+            "--include-dir=../easipos/EasiPOSX/include",
+            "--name=testprog",
+            "-l"
+	}
     },
 }
 
