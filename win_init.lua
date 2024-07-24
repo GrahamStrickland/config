@@ -1,23 +1,63 @@
 -- Windows Neovim Configuration
--- KEY MAPPINGS --
--- Map the leader key to a space.
-vim.g.mapleader = "<space>"
-vim.g.maplocalleader = "<space><space>"
+-- PRE-PLUGIN KEY MAPPINGS --
+-- Map the leader key to a space
+vim.g.mapleader = " "
+vim.g.maplocalleader = "  "
 
--- Save a file with leader-w.
+-- Save a file with leader-w
 vim.api.nvim_set_keymap(
-  "n",
-  "<leader>w",
-  ":w<cr>",
-  { noremap = true }
+    "n",
+    "<leader>w",
+    ":w<cr>",
+    { noremap = true }
 )
 
--- Open NERDTree for viewing files.
+-- PLUGIN MANAGEMENT --
+-- Manage plugins with vim-plug.
+local vim = vim
+local Plug = vim.fn["plug#"]
+vim.call("plug#begin")
+
+Plug("scrooloose/nerdtree")
+Plug("tpope/vim-unimpaired")
+Plug("tpope/vim-vinegar")
+Plug("tpope/vim-fugitive")
+Plug("ctrlpvim/ctrlp.vim")
+Plug("mileszs/ack.vim")
+Plug("easymotion/vim-easymotion")
+Plug("doums/darcula")
+Plug("tomasiser/vim-code-dark")
+Plug("morhetz/gruvbox")
+Plug("christoomey/vim-tmux-navigator")
+Plug("tomtom/tcomment_vim")
+Plug("neovim/nvim-lspconfig")
+Plug("nvim-lua/lsp-status.nvim")
+Plug("glepnir/lspsaga.nvim")
+Plug("hrsh7th/cmp-nvim-lsp")
+Plug("hrsh7th/cmp-buffer")
+Plug("hrsh7th/cmp-path")
+Plug("hrsh7th/cmp-cmdline")
+Plug("hrsh7th/nvim-cmp")
+Plug("L3MON4D3/LuaSnip")
+Plug("saadparwaiz1/cmp_luasnip")
+Plug("nvim-lua/plenary.nvim")
+Plug("nvim-telescope/telescope.nvim")
+Plug("kosayoda/nvim-lightbulb")
+Plug("rmagatti/goto-preview")
+Plug("mfussenegger/nvim-dap")
+Plug("andrewradev/switch.vim")
+Plug("nvim-treesitter/nvim-treesitter", { ["do"] = function()
+    vim.fn["TSUpdate"]()
+end })
+
+-- MORE KEY MAPPINGS --
+vim.call("plug#end")
+-- Open NERDTree for viewing files
 vim.api.nvim_set_keymap(
-  "n",
-  "<leader>n",
-  ":NERDTreeToggle<cr>",
-  { noremap = true }
+    "n",
+    "<leader>n",
+    ":NERDTreeToggle<cr>",
+    { noremap = true }
 )
 
 -- Map Ctrlp buffer mode to Ctrl + B
@@ -30,117 +70,201 @@ vim.api.nvim_set_keymap(
 
 -- Fast split navigation with <Ctrl> + hjkl
 vim.api.nvim_set_keymap(
-  "n",
-  "<c-h>",
-  "<c-w><c-h>",
-  { noremap = true }
+    "n",
+    "<c-h>",
+    "<c-w><c-h>",
+    { noremap = true }
 )
 vim.api.nvim_set_keymap(
-  "n",
-  "<c-j>",
-  "<c-w><c-j>",
-  { noremap = true }
+    "n",
+    "<c-j>",
+    "<c-w><c-j>",
+    { noremap = true }
 )
 vim.api.nvim_set_keymap(
-  "n",
-  "<c-k>",
-  "<c-w><c-k>",
-  { noremap = true }
+    "n",
+    "<c-k>",
+    "<c-w><c-k>",
+    { noremap = true }
 )
 vim.api.nvim_set_keymap(
-  "n",
-  "<c-l>",
-  "<c-w><c-l>",
-  { noremap = true }
+    "n",
+    "<c-l>",
+    "<c-w><c-l>",
+    { noremap = true }
 )
 
 -- Page down/up and center
 vim.api.nvim_set_keymap(
-  "n",
-  "<c-d>",
-  "<c-d>zz",
-  { noremap = true }
+    "n",
+    "<c-d>",
+    "<c-d>zz",
+    { noremap = true }
 )
 vim.api.nvim_set_keymap(
-  "n",
-  "<c-u>",
-  "<c-u>zz",
-  { noremap = true }
+    "n",
+    "<c-u>",
+    "<c-u>zz",
+    { noremap = true }
 )
 
--- Use ; in addition to : to type commands.
+-- Immediately add closing quotes or braces in insert mode
 vim.api.nvim_set_keymap(
-  "n",
-  ";",
-  ":",
-  { noremap = true }
-)
-
--- Immediately add a closing quotes or braces in insert mode.
-vim.api.nvim_set_keymap(
-  "i",
-  "(",
-  "()<esc>i",
-  { noremap = true }
+    "i",
+    "(",
+    "()<esc>i",
+    { noremap = true }
 )
 vim.api.nvim_set_keymap(
-  "i",
-  "{",
-  "{}<esc>i",
-  { noremap = true }
+    "i",
+    "{",
+    "{}<esc>i",
+    { noremap = true }
 )
 vim.api.nvim_set_keymap(
-  "i",
-  "[",
-  "[]<esc>i",
-  { noremap = true }
+    "i",
+    "[",
+    "[]<esc>i",
+    { noremap = true }
 )
 
--- Remap terminal mode escape.
+-- Remap terminal mode escape
 vim.api.nvim_set_keymap(
-  "t",
-  "<esc>",
-  "<c-\\><c-n>",
-  { noremap = true }
+    "t",
+    "<esc>",
+    "<c-\\><c-n>",
+    { noremap = true }
 )
 
--- PLUGIN MANAGEMENT --
--- Manage plugins with vim-plug.
-local vim = vim
-local Plug = vim.fn['plug#']
-vim.call('plug#begin')
+-- Open diagnostics in floating window
+vim.keymap.set(
+    "n",
+    "<leader>o",
+    function() vim.diagnostic.open_float() end
+)
 
-Plug('scrooloose/nerdtree')
-Plug('tpope/vim-unimpaired')
-Plug('tpope/vim-vinegar')
-Plug('tpope/vim-fugitive')
-Plug('ctrlpvim/ctrlp.vim')
-Plug('mileszs/ack.vim')
-Plug('easymotion/vim-easymotion')
-Plug('doums/darcula')
-Plug('tomasiser/vim-code-dark')
-Plug('morhetz/gruvbox')
-Plug('christoomey/vim-tmux-navigator')
-Plug('tomtom/tcomment_vim')             -- For commenting motions
-Plug('neovim/nvim-lspconfig')
-Plug('nvim-lua/lsp-status.nvim')
-Plug('glepnir/lspsaga.nvim')
-Plug('hrsh7th/nvim-cmp')                -- For LSP completion
-Plug('hrsh7th/cmp-nvim-lsp')
-Plug('hrsh7th/cmp-buffer')
-Plug('hrsh7th/vim-vsnip')               -- For snippets
-Plug('nvim-telescope/telescope.nvim')   -- For Loogle search
-Plug('kosayoda/nvim-lightbulb')
-Plug('rmagatti/goto-preview')
-Plug('mfussenegger/nvim-dap')
-Plug('Julian/lean.nvim')
-Plug('nvim-lua/plenary.nvim')
-Plug('andrewradev/switch.vim')          -- For Lean switch support
-Plug('nvim-treesitter/nvim-treesitter', { ['do'] = function()
-    vim.fn['TSUpdate']()
-end })
+-- DAP Mappings
+vim.keymap.set(
+    "n", 
+    "<leader>dc", 
+    function() require("dap").continue() end
+)
+vim.keymap.set(
+    "n", 
+    "<leader>ds", 
+    function() require("dap").step_over() end
+)
+vim.keymap.set(
+    "n", 
+    "<leader>di", 
+    function() require("dap").step_into() end
+)
+vim.keymap.set(
+    "n", 
+    "<leader>dt", 
+    function() require("dap").step_out() end
+)
+vim.keymap.set(
+    "n", 
+    "<leader>dt", 
+    function() require("dap").toggle_breakpoint() end
+)
+vim.keymap.set(
+    "n", 
+    "<leader>dpb", 
+    function() require("dap").set_breakpoint() end
+)
+vim.keymap.set(
+    "n", 
+    "<leader>dl", 
+    function() require("dap").set_breakpoint(
+            nil, 
+            nil, 
+            vim.fn.input("Log point message: ")
+        ) 
+    end
+)
+vim.keymap.set(
+    "n", 
+    "<leader>dr", 
+    function() require("dap").repl.open() end
+)
+vim.keymap.set(
+    "n", 
+    "<leader>da", 
+    function() require("dap").run_last() end
+)
+vim.keymap.set(
+    {"n", "v"}, 
+    "<leader>dh", 
+    function() require("dap.ui.widgets").hover() end
+)
+vim.keymap.set(
+    {"n", "v"}, 
+    "<leader>dp", 
+    function() require("dap.ui.widgets").preview() end
+)
+vim.keymap.set(
+    "n", 
+    "<leader>df", 
+    function()
+        local widgets = require("dap.ui.widgets")
+        widgets.centered_float(widgets.frames)
+    end
+)
+vim.keymap.set(
+    "n", 
+    "<leader>ds", 
+    function()
+        local widgets = require("dap.ui.widgets")
+        widgets.centered_float(widgets.scopes)
+    end
+)
 
-vim.call('plug#end')
+-- Telescope settings
+local builtin = require("telescope.builtin")
+vim.keymap.set(
+    "n",    
+    "<leader>ff", 
+    builtin.find_files, 
+    {}
+)
+vim.keymap.set(
+    "n", 
+    "<leader>fg", 
+    builtin.live_grep, 
+    {}
+)
+vim.keymap.set(
+    "n", 
+    "<leader>fb", 
+    builtin.buffers, 
+    {}
+)
+vim.keymap.set(
+    "n", 
+    "<leader>fh", 
+    builtin.help_tags, 
+    {}
+)
+vim.keymap.set(
+    "n",
+    "<leader>fd",
+    builtin.lsp_definitions,
+    {}
+)
+vim.keymap.set(
+    "n",
+    "<leader>fi",
+    builtin.lsp_implementations,
+    {}
+)
+vim.keymap.set(
+    "n",
+    "<leader>fr",
+    builtin.lsp_references,
+    {}
+)
 
 -- OPTION SETUP --
 vim.g.NERDTreeHijackNetrw = 0
@@ -191,13 +315,8 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	end,
 })
 
--- COMMANDS --
-vim.cmd('colorscheme gruvbox')
-
-require('lean').setup({
-    lsp = { on_attach = on_attach },
-    mappings = true,
-})
+-- FURTHER SETUP --
+vim.cmd("colorscheme codedark")
 
 require("nvim-lightbulb").setup({
     autocmd = { enabled = true }
@@ -205,8 +324,92 @@ require("nvim-lightbulb").setup({
 
 require("goto-preview").setup({})
 
--- LSP setup
-require'lspconfig'.clangd.setup{}
-require'lspconfig'.hls.setup{}
-require'lspconfig'.pyright.setup{}
+-- nvim-cmp setup
+local cmp = require"cmp"
+
+cmp.setup({
+    snippet = {
+        expand = function(args)
+            require("luasnip").lsp_expand(args.body)
+        end,
+    },
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+    },
+    mapping = cmp.mapping.preset.insert({
+        ["<c-b>"] = cmp.mapping.scroll_docs(-4),
+        ["<c-f>"] = cmp.mapping.scroll_docs(4),
+        ["<c-Space>"] = cmp.mapping.complete(),
+        ["<c-e>"] = cmp.mapping.abort(),
+        ["<cr>"] = cmp.mapping.confirm({ select = true }),
+    }),
+    sources = cmp.config.sources({
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
+    }, {
+        { name = "buffer" },
+    })
+})
+cmp.setup.cmdline({ "/", "?" }, {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+        { name = "buffer" }
+    }
+})
+cmp.setup.cmdline(":", {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+        { name = "path" }
+    }, {
+        { name = "cmdline" }
+    }),
+    matching = { disallow_symbol_nonprefix_matching = false }
+})
+
+-- LSP SETUP
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local lspconfig = require("lspconfig")
+lspconfig.clangd.setup({
+    name = "clangd",
+    cmd = {"clangd", "--background-index", "--clang-tidy", "--log=verbose"},
+    initialization_options = {
+        fallback_flags = { "-std=c++20" },
+    },
+    capabilities = capabilities
+})
+lspconfig.cmake.setup({
+    capabilities = capabilities
+})
+lspconfig.pyright.setup({
+    capabilities = capabilities
+})
+
+-- DAP ADAPTER/CONFIGURATION SETUP 
+-- debugpy
+local dap = require("dap")
+dap.adapters.python = {
+    type = "executable";
+    command = os.getenv("UserProfile") .. "\\dev\\hbxsharpconvert\\.venv\\Scripts\\python.exe";
+    args = { "-m", "debugpy.adapter" };
+}
+dap.configurations.python = {
+    {
+        type = "python";
+        request = "launch";
+        name = "Launch debugpy";
+        program = os.getenv("UserProfile") .. "\\dev\\hbxsharpconvert\\hbxsharpconvert.py";
+        pythonPath = function()
+            return os.getenv("UserProfile") .. "\\dev/hbxsharpconvert\\.venv\\Scripts\\python.exe"
+        end,
+        args = {
+            "--input=..\\easipos\\EasiPOSX\\easiutil", 
+            "--output=out",
+            "--include-dir=..\\easipos\\EasiPOSX\\include",
+            "--name=testprog",
+            "-f",
+            "-l"
+        }
+    },
+}
 
