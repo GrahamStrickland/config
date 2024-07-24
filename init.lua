@@ -124,6 +124,7 @@ Plug("nvim-neotest/nvim-nio")
 Plug("rcarriga/nvim-dap-ui")
 Plug("folke/neodev.nvim")
 Plug("Julian/lean.nvim")
+Plug("rachartier/tiny-code-action.nvim")
 Plug("andrewradev/switch.vim")
 Plug("nvim-treesitter/nvim-treesitter", { ["do"] = function()
     vim.fn["TSUpdate"]()
@@ -286,6 +287,26 @@ vim.keymap.set(
     {}
 )
 
+-- Code actions
+vim.keymap.set(
+    "n", 
+    "<leader>ca", 
+    function()
+	    require("tiny-code-action").code_action()
+    end, 
+    { noremap = true, silent = true }
+)
+
+-- Formatting
+vim.keymap.set(
+    "n",
+    "<leader>cf",
+    function()
+        vim.lsp.buf.format()
+    end,
+    { noremap = true, silent = true }
+)
+
 -- OPTION SETUP --
 vim.g.NERDTreeHijackNetrw = 0
 
@@ -338,6 +359,8 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 -- FURTHER SETUP --
 vim.cmd("colorscheme gruvbox")
+
+require("tiny-code-action").setup()
 
 require("lean").setup({
     lsp = { on_attach = on_attach },
@@ -439,7 +462,7 @@ dap.configurations.cpp = {
         program = function()
             return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
         end,
-        cwd = "~/dev/clrs/test/algorithms",
+        cwd = "~/dev/clrs/test/data_structures",
         stopAtBeginningOfMainSubprogram = false,
     },
 }
