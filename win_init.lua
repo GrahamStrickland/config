@@ -1,5 +1,5 @@
 -- Windows Neovim Configuration
--- KEY MAPPINGS --
+-- PRE-PLUGIN KEY MAPPINGS --
 -- Map the leader key to a space
 vim.g.mapleader = " "
 vim.g.maplocalleader = "  "
@@ -12,6 +12,46 @@ vim.api.nvim_set_keymap(
     { noremap = true }
 )
 
+-- PLUGIN MANAGEMENT --
+-- Manage plugins with vim-plug.
+local vim = vim
+local Plug = vim.fn["plug#"]
+vim.call("plug#begin")
+
+Plug("scrooloose/nerdtree")
+Plug("tpope/vim-unimpaired")
+Plug("tpope/vim-vinegar")
+Plug("tpope/vim-fugitive")
+Plug("ctrlpvim/ctrlp.vim")
+Plug("mileszs/ack.vim")
+Plug("easymotion/vim-easymotion")
+Plug("doums/darcula")
+Plug("tomasiser/vim-code-dark")
+Plug("morhetz/gruvbox")
+Plug("christoomey/vim-tmux-navigator")
+Plug("tomtom/tcomment_vim")
+Plug("neovim/nvim-lspconfig")
+Plug("nvim-lua/lsp-status.nvim")
+Plug("glepnir/lspsaga.nvim")
+Plug("hrsh7th/cmp-nvim-lsp")
+Plug("hrsh7th/cmp-buffer")
+Plug("hrsh7th/cmp-path")
+Plug("hrsh7th/cmp-cmdline")
+Plug("hrsh7th/nvim-cmp")
+Plug("L3MON4D3/LuaSnip")
+Plug("saadparwaiz1/cmp_luasnip")
+Plug("nvim-lua/plenary.nvim")
+Plug("nvim-telescope/telescope.nvim")
+Plug("kosayoda/nvim-lightbulb")
+Plug("rmagatti/goto-preview")
+Plug("mfussenegger/nvim-dap")
+Plug("andrewradev/switch.vim")
+Plug("nvim-treesitter/nvim-treesitter", { ["do"] = function()
+    vim.fn["TSUpdate"]()
+end })
+
+-- MORE KEY MAPPINGS --
+vim.call("plug#end")
 -- Open NERDTree for viewing files
 vim.api.nvim_set_keymap(
     "n",
@@ -106,27 +146,27 @@ vim.keymap.set(
 -- DAP Mappings
 vim.keymap.set(
     "n", 
-    "<leader>dpc", 
+    "<leader>dc", 
     function() require("dap").continue() end
 )
 vim.keymap.set(
     "n", 
-    "<leader>dpl", 
+    "<leader>ds", 
     function() require("dap").step_over() end
 )
 vim.keymap.set(
     "n", 
-    "<leader>dpk", 
+    "<leader>di", 
     function() require("dap").step_into() end
 )
 vim.keymap.set(
     "n", 
-    "<leader>dpj", 
+    "<leader>dt", 
     function() require("dap").step_out() end
 )
 vim.keymap.set(
     "n", 
-    "<leader>dpt", 
+    "<leader>dt", 
     function() require("dap").toggle_breakpoint() end
 )
 vim.keymap.set(
@@ -136,7 +176,7 @@ vim.keymap.set(
 )
 vim.keymap.set(
     "n", 
-    "<leader>dpg", 
+    "<leader>dl", 
     function() require("dap").set_breakpoint(
             nil, 
             nil, 
@@ -146,27 +186,27 @@ vim.keymap.set(
 )
 vim.keymap.set(
     "n", 
-    "<leader>dpr", 
+    "<leader>dr", 
     function() require("dap").repl.open() end
 )
 vim.keymap.set(
     "n", 
-    "<leader>dpa", 
+    "<leader>da", 
     function() require("dap").run_last() end
 )
 vim.keymap.set(
     {"n", "v"}, 
-    "<leader>dph", 
+    "<leader>dh", 
     function() require("dap.ui.widgets").hover() end
 )
 vim.keymap.set(
     {"n", "v"}, 
-    "<leader>dpp", 
+    "<leader>dp", 
     function() require("dap.ui.widgets").preview() end
 )
 vim.keymap.set(
     "n", 
-    "<leader>dpf", 
+    "<leader>df", 
     function()
         local widgets = require("dap.ui.widgets")
         widgets.centered_float(widgets.frames)
@@ -174,49 +214,57 @@ vim.keymap.set(
 )
 vim.keymap.set(
     "n", 
-    "<leader>dps", 
+    "<leader>ds", 
     function()
         local widgets = require("dap.ui.widgets")
         widgets.centered_float(widgets.scopes)
     end
 )
 
--- PLUGIN MANAGEMENT --
--- Manage plugins with vim-plug.
-local vim = vim
-local Plug = vim.fn["plug#"]
-vim.call("plug#begin")
-
-Plug("scrooloose/nerdtree")
-Plug("tpope/vim-unimpaired")
-Plug("tpope/vim-vinegar")
-Plug("tpope/vim-fugitive")
-Plug("ctrlpvim/ctrlp.vim")
-Plug("mileszs/ack.vim")
-Plug("easymotion/vim-easymotion")
-Plug("doums/darcula")
-Plug("tomasiser/vim-code-dark")
-Plug("morhetz/gruvbox")
-Plug("christoomey/vim-tmux-navigator")
-Plug("tomtom/tcomment_vim")             -- For commenting motions
-Plug("neovim/nvim-lspconfig")
-Plug("nvim-lua/lsp-status.nvim")
-Plug("glepnir/lspsaga.nvim")
-Plug("hrsh7th/nvim-cmp")                -- For LSP completion
-Plug("hrsh7th/cmp-nvim-lsp")
-Plug("hrsh7th/cmp-buffer")
-Plug("hrsh7th/vim-vsnip")               -- For snippets
-Plug("nvim-telescope/telescope.nvim")   -- For Loogle search
-Plug("kosayoda/nvim-lightbulb")
-Plug("rmagatti/goto-preview")
-Plug("mfussenegger/nvim-dap")
-Plug("nvim-lua/plenary.nvim")
-Plug("andrewradev/switch.vim")          -- For switch support
-Plug("nvim-treesitter/nvim-treesitter", { ["do"] = function()
-    vim.fn["TSUpdate"]()
-end })
-
-vim.call("plug#end")
+-- Telescope settings
+local builtin = require("telescope.builtin")
+vim.keymap.set(
+    "n",    
+    "<leader>ff", 
+    builtin.find_files, 
+    {}
+)
+vim.keymap.set(
+    "n", 
+    "<leader>fg", 
+    builtin.live_grep, 
+    {}
+)
+vim.keymap.set(
+    "n", 
+    "<leader>fb", 
+    builtin.buffers, 
+    {}
+)
+vim.keymap.set(
+    "n", 
+    "<leader>fh", 
+    builtin.help_tags, 
+    {}
+)
+vim.keymap.set(
+    "n",
+    "<leader>fd",
+    builtin.lsp_definitions,
+    {}
+)
+vim.keymap.set(
+    "n",
+    "<leader>fi",
+    builtin.lsp_implementations,
+    {}
+)
+vim.keymap.set(
+    "n",
+    "<leader>fr",
+    builtin.lsp_references,
+    {}
+)
 
 -- OPTION SETUP --
 vim.g.NERDTreeHijackNetrw = 0
@@ -267,8 +315,8 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	end,
 })
 
--- COMMANDS --
-vim.cmd("colorscheme gruvbox")
+-- FURTHER SETUP --
+vim.cmd("colorscheme codedark")
 
 require("nvim-lightbulb").setup({
     autocmd = { enabled = true }
@@ -276,43 +324,70 @@ require("nvim-lightbulb").setup({
 
 require("goto-preview").setup({})
 
--- LSP SETUP
-local lspconfig = require("lspconfig")
+-- nvim-cmp setup
+local cmp = require"cmp"
 
+cmp.setup({
+    snippet = {
+        expand = function(args)
+            require("luasnip").lsp_expand(args.body)
+        end,
+    },
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+    },
+    mapping = cmp.mapping.preset.insert({
+        ["<c-b>"] = cmp.mapping.scroll_docs(-4),
+        ["<c-f>"] = cmp.mapping.scroll_docs(4),
+        ["<c-Space>"] = cmp.mapping.complete(),
+        ["<c-e>"] = cmp.mapping.abort(),
+        ["<cr>"] = cmp.mapping.confirm({ select = true }),
+    }),
+    sources = cmp.config.sources({
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
+    }, {
+        { name = "buffer" },
+    })
+})
+cmp.setup.cmdline({ "/", "?" }, {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+        { name = "buffer" }
+    }
+})
+cmp.setup.cmdline(":", {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+        { name = "path" }
+    }, {
+        { name = "cmdline" }
+    }),
+    matching = { disallow_symbol_nonprefix_matching = false }
+})
+
+-- LSP SETUP
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local lspconfig = require("lspconfig")
 lspconfig.clangd.setup({
     name = "clangd",
     cmd = {"clangd", "--background-index", "--clang-tidy", "--log=verbose"},
     initialization_options = {
         fallback_flags = { "-std=c++20" },
     },
+    capabilities = capabilities
 })
-lspconfig.cmake.setup{}
-lspconfig.hls.setup{}
-lspconfig.pyright.setup{}
+lspconfig.cmake.setup({
+    capabilities = capabilities
+})
+lspconfig.pyright.setup({
+    capabilities = capabilities
+})
 
 -- DAP ADAPTER/CONFIGURATION SETUP 
--- GDB
-local dap = require("dap")
--- dap.adapters.gdb = {
---     type = "executable",
---     command = "gdb",
---     args = { "-i", "dap" }
--- }
--- dap.configurations.cpp = {
---     {
---         name = "Launch GDB",
---         type = "gdb",
---         request = "launch",
---         program = function()
---             return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
---         end,
---         cwd = "~/dev/clrs/test/algorithms",
---         stopAtBeginningOfMainSubprogram = false,
---     },
--- }
--- dap.configurations.c = dap.configurations.cpp
-
 -- debugpy
+local dap = require("dap")
 dap.adapters.python = {
     type = "executable";
     command = os.getenv("UserProfile") .. "\\dev\\hbxsharpconvert\\.venv\\Scripts\\python.exe";
