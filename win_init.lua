@@ -48,6 +48,7 @@ Plug("mfussenegger/nvim-dap")
 Plug("nvim-neotest/nvim-nio")
 Plug("rcarriga/nvim-dap-ui")
 Plug("folke/neodev.nvim")
+Plug("rachartier/tiny-code-action.nvim")
 Plug("andrewradev/switch.vim")
 Plug("nvim-treesitter/nvim-treesitter", { ["do"] = function()
     vim.fn["TSUpdate"]()
@@ -284,6 +285,26 @@ vim.keymap.set(
     {}
 )
 
+-- Code actions
+vim.keymap.set(
+    "n", 
+    "<leader>ca", 
+    function()
+	    require("tiny-code-action").code_action()
+    end, 
+    { noremap = true, silent = true }
+)
+
+-- Formatting
+vim.keymap.set(
+    "n",
+    "<leader>cf",
+    function()
+        vim.lsp.buf.format()
+    end,
+    { noremap = true, silent = true }
+)
+
 -- OPTION SETUP --
 vim.g.NERDTreeHijackNetrw = 0
 
@@ -335,6 +356,8 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 -- FURTHER SETUP --
 vim.cmd("colorscheme everforest")
+
+require("tiny-code-action").setup()
 
 require("nvim-lightbulb").setup({
     autocmd = { enabled = true }
