@@ -12,6 +12,14 @@ vim.api.nvim_set_keymap(
     { noremap = true }
 )
 
+-- Quit buffer with leader-q
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader>q",
+    ":q<cr>",
+    { noremap = true }
+)
+
 -- Fast split navigation with <Ctrl> + hjkl
 vim.api.nvim_set_keymap(
     "n",
@@ -100,9 +108,7 @@ Plug("tpope/vim-fugitive")
 Plug("ctrlpvim/ctrlp.vim")
 Plug("mileszs/ack.vim")
 Plug("easymotion/vim-easymotion")
-Plug("doums/darcula")
-Plug("tomasiser/vim-code-dark")
-Plug("morhetz/gruvbox")
+Plug("sainnhe/gruvbox-material")
 Plug("christoomey/vim-tmux-navigator")
 Plug("tomtom/tcomment_vim")
 Plug("neovim/nvim-lspconfig")
@@ -358,7 +364,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 -- FURTHER SETUP --
-vim.cmd("colorscheme gruvbox")
+vim.cmd("colorscheme gruvbox-material")
 
 require("tiny-code-action").setup()
 
@@ -471,25 +477,26 @@ dap.configurations.c = dap.configurations.cpp
 -- debugpy
 dap.adapters.python = {
     type = "executable";
-    command = os.getenv("HOME") .. "/dev/hbxsharpconvert/.venv/bin/python3.11";
+    command = os.getenv("HOME") .. "/dev/easipos/EasiQTX/.venv/bin/python3.11";
     args = { "-m", "debugpy.adapter" };
 }
 dap.configurations.python = {
     {
         type = "python";
         request = "launch";
-        name = "Launch debugpy";
-        program = os.getenv("HOME") .. "/dev/hbxsharpconvert/hbxsharpconvert.py";
+        name = "Launch EasiQtX";
+        module = "EasiQtX";
+        -- program = os.getenv("HOME") .. "/dev/hbxsharpconvert/hbxsharpconvert.py";
         pythonPath = function()
-            return os.getenv("HOME") .. "/dev/hbxsharpconvert/.venv/bin/python3.11"
+            return os.getenv("HOME") .. "/dev/easipos/EasiQTX/.venv/bin/python3.11"
         end,
-        args = {
-            "--input=../easipos/EasiPOSX/easiutil/adt.prg", 
-            "--output=out_debug",
-            "--include-dir=../easipos/EasiPOSX/include",
-            "--name=testprog",
-            "-l"
-	}
+        -- args = {
+        --    "--input=../easipos/EasiPOSX/easiutil/adt.prg", 
+        --    "--output=out_debug",
+        --    "--include-dir=../easipos/EasiPOSX/include",
+        --    "--name=testprog",
+        --    "-l"
+	    --}
     },
 }
 
