@@ -12,6 +12,14 @@ vim.api.nvim_set_keymap(
     { noremap = true }
 )
 
+-- Quit buffer with leader-q
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader>q",
+    ":q<cr>",
+    { noremap = true }
+)
+
 -- PLUGIN MANAGEMENT --
 -- Manage plugins with vim-plug.
 local vim = vim
@@ -25,10 +33,7 @@ Plug("tpope/vim-fugitive")
 Plug("ctrlpvim/ctrlp.vim")
 Plug("mileszs/ack.vim")
 Plug("easymotion/vim-easymotion")
-Plug("doums/darcula")
-Plug("morhetz/gruvbox")
-Plug("sainnhe/everforest")
-Plug("tomasiser/vim-code-dark")
+Plug("sainnhe/gruvbox-material")
 Plug("tomtom/tcomment_vim")
 Plug("neovim/nvim-lspconfig")
 Plug("nvim-lua/lsp-status.nvim")
@@ -355,7 +360,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 -- FURTHER SETUP --
-vim.cmd("colorscheme everforest")
+vim.cmd("colorscheme gruvbox-material")
 
 require("tiny-code-action").setup()
 
