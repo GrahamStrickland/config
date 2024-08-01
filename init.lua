@@ -436,6 +436,9 @@ lspconfig.clangd.setup({
 lspconfig.cmake.setup({
     capabilities = capabilities
 })
+lspconfig.jdtls.setup({
+    capabilities = capabilities
+})
 lspconfig.hls.setup({
     capabilities = capabilities
 })
