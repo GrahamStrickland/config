@@ -101,6 +101,7 @@ local vim = vim
 local Plug = vim.fn["plug#"]
 vim.call("plug#begin")
 
+Plug("vague2k/vague.nvim")
 Plug("scrooloose/nerdtree")
 Plug("tpope/vim-unimpaired")
 Plug("tpope/vim-vinegar")
@@ -108,7 +109,6 @@ Plug("tpope/vim-fugitive")
 Plug("ctrlpvim/ctrlp.vim")
 Plug("mileszs/ack.vim")
 Plug("easymotion/vim-easymotion")
-Plug("sainnhe/gruvbox-material")
 Plug("christoomey/vim-tmux-navigator")
 Plug("tomtom/tcomment_vim")
 Plug("neovim/nvim-lspconfig")
@@ -364,7 +364,9 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 -- FURTHER SETUP --
-vim.cmd("colorscheme gruvbox-material")
+vim.cmd("colorscheme vague")
+
+require("vague").setup()
 
 require("tiny-code-action").setup()
 
@@ -442,9 +444,21 @@ lspconfig.jdtls.setup({
 lspconfig.hls.setup({
     capabilities = capabilities
 })
-lspconfig.pyright.setup({
+lspconfig.ruff.setup({
     capabilities = capabilities
 })
+lspconfig.pyright.setup{
+    settings = {
+        pyright = {
+            disableOrganizeImports = true,
+        },
+        python = {
+            analysis = {
+                ignore = { '*' },
+            },
+        },
+    },
+}
 lspconfig.texlab.setup({
     capabilities = capabilities
 })
