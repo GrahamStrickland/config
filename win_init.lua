@@ -26,6 +26,7 @@ local vim = vim
 local Plug = vim.fn["plug#"]
 vim.call("plug#begin")
 
+Plug("vague2k/vague.nvim")
 Plug("scrooloose/nerdtree")
 Plug("tpope/vim-unimpaired")
 Plug("tpope/vim-vinegar")
@@ -33,7 +34,6 @@ Plug("tpope/vim-fugitive")
 Plug("ctrlpvim/ctrlp.vim")
 Plug("mileszs/ack.vim")
 Plug("easymotion/vim-easymotion")
-Plug("sainnhe/gruvbox-material")
 Plug("tomtom/tcomment_vim")
 Plug("neovim/nvim-lspconfig")
 Plug("nvim-lua/lsp-status.nvim")
@@ -66,14 +66,6 @@ vim.api.nvim_set_keymap(
     "n",
     "<leader>n",
     ":NERDTreeToggle<cr>",
-    { noremap = true }
-)
-
--- Map Ctrlp buffer mode to Ctrl + B
-vim.api.nvim_set_keymap(
-    "n",
-    "<c-b>",
-    "CtrlPBuffer<cr>",
     { noremap = true }
 )
 
@@ -360,7 +352,9 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 -- FURTHER SETUP --
-vim.cmd("colorscheme gruvbox-material")
+vim.cmd("colorscheme vague")
+
+require("vague").setup()
 
 require("tiny-code-action").setup()
 
@@ -427,9 +421,21 @@ lspconfig.clangd.setup({
 lspconfig.cmake.setup({
     capabilities = capabilities
 })
-lspconfig.pyright.setup({
+lspconfig.ruff.setup({
     capabilities = capabilities
 })
+lspconfig.pyright.setup{
+    settings = {
+        pyright = {
+            disableOrganizeImports = true,
+        },
+        python = {
+            analysis = {
+                ignore = { '*' },
+            },
+        },
+    },
+}
 
 -- DAP ADAPTER SETUP/CONFIGURATION
 -- UI setup
