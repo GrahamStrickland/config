@@ -56,7 +56,7 @@ local function segments_for_right_status(window, pane)
         table.insert(cells, hostname)
     end
         
-    local date = wezterm.strftime "%a %b %-d %H:%M"
+    local date = wezterm.strftime "%a %-d %b %H:%M"
     table.insert(cells, date)
 
     for _, b in ipairs(wezterm.battery_info()) do
