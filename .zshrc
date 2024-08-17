@@ -2,10 +2,10 @@
 autoload -Uz vcs_info
 precmd() { vcs_info }
 
-zstyle ":vcs_info:git:*" formats "%b "
+zstyle ':vcs_info:git:*' formats "%s %b (%a) %m%u%c "
 
 setopt PROMPT_SUBST
-PROMPT="%F{green}%*%f %F{blue}%~%f %F{red}${vcs_info_msg_0_}%f$ "
+PROMPT='%F{green}%*%f %F{blue}%~%f %F{red}${vcs_info_msg_0_}%f$ '
 
 # Add to PATH
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
