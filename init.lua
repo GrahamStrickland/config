@@ -101,7 +101,7 @@ local vim = vim
 local Plug = vim.fn["plug#"]
 vim.call("plug#begin")
 
-Plug("vague2k/vague.nvim")
+Plug("sainnhe/gruvbox-material")
 Plug("scrooloose/nerdtree")
 Plug("tpope/vim-unimpaired")
 Plug("tpope/vim-vinegar")
@@ -364,9 +364,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 -- FURTHER SETUP --
-vim.cmd("colorscheme vague")
-
-require("vague").setup()
+vim.cmd("colorscheme gruvbox-material")
 
 require("tiny-code-action").setup()
 
