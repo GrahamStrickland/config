@@ -2,7 +2,12 @@ local wezterm = require "wezterm"
 local config = wezterm.config_builder()
 
 config.color_scheme = "Vs Code Dark+ (Gogh)"
-config.font = wezterm.font({ family = "FiraCode Nerd Font Mono" })
+config.font = wezterm.font({ family = "Menlo" })
+config.font_size = 12
+config.freetype_load_flags = "NO_HINTING"
+config.freetype_load_target = "Light"
+config.freetype_render_target = "HorizontalLcd"
+config.cell_width = 0.9
 
 config.window_decorations = "RESIZE|INTEGRATED_BUTTONS"
 
