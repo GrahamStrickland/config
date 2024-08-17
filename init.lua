@@ -178,12 +178,12 @@ vim.keymap.set(
 )
 vim.keymap.set(
     "n", 
-    "<leader>dpt", 
+    "<leader>dt", 
     function() require("dap").toggle_breakpoint() end
 )
 vim.keymap.set(
     "n", 
-    "<leader>dpb", 
+    "<leader>db", 
     function() require("dap").set_breakpoint() end
 )
 vim.keymap.set(
@@ -459,6 +459,30 @@ lspconfig.pyright.setup{
         },
     },
 }
+lspconfig.rust_analyzer.setup({
+    on_attach = function(client, bufnr)
+        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    end,
+    settings = {
+        ["rust-analyzer"] = {
+            imports = {
+                granularity = {
+                    group = "module",
+                },
+                prefix = "self",
+            },
+            cargo = {
+                buildScripts = {
+                    enable = true,
+                },
+            },
+            procMacro = {
+                enable = true
+            },
+        }
+    }
+
+})
 lspconfig.texlab.setup({
     capabilities = capabilities
 })
