@@ -26,7 +26,7 @@ local vim = vim
 local Plug = vim.fn["plug#"]
 vim.call("plug#begin")
 
-Plug("vague2k/vague.nvim")
+Plug("sainnhe/gruvbox-material")
 Plug("scrooloose/nerdtree")
 Plug("tpope/vim-unimpaired")
 Plug("tpope/vim-vinegar")
@@ -167,12 +167,12 @@ vim.keymap.set(
 )
 vim.keymap.set(
     "n", 
-    "<leader>dpt", 
+    "<leader>dt", 
     function() require("dap").toggle_breakpoint() end
 )
 vim.keymap.set(
     "n", 
-    "<leader>dpb", 
+    "<leader>db", 
     function() require("dap").set_breakpoint() end
 )
 vim.keymap.set(
@@ -352,9 +352,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 -- FURTHER SETUP --
-vim.cmd("colorscheme vague")
-
-require("vague").setup()
+vim.cmd("colorscheme gruvbox-material")
 
 require("tiny-code-action").setup()
 
@@ -448,14 +446,14 @@ require("dapui").setup()
 local dap = require("dap")
 dap.adapters.python = {
     type = "executable";
-    command = os.getenv("UserProfile") .. "\\dev\\hbxsharpconvert\\.venv\\Scripts\\python.exe";
-    args = { "-m", "debugpy.adapter" };
+    command = os.getenv("UserProfile") .. "\\dev\\easipos\\EasiQTX\\.venv\\Scripts\\python.exe";
+    args = { "-m", "python.adapter" };
 }
 dap.configurations.python = {
     {
         type = "python";
         request = "launch";
-        name = "Launch debugpy";
+        name = "Run hbxsharpconvert";
         program = os.getenv("UserProfile") .. "\\dev\\hbxsharpconvert\\hbxsharpconvert.py";
         pythonPath = function()
             return os.getenv("UserProfile") .. "\\dev\\hbxsharpconvert\\.venv\\Scripts\\python.exe"
@@ -468,6 +466,18 @@ dap.configurations.python = {
             "-f",
             "-l"
         }
+    },
+    {
+        type = "python";
+        request = "launch";
+        name = "Run EasiQtX";
+        module = "EasiQTX";
+        env = {
+            EASIDEBUG = 1
+        };
+        pythonPath = function()
+            return os.getenv("UserProfile") .. "\\dev\\easipos\\EasiQTX\\.venv\\Scripts\\python.exe"
+        end,
     },
 }
 
