@@ -1,7 +1,7 @@
 local wezterm = require "wezterm"
 local config = wezterm.config_builder()
 
-config.color_scheme = "Vs Code Dark+ (Gogh)"
+config.color_scheme = "GitHub Dark"
 config.font = wezterm.font({ family = "Menlo" })
 config.font_size = 12
 config.freetype_load_flags = "NO_HINTING"
