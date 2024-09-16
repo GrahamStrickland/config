@@ -13,6 +13,13 @@ export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 export PATH="/opt/homebrew/lib/ruby/gems/3.3.0/bin:$PATH"
 
+# Go setup
+export GOPATH="$HOME/go"
+export GOBIN="$GOPATH/bin"
+export GOROOT="$(brew --prefix golang)/libexec"
+export PATH="$PATH:$GOPATH/bin"
+export PATH="$PATH:$GOROOT/bin"
+
 # GHCup
 [ -f "/Users/graham/.ghcup/env" ] && . "/Users/graham/.ghcup/env" # ghcup-env
 
