@@ -101,7 +101,7 @@ local vim = vim
 local Plug = vim.fn["plug#"]
 vim.call("plug#begin")
 
-Plug("sainnhe/gruvbox-material")
+Plug("Mofiqul/vscode.nvim")
 Plug("scrooloose/nerdtree")
 Plug("tpope/vim-unimpaired")
 Plug("tpope/vim-vinegar")
@@ -364,7 +364,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 -- FURTHER SETUP --
-vim.cmd("colorscheme gruvbox-material")
+vim.cmd("colorscheme vscode")
 
 require("tiny-code-action").setup()
 
@@ -439,6 +439,10 @@ lspconfig.cmake.setup({
 lspconfig.jdtls.setup({
     capabilities = capabilities
 })
+lspconfig.gopls.setup({
+    cmd = {"gopls", "--remote=auto"},
+    capabilities = capabilities
+})
 lspconfig.hls.setup({
     capabilities = capabilities
 })
@@ -482,6 +486,9 @@ lspconfig.rust_analyzer.setup({
 
 })
 lspconfig.texlab.setup({
+    capabilities = capabilities
+})
+lspconfig.ts_ls.setup({
     capabilities = capabilities
 })
 
