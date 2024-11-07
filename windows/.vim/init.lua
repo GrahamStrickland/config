@@ -26,7 +26,7 @@ local vim = vim
 local Plug = vim.fn["plug#"]
 vim.call("plug#begin")
 
-Plug("Mofiqul/vscode.nvim")
+Plug("vague2k/vague.nvim")
 Plug("scrooloose/nerdtree")
 Plug("tpope/vim-unimpaired")
 Plug("tpope/vim-vinegar")
@@ -352,7 +352,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 -- FURTHER SETUP --
-vim.cmd("colorscheme vscode")
+vim.cmd("colorscheme vague")
 
 require("tiny-code-action").setup()
 
@@ -480,4 +480,5 @@ dap.configurations.python = {
         end,
     },
 }
+
 
