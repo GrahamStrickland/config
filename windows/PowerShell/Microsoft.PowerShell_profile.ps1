@@ -14,6 +14,7 @@ Import-Module PSFzf
 # Override PSReadLine's history search
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' `
                 -PSReadlineChordReverseHistory 'Ctrl+r'
+Set-PsFzfOption -TabExpansion
 
 # Override default tab completion
 Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
