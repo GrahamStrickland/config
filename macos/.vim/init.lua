@@ -95,13 +95,19 @@ vim.keymap.set(
     function() vim.diagnostic.open_float() end
 )
 
+vim.keymap.set(
+    "n",
+    "<leader>h",
+    function() vim.lsp.buf.hover() end
+)
+
 -- PLUGIN MANAGEMENT --
 -- Manage plugins with vim-plug.
 local vim = vim
 local Plug = vim.fn["plug#"]
 vim.call("plug#begin")
 
-Plug("Mofiqul/vscode.nvim")
+Plug("vague2k/vague.nvim")
 Plug("scrooloose/nerdtree")
 Plug("tpope/vim-unimpaired")
 Plug("tpope/vim-vinegar")
@@ -328,6 +334,15 @@ vim.opt.hlsearch = true         -- Highlight search results.
 vim.opt.incsearch = true        -- Show where search pattern matches.
 vim.opt.clipboard = "unnamed"   -- Copy into system (*) register.
 
+-- Set tabs/spaces for different file types
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = {"cpp", "r"},
+    callback = function()
+        vim.opt_local.tabstop = 2
+        vim.opt_local.shiftwidth = 2
+    end
+})
+
 -- Adapted for MacOS from 
 -- https://toddknutson.bio/posts/how-to-enable-neovim-undo-backup-and-swap-files-when-switching-linux-groups/
 USER = os.getenv("USER")
@@ -364,7 +379,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 -- FURTHER SETUP --
-vim.cmd("colorscheme vscode")
+vim.cmd("colorscheme vague")
 
 require("tiny-code-action").setup()
 
@@ -436,14 +451,14 @@ lspconfig.clangd.setup({
 lspconfig.cmake.setup({
     capabilities = capabilities
 })
-lspconfig.jdtls.setup({
-    capabilities = capabilities
-})
 lspconfig.gopls.setup({
     cmd = {"gopls", "--remote=auto"},
     capabilities = capabilities
 })
 lspconfig.hls.setup({
+    capabilities = capabilities
+})
+lspconfig.r_language_server.setup({
     capabilities = capabilities
 })
 lspconfig.ruff.setup({
