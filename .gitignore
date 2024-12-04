@@ -1,3 +1,6 @@
 # neovim files
 **/autoload/
 **/plugged/
+**/backup/
+**/swap/
+**/undo/
