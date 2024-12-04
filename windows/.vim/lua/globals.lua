@@ -13,21 +13,11 @@ vim.opt.hlsearch = true         -- Highlight search results.
 vim.opt.incsearch = true        -- Show where search pattern matches.
 vim.opt.clipboard = "unnamed"   -- Copy into system (*) register.
 
--- Set tabs/spaces for different file types
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = {"c", "cpp", "lean", "r"},
-    callback = function()
-        vim.opt_local.tabstop = 2
-        vim.opt_local.shiftwidth = 2
-    end
-})
-
--- Adapted for MacOS from 
+-- Adapted for Windows from 
 -- https://toddknutson.bio/posts/how-to-enable-neovim-undo-backup-and-swap-files-when-switching-linux-groups/
-USER = os.getenv("USER")
-SWAPDIR = "/Users/" .. USER .. "/nvim/swap//"
-BACKUPDIR = "/Users/" .. USER .. "/nvim/backup//"
-UNDODIR = "/Users/" .. USER .. "/nvim/undo//"
+SWAPDIR = [[C:\Users\graham\AppData\Local\nvim\swap\]]
+BACKUPDIR = [[C:\Users\graham\AppData\Local\nvim\backup\]]
+UNDODIR = [[C:\Users\graham\AppData\Local\nvim\undo\]]
 
 if vim.fn.isdirectory(SWAPDIR) == 0 then
 	vim.fn.mkdir(SWAPDIR, "p", "0o700")
@@ -61,11 +51,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.cmd("colorscheme vague")
 
 require("tiny-code-action").setup()
-
-require("lean").setup({
-    lsp = { on_attach = on_attach },
-    mappings = true,
-})
 
 require("nvim-lightbulb").setup({
     autocmd = { enabled = true }
