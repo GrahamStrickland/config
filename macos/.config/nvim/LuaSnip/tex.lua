@@ -1,16 +1,38 @@
-local get_visual = function(args, parent)
-    if (#parent.snippet.env.LS_SELECT_RAW > 0) then
-        return sn(nil, i(1, parent.snippet.env.LS_SELECT_RAW))
-    else
-        return sn(nil, i(1))
-    end
-end
+local helpers = require("helpers")
+local get_visual = helpers.get_visual
+local line_begin = helpers.line_begin
 
-local line_begin = require("luasnip.extras.expand_conditions").line_begin
+local tex_utils = {}
 
-local in_mathzone = function()
+tex_utils.in_mathzone = function()
     return vim.fn["vimtex#syntax#in_mathzone"]() == 1
 end
+
+tex_utils.in_text = function()
+    return not tex_utils.in_mathzone()
+end
+
+tex_utils.in_comment = function()
+    return vim.fn["vimtex#syntax#in_comment"]() == 1
+end
+
+tex_utils.in_env = function(name)
+    local is_inside = vim.fn["vimtex#env#is_inside"](name)
+    return (is_inside[1] > 0 and is_inside[2] > 0)
+end
+
+tex_utils.in_equation = function()
+    return tex_utils.in_env("equation")
+end
+
+tex_utils.in_itemize = function()
+    return tex_utils.in_env("itemize")
+end
+
+tex_utils.in_tikz = function()
+    return tex_utils.in_env("tikzpicture")
+end
+
 
 return {
     s({trig = ";a", snippetType = "autosnippet"},
@@ -92,7 +114,7 @@ return {
             },
             {delimiters = "<>"}
         ),
-        {condition = in_mathzone}
+        {condition = tex_utils.in_mathzone}
     ),
     s({trig = "eq", dscr = "Expands 'eq' into an equation environment"},
         fmta(
@@ -118,6 +140,14 @@ return {
             }
         ),
         {condition = line_begin}
+    ),
+    s({trig = "dd"},
+        fmta("\\draw [<>]",
+            {
+                i(1, "params"),
+            }
+        ),
+        {condition = tex_utils.in_tikz}
     ),
     s({trig = "hr", dscr = "The hyperref package's href{}{} command (for url links)"},
         fmta(

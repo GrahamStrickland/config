@@ -289,3 +289,9 @@ smap <silent><expr> <S-Tab> luasnip#jumpable(-1) ? "<Plug>luasnip-jump-prev" : "
 imap <silent><expre> <C-f> luasnip#choice_active() ? "<Plug>luasnip-next-choice" : "<C-f>"
 smap <silent><expre> <C-f> luasnip#choice_active() ? "<Plug>luasnip-next-choice" : "<C-f>"
 ]]
+
+vim.keymap.set(
+    "n", 
+    "<Leader>L", 
+    "<Cmd>lua require('luasnip.loaders.from_lua').load({paths = '~/.config/nvim/LuaSnip/'})<CR>"
+)
