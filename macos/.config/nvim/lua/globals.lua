@@ -15,7 +15,7 @@ vim.opt.clipboard = "unnamed"   -- Copy into system (*) register.
 
 -- Set tabs/spaces for different file types
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = {"c", "cpp", "lean", "r"},
+    pattern = {"c", "cpp", "lean", "r", "typescript"},
     callback = function()
         vim.opt_local.tabstop = 2
         vim.opt_local.shiftwidth = 2
