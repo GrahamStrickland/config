@@ -186,6 +186,41 @@ return {
             }
         )
     ),
+    s({trig = "fs", dscr = "If statement", snippetType = "autosnippet"},
+        fmta([[
+            if <>:
+                <>
+            ]],
+            { 
+                i(1),
+                i(2)
+            }
+        ),
+        {condition = line_begin}
+    ),
+    s({trig = "li", dscr = "Else if statement", snippetType = "autosnippet"},
+        fmta([[
+            elif <>:
+                <>
+            ]],
+            { 
+                i(1), 
+                i(2)
+            }
+        ),
+        {condition = line_begin}
+    ),
+    s({trig = "le", dscr = "Else statement", snippetType = "autosnippet"},
+        fmta([[
+            else:
+                <>
+            ]],
+            { 
+                i(1) 
+            }
+        ),
+        {condition = line_begin}
+    ),
     s({trig = "tst", dscr = "Pytest unit test", snippetType = "autosnippet"},
         fmt([[
                 def test_{}() -> None:
