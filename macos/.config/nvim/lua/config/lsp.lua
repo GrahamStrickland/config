@@ -12,6 +12,9 @@ lspconfig.clangd.setup({
 lspconfig.cmake.setup({
     capabilities = capabilities
 })
+lspconfig.clojure_lsp.setup({
+    capabilities = capabilities
+})
 lspconfig.gopls.setup({
     cmd = {"gopls", "--remote=auto"},
     capabilities = capabilities
