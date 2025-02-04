@@ -1,53 +1,57 @@
 -- DAP ADAPTER SETUP/CONFIGURATION
+local get_python_path = function()
+    local venv = os.getenv("VIRTUAL_ENV") 
+    if venv == nil then
+        return "py.exe"
+    end
+    return venv .. "/bin/python3"
+end
+require("dap-python").setup(get_python_path())
+
 -- UI setup
 require("neodev").setup({
-  library = { plugins = { "nvim-dap-ui" }, types = true },
+    library = { plugins = { "nvim-dap-ui" }, types = true },
 })
 require("dapui").setup()
 
--- GDB
-local dap = require("dap")
-dap.adapters.gdb = {
-    type = "executable",
-    command = "gdb",
-    args = { "-i", "dap" }
-}
-dap.configurations.cpp = {
+-- Python
+require("dap").configurations.python = {
     {
-        name = "Launch GDB",
-        type = "gdb",
+        type = "python",
         request = "launch",
-        program = function()
-            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-        end,
-        cwd = "~/dev/clrs/test/data_structures",
-        stopAtBeginningOfMainSubprogram = false,
+        name = "Launch file",
+        justMyCode = false,
+        cwd = vim.fn.getcwd(),
+        program = "${file}",
+        console = "integratedTerminal",
+        pythonPath = get_python_path(),
     },
-}
-dap.configurations.c = dap.configurations.cpp
-
--- debugpy
-dap.adapters.python = {
-    type = "executable";
-    command = os.getenv("HOME") .. "/dev/easipos/EasiQTX/.venv/bin/python3.11";
-    args = { "-m", "debugpy.adapter" };
-}
-dap.configurations.python = {
     {
-        type = "python";
-        request = "launch";
-        name = "Launch EasiQtX";
-        module = "EasiQtX";
-        -- program = os.getenv("HOME") .. "/dev/hbxsharpconvert/hbxsharpconvert.py";
-        pythonPath = function()
-            return os.getenv("HOME") .. "/dev/easipos/EasiQTX/.venv/bin/python3.11"
+        type = "python",
+        request = "launch",
+        name = "Launch Module",
+        justMyCode = false,
+        module = function()
+            return vim.fn.input("Module name >", vim.fn.getcwd(), "module")
         end,
-        -- args = {
-        --    "--input=../easipos/EasiPOSX/easiutil/adt.prg", 
-        --    "--output=out_debug",
-        --    "--include-dir=../easipos/EasiPOSX/include",
-        --    "--name=testprog",
-        --    "-l"
-	    --}
+        console = "integratedTerminal",
+        pythonPath = get_python_path(),
+    },
+    {
+        type = "python",
+        request = "attach",
+        name = "Attach remote",
+        justMyCode = false,
+        pythonPath = get_python_path(),
+        host = function()
+            local value = vim.fn.input("Host [127.0.0.1]: ")
+            if value ~= "" then
+              return value
+            end
+            return "127.0.0.1"
+        end,
+        port = function()
+            return tonumber(vim.fn.input("Port [5678]: ")) or 5678
+        end,
     },
 }

@@ -120,43 +120,33 @@ vim.api.nvim_set_keymap(
 -- DAP Mappings
 vim.keymap.set(
     "n", 
-    "<leader>dc", 
+    "<F5>", 
     function() require("dap").continue() end
 )
 vim.keymap.set(
     "n", 
-    "<leader>ds", 
+    "<S-F5>", 
+    function() require("dap").terminate() end
+)
+vim.keymap.set(
+    "n", 
+    "<F10>", 
     function() require("dap").step_over() end
 )
 vim.keymap.set(
     "n", 
-    "<leader>di", 
+    "<F11>", 
     function() require("dap").step_into() end
 )
 vim.keymap.set(
     "n", 
-    "<leader>do", 
+    "<S-F11>", 
     function() require("dap").step_out() end
 )
 vim.keymap.set(
     "n", 
-    "<leader>dt", 
+    "<F9>", 
     function() require("dap").toggle_breakpoint() end
-)
-vim.keymap.set(
-    "n", 
-    "<leader>db", 
-    function() require("dap").set_breakpoint() end
-)
-vim.keymap.set(
-    "n", 
-    "<leader>dpl", 
-    function() require("dap").set_breakpoint(
-            nil, 
-            nil, 
-            vim.fn.input("Log point message: ")
-        ) 
-    end
 )
 vim.keymap.set(
     "n", 
@@ -209,6 +199,7 @@ vim.keymap.set(
     "<leader>dut",
     function() require("dapui").toggle() end
 )
+
 
 -- Telescope key bindings
 local builtin = require("telescope.builtin")
