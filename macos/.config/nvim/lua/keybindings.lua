@@ -283,6 +283,20 @@ smap <silent><expre> <C-f> luasnip#choice_active() ? "<Plug>luasnip-next-choice"
 
 vim.keymap.set(
     "n", 
-    "<Leader>L", 
-    "<Cmd>lua require('luasnip.loaders.from_lua').load({paths = '~/.config/nvim/LuaSnip/'})<CR>"
+    "<leader>L", 
+    "<cmd>lua require('luasnip.loaders.from_lua').load({paths = '~/.config/nvim/LuaSnip/'})<cr>"
+)
+
+-- VimTeX keybindings
+vim.keymap.set(
+    "n",
+    "<leader>wc",
+    "<cmd>VimtexCountWords<cr>",
+    { noremap = true }
+)
+vim.keymap.set(
+    "n",
+    "<leader>ll",
+    "<cmd>VimtexCompile<cr>",
+    { noremap = true }
 )
