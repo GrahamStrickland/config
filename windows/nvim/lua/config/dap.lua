@@ -1,45 +1,57 @@
 -- DAP ADAPTER SETUP/CONFIGURATION
+local get_python_path = function()
+    local venv = os.getenv("VIRTUAL_ENV") 
+    if venv == nil then
+        return "py.exe"
+    end
+    return venv .. "\\Scripts\\python.exe"
+end
+require("dap-python").setup(get_python_path())
+
 -- UI setup
 require("neodev").setup({
-  library = { plugins = { "nvim-dap-ui" }, types = true },
+    library = { plugins = { "nvim-dap-ui" }, types = true },
 })
 require("dapui").setup()
 
--- debugpy setup/configuration
-local dap = require("dap")
-dap.adapters.python = {
-    type = "executable";
-    command = os.getenv("UserProfile") .. "\\dev\\easipos\\EasiQTX\\.venv\\Scripts\\python.exe";
-    args = { "-m", "python.adapter" };
-}
-dap.configurations.python = {
+-- Python
+require("dap").configurations.python = {
     {
-        type = "python";
-        request = "launch";
-        name = "Run hbxsharpconvert";
-        program = os.getenv("UserProfile") .. "\\dev\\hbxsharpconvert\\hbxsharpconvert.py";
-        pythonPath = function()
-            return os.getenv("UserProfile") .. "\\dev\\hbxsharpconvert\\.venv\\Scripts\\python.exe"
-        end,
-        args = {
-            "--input=..\\easipos\\EasiPOSX\\easiutil\\adt.prg", 
-            "--output=out_debug",
-            "--include-dir=..\\easipos\\EasiPOSX\\include",
-            "--name=testprog",
-            "-f",
-            "-l"
-        }
+        type = "python",
+        request = "launch",
+        name = "Launch file",
+        justMyCode = false,
+        cwd = vim.fn.getcwd(),
+        program = "${file}",
+        console = "integratedTerminal",
+        pythonPath = get_python_path(),
     },
     {
-        type = "python";
-        request = "launch";
-        name = "Run EasiQtX";
-        module = "EasiQTX";
-        env = {
-            EASIDEBUG = 1
-        };
-        pythonPath = function()
-            return os.getenv("UserProfile") .. "\\dev\\easipos\\EasiQTX\\.venv\\Scripts\\python.exe"
+        type = "python",
+        request = "launch",
+        name = "Launch Module",
+        justMyCode = false,
+        module = function()
+            return vim.fn.input("Module name >", vim.fn.getcwd(), "module")
+        end,
+        console = "integratedTerminal",
+        pythonPath = get_python_path(),
+    },
+    {
+        type = "python",
+        request = "attach",
+        name = "Attach remote",
+        justMyCode = false,
+        pythonPath = get_python_path(),
+        host = function()
+            local value = vim.fn.input("Host [127.0.0.1]: ")
+            if value ~= "" then
+              return value
+            end
+            return "127.0.0.1"
+        end,
+        port = function()
+            return tonumber(vim.fn.input("Port [5678]: ")) or 5678
         end,
     },
 }

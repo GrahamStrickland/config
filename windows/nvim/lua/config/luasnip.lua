@@ -3,5 +3,5 @@ require("luasnip.loaders.from_lua").lazy_load({paths = "~\\AppData\\Local\\nvim\
 
 require("luasnip").config.set_config({ 
     enable_autosnippets = true,
-    store_selection_keys = "<Tab>",
+    store_selection_keys = "<CR>",
 })
