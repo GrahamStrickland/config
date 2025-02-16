@@ -283,7 +283,7 @@ smap <silent><expre> <C-f> luasnip#choice_active() ? "<Plug>luasnip-next-choice"
 
 vim.keymap.set(
     "n", 
-    "<leader>L", 
+    "<leader>l", 
     "<cmd>lua require('luasnip.loaders.from_lua').load({paths = '~/.config/nvim/LuaSnip/'})<cr>"
 )
 
@@ -299,4 +299,36 @@ vim.keymap.set(
     "<leader>ll",
     "<cmd>VimtexCompile<cr>",
     { noremap = true }
+)
+vim.keymap.set(
+    "n",
+    "<leader>v",
+     "<plug>(vimtex-view)",
+    { noremap = true }
+)
+
+-- CSVView keybindings
+vim.keymap.set(
+    "n",
+    "<leader>csv",
+    function()
+        require("csvview").enable()
+    end,
+    { noremap = true, silent = true }
+)
+vim.keymap.set(
+    "n",
+    "<leader>csd",
+    function()
+        require("csvview").disable()
+    end,
+    { noremap = true, silent = true }
+)
+vim.keymap.set(
+    "n",
+    "<leader>cst",
+    function()
+        require("csvview").toggle()
+    end,
+    { noremap = true, silent = true }
 )
