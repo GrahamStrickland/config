@@ -14,17 +14,9 @@ Import-Module PSFzf
 # Override PSReadLine's history search
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' `
                 -PSReadlineChordReverseHistory 'Ctrl+r'
-Set-PsFzfOption -TabExpansion
 
 # Override default tab completion
 Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 
 # Oh My Posh - https://ohmyposh.dev/docs/installation/prompt
 oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/robbyrussell.omp.json" | Invoke-Expression
-
-function OpenIPython {
-	py -m IPython
-}
-
-Set-Alias ipython OpenIPython
-
