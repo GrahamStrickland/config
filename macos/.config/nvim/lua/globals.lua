@@ -1,4 +1,4 @@
--- OPTION SETUP --
+-- OPTIONn SETUP --
 vim.g.NERDTreeHijackNetrw = 0
 
 vim.opt.number = true           -- Add line numbers to document.
@@ -61,11 +61,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.cmd("colorscheme vague")
 
 require("tiny-code-action").setup()
-
-require("lean").setup({
-    lsp = { on_attach = on_attach },
-    mappings = true,
-})
 
 require("nvim-lightbulb").setup({
     autocmd = { enabled = true }
