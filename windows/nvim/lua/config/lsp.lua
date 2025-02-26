@@ -13,17 +13,20 @@ lspconfig.cmake.setup({
     capabilities = capabilities
 })
 lspconfig.ruff.setup({
-    capabilities = capabilities
+    capabilities = capabilities,
+    init_options = {
+        settings = {
+            args = { organizeImports = false }
+        }
+    }
 })
-lspconfig.pyright.setup{
+lspconfig.pylsp.setup{
+    capabilities = capabilities,
     settings = {
-        pyright = {
-            disableOrganizeImports = true,
-        },
-        python = {
-            analysis = {
-                ignore = { '*' },
-            },
-        },
+        pylsp = {
+            plugins = {
+                isort = { enabled = true },
+            }
+        }
     },
 }
