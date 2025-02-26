@@ -103,6 +103,11 @@ vim.keymap.set(
     "<leader>o",
     function() vim.diagnostic.open_float() end
 )
+vim.keymap.set(
+    "n",
+    "<leader>h",
+    function() vim.lsp.buf.hover() end
+)
 
 -- DAP Mappings
 vim.keymap.set(
