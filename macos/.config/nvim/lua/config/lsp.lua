@@ -25,6 +25,17 @@ lspconfig.hls.setup({
 lspconfig.r_language_server.setup({
     capabilities = capabilities
 })
+lspconfig.basedpyright.setup({
+    capabilies = capabilities,
+    settings = {
+        basedpyright = {
+            disableOrganizeImports = { true },
+            analysis = {
+                ignore = { "*" }
+            }
+        }
+    }
+})
 lspconfig.ruff.setup({
     capabilities = capabilities,
     init_options = {
@@ -33,16 +44,6 @@ lspconfig.ruff.setup({
         }
     }
 })
-lspconfig.pylsp.setup{
-    capabilities = capabilities,
-    settings = {
-        pylsp = {
-            plugins = {
-                isort = { enabled = true },
-            }
-        }
-    },
-}
 lspconfig.rust_analyzer.setup({
     on_attach = function(client, bufnr)
         vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
