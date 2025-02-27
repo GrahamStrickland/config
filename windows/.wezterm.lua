@@ -8,6 +8,7 @@ config.freetype_load_flags = "NO_HINTING"
 config.freetype_load_target = "Light"
 config.freetype_render_target = "HorizontalLcd"
 config.cell_width = 0.9
+config.default_prog = { "pwsh.exe", "-NoLogo" }
 
 config.window_decorations = "RESIZE|INTEGRATED_BUTTONS"
 
@@ -110,4 +111,3 @@ wezterm.on("update-status", function(window, pane)
 end)
 
 return config
-
