@@ -48,7 +48,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 -- FURTHER SETUP --
-vim.cmd("colorscheme vague")
+vim.cmd("colorscheme codedark")
 
 require("tiny-code-action").setup()
 
