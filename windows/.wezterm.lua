@@ -1,7 +1,7 @@
 local wezterm = require "wezterm"
 local config = wezterm.config_builder()
 
-config.color_scheme = "GitHub Dark"
+config.color_scheme = "Apple System Colors"
 config.font = wezterm.font({ family = "MesloLGM Nerd Font" })
 config.font_size = 9
 config.freetype_load_flags = "NO_HINTING"
