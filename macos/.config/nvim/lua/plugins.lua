@@ -4,7 +4,7 @@ local vim = vim
 local Plug = vim.fn["plug#"]
 vim.call("plug#begin")
 
-Plug("nanotech/jellybeans.vim")
+Plug("vague2k/vague.nvim")
 Plug("scrooloose/nerdtree")
 Plug("tpope/vim-dispatch")
 Plug("tpope/vim-unimpaired")
