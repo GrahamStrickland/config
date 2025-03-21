@@ -76,9 +76,9 @@ return {
     ),
     s({trig = "bb", dscr = "Expands 'bb' into '[]'"},
         fmta([[
-                [
+                \[
                     <>
-                ]
+                \]
              ]],
             { 
                 d(1, get_visual), 
