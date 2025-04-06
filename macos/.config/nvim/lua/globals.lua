@@ -62,10 +62,6 @@ vim.cmd("colorscheme vague")
 
 require("tiny-code-action").setup()
 
-require("nvim-lightbulb").setup({
-    autocmd = { enabled = true }
-})
-
 require("goto-preview").setup({})
 
 require("csvview").setup()
