@@ -297,3 +297,53 @@ vim.keymap.set(
     end,
     { noremap = true, silent = true }
 )
+
+-- Goto Preview
+vim.keymap.set(
+    "n", 
+    "<leader>gpd", 
+    function()
+        require("goto-preview").goto_preview_definition()
+    end,
+    {noremap=true}
+)
+vim.keymap.set(
+    "n", 
+    "<leader>gpt", 
+    function()
+        require("goto-preview").goto_preview_type_definition()
+    end,
+    {noremap=true}
+)
+vim.keymap.set(
+    "n", 
+    "<leader>gpi", 
+    function()
+        require("goto-preview").goto_preview_implementation()
+    end,
+    {noremap=true}
+)
+vim.keymap.set(
+    "n", 
+    "<leader>gpD", 
+    function()
+        require("goto-preview").goto_preview_declaration()
+    end,
+    {noremap=true}
+)
+vim.keymap.set(
+    "n", 
+    "<leader>gpr", 
+    function()
+        require("goto-preview").goto_preview_references()
+    end,
+    {noremap=true}
+)
+vim.keymap.set(
+    "n", 
+    "<leader>gP", 
+    function()
+        require("goto-preview").close_all_win()
+    end,
+    {noremap=true}
+)
