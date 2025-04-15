@@ -55,3 +55,7 @@ require("tiny-code-action").setup()
 require("goto-preview").setup({})
 
 require("csvview").setup()
+
+require("pqf").setup()
+
+require("git-conflict").setup()
