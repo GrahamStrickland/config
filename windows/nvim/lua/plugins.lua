@@ -4,7 +4,8 @@ local vim = vim
 local Plug = vim.fn["plug#"]
 vim.call("plug#begin")
 
-Plug("vague2k/vague.nvim")
+Plug("nvim-lualine/lualine.nvim")
+Plug("Mofiqul/vscode.nvim")
 Plug("scrooloose/nerdtree")
 Plug("tpope/vim-unimpaired")
 Plug("tpope/vim-vinegar")

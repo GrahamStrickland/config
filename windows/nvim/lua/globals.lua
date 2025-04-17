@@ -48,7 +48,13 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 -- FURTHER SETUP --
-vim.cmd("colorscheme vague")
+vim.cmd("colorscheme vscode")
+
+require("lualine").setup({
+    options = {
+        theme = "vscode",
+    },
+})
 
 require("tiny-code-action").setup()
 
