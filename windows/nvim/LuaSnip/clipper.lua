@@ -3,6 +3,44 @@ local get_visual = helpers.get_visual
 local line_begin = helpers.line_begin
 
 return {
+    s({trig = "inc", snippetType = "autosnippet"},
+       fmta('#include "<>"', 
+                { i(1) }
+       ),
+       {condition = line_begin}
+    ),
+    s({trig = "def", snippetType = "autosnippet"},
+       fmta("#define <>", 
+                { i(1) }
+       ),
+       {condition = line_begin}
+    ),
+    s({trig = "ifd", snippetType = "autosnippet"},
+       fmta([[
+            #ifdef <>
+                <>
+            #endif
+        ]], 
+                { 
+                    i(1),
+                    i(2)
+                }
+       ),
+       {condition = line_begin}
+    ),
+    s({trig = "ifn", snippetType = "autosnippet"},
+       fmta([[
+            #ifndef <>
+                <>
+            #endif
+        ]], 
+                { 
+                    i(1),
+                    i(2)
+                }
+       ),
+       {condition = line_begin}
+    ),
     s({trig = "fn", snippetType = "autosnippet"},
        fmta([[
                 function <>() 
