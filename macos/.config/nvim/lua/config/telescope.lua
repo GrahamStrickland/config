@@ -1,4 +1,4 @@
--- Telescope setup
+-- Telescope SETUP
 require("telescope").setup {
     extensions = {
         ["ui-select"] = {

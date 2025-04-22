@@ -1,4 +1,4 @@
--- OPTIONn SETUP --
+-- OPTIONS SETUP --
 vim.g.NERDTreeHijackNetrw = 0
 
 vim.opt.number = true           -- Add line numbers to document.
@@ -57,22 +57,5 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	end,
 })
 
--- FURTHER SETUP --
+-- UI SETUP --
 vim.cmd("colorscheme vscode")
-
-require("lualine").setup({
-    options = {
-        icons_enabled = false,
-        theme = "vscode",
-        section_separators = { left = '', right = '' },
-        component_separators = { left = '|', right = '|' }
-    },
-})
-
-require("goto-preview").setup({})
-
-require("csvview").setup()
-
-require("pqf").setup()
-
-require("git-conflict").setup()
