@@ -138,6 +138,108 @@ return {
         ),
         {condition = line_begin}
     ),
+    s({trig = "if", dscr = "If statement", snippetType = "autosnippet"},
+        fmta([[
+                if <>:
+                    <>
+        ]],
+            { 
+                i(1), 
+                i(2) 
+            }
+        ),
+        {condition = line_begin}
+    ),
+    s({trig = "ie", dscr = "If else statement", snippetType = "autosnippet"},
+        fmta([[
+                if <>:
+                    <>
+                else:
+                    <>
+        ]],
+            { 
+                i(1), 
+                i(2), 
+                i(3)
+            }
+        ),
+        {condition = line_begin}
+    ),
+    s({trig = "is", dscr = "If elif statement", snippetType = "autosnippet"},
+        fmta([[
+                if <>:
+                    <>
+                elif <>:
+                    <>
+        ]],
+            { 
+                i(1), 
+                i(2), 
+                i(3),
+                i(4)
+            }
+        ),
+        {condition = line_begin}
+    ),
+    s({trig = "ile", dscr = "If elif else statement", snippetType = "autosnippet"},
+        fmta([[
+                if <>:
+                    <>
+                elif <>:
+                    <>
+                else:
+                    <>
+        ]],
+            { 
+                i(1), 
+                i(2), 
+                i(3),
+                i(4),
+                i(5)
+            }
+        ),
+        {condition = line_begin}
+    ),
+    s({trig = "mc", dscr = "Match statement", snippetType = "autosnippet"},
+        fmta([[
+                match <>:
+                    case <>:
+                        <>
+                    case <>:
+                        <>
+                    case _:
+                        <>
+        ]],
+            { 
+                i(1), 
+                i(2), 
+                i(3),
+                i(4),
+                i(5),
+                i(6)
+            }
+        ),
+        {condition = line_begin}
+    ),
+    s({trig = "try", dscr = "Try except finally statement", snippetType = "autosnippet"},
+        fmta([[
+                try:
+                    <>
+                except <> as <>:
+                    <>
+                finally:
+                        <>
+        ]],
+            { 
+                i(1), 
+                i(2), 
+                i(3),
+                i(4),
+                i(5)
+            }
+        ),
+        {condition = line_begin}
+    ),
     s({trig = "ls", dscr = "List declaration", snippetType = "autosnippet"},
         fmta("<> = [<>]",
             { 
@@ -185,41 +287,6 @@ return {
                 i(3)
             }
         )
-    ),
-    s({trig = "fs", dscr = "If statement", snippetType = "autosnippet"},
-        fmta([[
-            if <>:
-                <>
-            ]],
-            { 
-                i(1),
-                i(2)
-            }
-        ),
-        {condition = line_begin}
-    ),
-    s({trig = "li", dscr = "Else if statement", snippetType = "autosnippet"},
-        fmta([[
-            elif <>:
-                <>
-            ]],
-            { 
-                i(1), 
-                i(2)
-            }
-        ),
-        {condition = line_begin}
-    ),
-    s({trig = "le", dscr = "Else statement", snippetType = "autosnippet"},
-        fmta([[
-            else:
-                <>
-            ]],
-            { 
-                i(1) 
-            }
-        ),
-        {condition = line_begin}
     ),
     s({trig = "tst", dscr = "Pytest unit test", snippetType = "autosnippet"},
         fmt([[
