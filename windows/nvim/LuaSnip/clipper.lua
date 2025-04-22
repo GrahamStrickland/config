@@ -267,6 +267,23 @@ return {
        ),
        {condition = line_begin}
     ),
+    s({trig = "bs", dscr = "Begin sequence statement", snippetType = "autosnippet"},
+       fmta([[
+                begin sequence with <>
+                    <>
+                recover with <>
+                    <>
+                end sequence
+        ]],
+                { 
+                    i(1),  
+                    i(2),
+                    i(3),
+                    i(4)
+                }
+       ),
+       {condition = line_begin}
+    ),
     s({trig = "([^%w])iif", dscr = "Ternary if", regTrig = true, wordTrig = false},
        fmta("<>iff(<>, <>, <>)",
                 { 
