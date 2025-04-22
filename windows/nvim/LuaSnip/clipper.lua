@@ -1,5 +1,4 @@
 local helpers = require("helpers")
-local get_visual = helpers.get_visual
 local line_begin = helpers.line_begin
 
 return {
@@ -83,6 +82,21 @@ return {
        ),
        {condition = line_begin}
     ),
+    s({trig = "st", snippetType = "autosnippet"},
+       fmta("static <>", 
+                { i(1) }
+       ),
+       {condition = line_begin}
+    ),
+    s({trig = "sa", snippetType = "autosnippet"},
+       fmta("static <> := <>", 
+                { 
+                    i(1),  
+                    i(2)
+                }
+       ),
+       {condition = line_begin}
+    ),
     s({trig = "for", snippetType = "autosnippet"},
        fmta([[
                 for <> := <> to <> 
@@ -147,7 +161,7 @@ return {
        fmta([[
                 if <> 
                     <>
-                else if <>
+                elseif <>
                     <>
                 endif 
         ]],
@@ -156,6 +170,72 @@ return {
                     i(2),
                     i(3),
                     i(4)
+                }
+       ),
+       {condition = line_begin}
+    ),
+    s({trig = "ile", snippetType = "autosnippet"},
+       fmta([[
+                if <> 
+                    <>
+                elseif <>
+                    <>
+                else
+                    <>
+                endif 
+        ]],
+                { 
+                    i(1),  
+                    i(2),
+                    i(3),
+                    i(4),
+                    i(5)
+                }
+       ),
+       {condition = line_begin}
+    ),
+    s({trig = "dc", snippetType = "autosnippet"},
+       fmta([[
+                do case
+                    case <>
+                        <>
+                    case <>
+                        <>
+                    otherwise
+                        <>
+                endcase
+        ]],
+                { 
+                    i(1),  
+                    i(2),
+                    i(3),
+                    i(4),
+                    i(5)
+                }
+       ),
+       {condition = line_begin}
+    ),
+    s({trig = "sc", snippetType = "autosnippet"},
+       fmta([[
+                switch <>
+                    case <>
+                        <>
+                        exit
+                    case <>
+                        <>
+                        exit
+                    otherwise
+                        <>
+                        exit
+                endswitch
+        ]],
+                { 
+                    i(1),  
+                    i(2),
+                    i(3),
+                    i(4),
+                    i(5),
+                    i(6)
                 }
        ),
        {condition = line_begin}
