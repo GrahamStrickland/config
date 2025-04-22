@@ -200,6 +200,19 @@ return {
         ),
         {condition = line_begin}
     ),
+    s({trig = "For", dscr = "For loop", snippetType = "autosnippet"},
+        fmta([[
+                for <> in <>:
+                    <>
+        ]],
+            { 
+                i(1), 
+                i(2), 
+                i(3)
+            }
+        ),
+        {condition = line_begin}
+    ),
     s({trig = "mc", dscr = "Match statement", snippetType = "autosnippet"},
         fmta([[
                 match <>:

@@ -2,19 +2,19 @@ local helpers = require("helpers")
 local line_begin = helpers.line_begin
 
 return {
-    s({trig = "inc", snippetType = "autosnippet"},
+    s({trig = "inc", dscr = "Include directive", snippetType = "autosnippet"},
        fmta('#include "<>"', 
                 { i(1) }
        ),
        {condition = line_begin}
     ),
-    s({trig = "def", snippetType = "autosnippet"},
+    s({trig = "def", dscr = "Definition directive", snippetType = "autosnippet"},
        fmta("#define <>", 
                 { i(1) }
        ),
        {condition = line_begin}
     ),
-    s({trig = "idf", snippetType = "autosnippet"},
+    s({trig = "idf", dscr = "If defined directive", snippetType = "autosnippet"},
        fmta([[
             #ifdef <>
                 <>
@@ -27,7 +27,7 @@ return {
        ),
        {condition = line_begin}
     ),
-    s({trig = "ind", snippetType = "autosnippet"},
+    s({trig = "ind", dscr = "If not defined directive", ssnippetType = "autosnippet"},
        fmta([[
             #ifndef <>
                 <>
@@ -40,7 +40,7 @@ return {
        ),
        {condition = line_begin}
     ),
-    s({trig = "fn", snippetType = "autosnippet"},
+    s({trig = "fn", dscr = "Function definition", snippetType = "autosnippet"},
        fmta([[
                 function <>() 
 
@@ -57,7 +57,7 @@ return {
        ),
        {condition = line_begin}
     ),
-    s({trig = "pr", snippetType = "autosnippet"},
+    s({trig = "pr", dscr = "Procedure definition", snippetType = "autosnippet"},
        fmta([[
                 procedure <>() 
 
@@ -67,13 +67,13 @@ return {
        ),
        {condition = line_begin}
     ),
-    s({trig = "lc", snippetType = "autosnippet"},
+    s({trig = "lc", dscr = "Local variable declaration", ssnippetType = "autosnippet"},
        fmta("local <>", 
                 { i(1) }
        ),
        {condition = line_begin}
     ),
-    s({trig = "la", snippetType = "autosnippet"},
+    s({trig = "la", dscr = "Local variable assignment", snippetType = "autosnippet"},
        fmta("local <> := <>", 
                 { 
                     i(1),  
@@ -82,13 +82,13 @@ return {
        ),
        {condition = line_begin}
     ),
-    s({trig = "st", snippetType = "autosnippet"},
+    s({trig = "st", dscr = "Static variable declaration", snippetType = "autosnippet"},
        fmta("static <>", 
                 { i(1) }
        ),
        {condition = line_begin}
     ),
-    s({trig = "sa", snippetType = "autosnippet"},
+    s({trig = "sa", dscr = "Static variable assignment", snippetType = "autosnippet"},
        fmta("static <> := <>", 
                 { 
                     i(1),  
@@ -97,7 +97,7 @@ return {
        ),
        {condition = line_begin}
     ),
-    s({trig = "for", snippetType = "autosnippet"},
+    s({trig = "for", dscr = "For loop", snippetType = "autosnippet"},
        fmta([[
                 for <> := <> to <> 
                     <>
@@ -112,7 +112,7 @@ return {
        ),
        {condition = line_begin}
     ),
-    s({trig = "fos", snippetType = "autosnippet"},
+    s({trig = "fos", dscr = "For loop with step", snippetType = "autosnippet"},
        fmta([[
                 for <> := <> to <> step <> 
                     <>
@@ -128,7 +128,21 @@ return {
        ),
        {condition = line_begin}
     ),
-    s({trig = "if", snippetType = "autosnippet"},
+    s({trig = "fe", dscr = "For each loop", snippetType = "autosnippet"},
+       fmta([[
+                for each <> in <>
+                    <>
+                next
+        ]],
+                { 
+                    i(1),  
+                    i(2),
+                    i(3)
+                }
+       ),
+       {condition = line_begin}
+    ),
+    s({trig = "if", dscr = "If statement", snippetType = "autosnippet"},
        fmta([[
                 if <> 
                     <>
@@ -141,7 +155,7 @@ return {
        ),
        {condition = line_begin}
     ),
-    s({trig = "ie", snippetType = "autosnippet"},
+    s({trig = "ie", dscr = "If else statement", snippetType = "autosnippet"},
        fmta([[
                 if <> 
                     <>
@@ -157,7 +171,7 @@ return {
        ),
        {condition = line_begin}
     ),
-    s({trig = "is", snippetType = "autosnippet"},
+    s({trig = "is", dscr = "If else if statement", snippetType = "autosnippet"},
        fmta([[
                 if <> 
                     <>
@@ -174,7 +188,7 @@ return {
        ),
        {condition = line_begin}
     ),
-    s({trig = "ile", snippetType = "autosnippet"},
+    s({trig = "ile", dscr = "If else if else statement", snippetType = "autosnippet"},
        fmta([[
                 if <> 
                     <>
@@ -194,7 +208,7 @@ return {
        ),
        {condition = line_begin}
     ),
-    s({trig = "dc", snippetType = "autosnippet"},
+    s({trig = "dc", dscr = "Do case statement", snippetType = "autosnippet"},
        fmta([[
                 do case
                     case <>
@@ -215,7 +229,7 @@ return {
        ),
        {condition = line_begin}
     ),
-    s({trig = "sc", snippetType = "autosnippet"},
+    s({trig = "sc", dscr = "Switch statement", snippetType = "autosnippet"},
        fmta([[
                 switch <>
                     case <>
@@ -240,7 +254,7 @@ return {
        ),
        {condition = line_begin}
     ),
-    s({trig = "([^%w])iif", regTrig = true, wordTrig = false},
+    s({trig = "([^%w])iif", dscr = "Ternary if", regTrig = true, wordTrig = false},
        fmta("<>iff(<>, <>, <>)",
                 { 
                     f( function(_, snip) return snip.captures[1] end ),
@@ -250,7 +264,7 @@ return {
                 }
        )
     ),
-    s({trig = "([^%w])cb", regTrig = true, wordTrig = false},
+    s({trig = "([^%w])cb", dscr = "Code block", regTrig = true, wordTrig = false},
        fmta("<>{ |<>| <> }",
                 { 
                     f( function(_, snip) return snip.captures[1] end ),
@@ -259,7 +273,7 @@ return {
                 }
        )
     ),
-    s({trig = "([^%w])ar", regTrig = true, wordTrig = false},
+    s({trig = "([^%w])ar", dscr = "Array", regTrig = true, wordTrig = false},
        fmta("<>{ <> }",
                 { 
                     f( function(_, snip) return snip.captures[1] end ),
@@ -267,7 +281,7 @@ return {
                 }
        )
     ),
-    s({trig = "([^%w])hs", regTrig = true, wordTrig = false},
+    s({trig = "([^%w])hs", dscr = "Hash map", regTrig = true, wordTrig = false},
        fmta("<>{ <> =>> <> }",
                 { 
                     f( function(_, snip) return snip.captures[1] end ),
