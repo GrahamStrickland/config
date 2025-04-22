@@ -69,8 +69,6 @@ require("lualine").setup({
     },
 })
 
-require("tiny-code-action").setup()
-
 require("goto-preview").setup({})
 
 require("csvview").setup()
