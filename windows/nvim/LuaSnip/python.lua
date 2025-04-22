@@ -200,7 +200,7 @@ return {
         ),
         {condition = line_begin}
     ),
-    s({trig = "For", dscr = "For loop", snippetType = "autosnippet"},
+    s({trig = "for", dscr = "For loop", snippetType = "autosnippet"},
         fmta([[
                 for <> in <>:
                     <>
