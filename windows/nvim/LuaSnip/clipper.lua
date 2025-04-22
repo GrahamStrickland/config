@@ -15,7 +15,7 @@ return {
        ),
        {condition = line_begin}
     ),
-    s({trig = "ifd", snippetType = "autosnippet"},
+    s({trig = "idf", snippetType = "autosnippet"},
        fmta([[
             #ifdef <>
                 <>
@@ -28,7 +28,7 @@ return {
        ),
        {condition = line_begin}
     ),
-    s({trig = "ifn", snippetType = "autosnippet"},
+    s({trig = "ind", snippetType = "autosnippet"},
        fmta([[
             #ifndef <>
                 <>
