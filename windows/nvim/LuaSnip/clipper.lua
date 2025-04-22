@@ -142,6 +142,19 @@ return {
        ),
        {condition = line_begin}
     ),
+    s({trig = "wh", dscr = "While loop", snippetType = "autosnippet"},
+       fmta([[
+                while <> 
+                    <>
+                end while
+        ]],
+                { 
+                    i(1),  
+                    i(2)
+                }
+       ),
+       {condition = line_begin}
+    ),
     s({trig = "if", dscr = "If statement", snippetType = "autosnippet"},
        fmta([[
                 if <> 
