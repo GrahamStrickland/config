@@ -47,24 +47,5 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	end,
 })
 
--- FURTHER SETUP --
+-- UI SETUP --
 vim.cmd("colorscheme vscode")
-
-require("lualine").setup({
-    options = {
-        icons_enabled = false,
-        theme = "vscode",
-        section_separators = { left = '', right = '' },
-        component_separators = { left = '|', right = '|' }
-    },
-})
-
-require("tiny-code-action").setup()
-
-require("goto-preview").setup({})
-
-require("csvview").setup()
-
-require("pqf").setup()
-
-require("git-conflict").setup()
