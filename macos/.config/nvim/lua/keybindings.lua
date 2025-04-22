@@ -250,7 +250,7 @@ vim.keymap.set(
     "n", 
     "<leader>ca", 
     function()
-	    require("tiny-code-action").code_action()
+        vim.lsp.buf.code_action()
     end, 
     { noremap = true, silent = true }
 )
