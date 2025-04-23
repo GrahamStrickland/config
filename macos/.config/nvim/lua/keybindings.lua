@@ -87,17 +87,6 @@ vim.api.nvim_set_keymap(
     { noremap = true }
 )
 
--- Open diagnostics in floating window
-vim.keymap.set(
-    "n",
-    "<leader>o",
-    function() vim.diagnostic.open_float() end
-)
-vim.keymap.set(
-    "n",
-    "<leader>h",
-    function() vim.lsp.buf.hover() end
-)
 
 -- PLUGIN-DEPENDENT KEY MAPPINGS --
 -- Open NERDTree for viewing files
@@ -199,7 +188,6 @@ vim.keymap.set(
     function() require("dapui").toggle() end
 )
 
-
 -- Telescope key bindings
 local builtin = require("telescope.builtin")
 vim.keymap.set(
@@ -263,6 +251,18 @@ vim.keymap.set(
         vim.lsp.buf.format()
     end,
     { noremap = true, silent = true }
+)
+
+-- Inspection
+vim.keymap.set(
+    "n",
+    "<leader>h",
+    function() vim.lsp.buf.hover() end
+)
+vim.keymap.set(
+    "n",
+    "<leader>o",
+    function() vim.diagnostic.open_float() end
 )
 
 -- LuaSnip keybindings -- see https://github.com/L3MON4D3/LuaSnip#keymaps
