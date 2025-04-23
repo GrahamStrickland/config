@@ -285,7 +285,7 @@ return {
        {condition = line_begin}
     ),
     s({trig = "([^%w])iif", dscr = "Ternary if", regTrig = true, wordTrig = false},
-       fmta("<>iff(<>, <>, <>)",
+       fmta("<>iif(<>, <>, <>)",
                 { 
                     f( function(_, snip) return snip.captures[1] end ),
                     i(1),  

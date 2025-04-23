@@ -97,18 +97,6 @@ vim.api.nvim_set_keymap(
     { noremap = true }
 )
 
--- Open diagnostics in floating window
-vim.keymap.set(
-    "n",
-    "<leader>o",
-    function() vim.diagnostic.open_float() end
-)
-vim.keymap.set(
-    "n",
-    "<leader>h",
-    function() vim.lsp.buf.hover() end
-)
-
 -- DAP Mappings
 vim.keymap.set(
     "n", 
@@ -242,7 +230,7 @@ vim.keymap.set(
     "n", 
     "<leader>ca", 
     function()
-	    require("tiny-code-action").code_action()
+	    vim.lsp.buf.code_action()
     end, 
     { noremap = true, silent = true }
 )
@@ -255,6 +243,18 @@ vim.keymap.set(
         vim.lsp.buf.format()
     end,
     { noremap = true, silent = true }
+)
+
+-- Open diagnostics in floating window
+vim.keymap.set(
+    "n",
+    "<leader>o",
+    function() vim.diagnostic.open_float() end
+)
+vim.keymap.set(
+    "n",
+    "<leader>h",
+    function() vim.lsp.buf.hover() end
 )
 
 -- LuaSnip keybindings -- see https://github.com/L3MON4D3/LuaSnip#keymaps
