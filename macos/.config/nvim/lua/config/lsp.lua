@@ -21,21 +21,6 @@ lspconfig.gopls.setup({
     cmd = {"gopls", "--remote=auto"},
     capabilities = capabilities
 })
-lspconfig.hls.setup({
-    capabilities = capabilities,
-    cmd = { "haskell-language-server-wrapper", "--lsp" },
-    filetypes = { "haskell", "lhaskell" },
-    root_dir = function(bufnr, on_dir)
-        local fname = vim.api.nvim_buf_get_name(bufnr)
-        on_dir(util.root_pattern("hie.yaml", "stack.yaml", "cabal.project", "*.cabal", "package.yaml")(fname))
-    end,
-    settings = {
-        haskell = {
-            formattingProvider = "ormolu",
-            cabalFormattingProvider = "cabalfmt",
-        },
-    },
-})
 lspconfig.r_language_server.setup({
     capabilities = capabilities
 })
