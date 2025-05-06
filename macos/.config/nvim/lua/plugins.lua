@@ -52,7 +52,7 @@ Plug("Olical/conjure")
 Plug("mrcjkb/haskell-tools.nvim")
 Plug("hat0uma/csvview.nvim")
 Plug("nvim-treesitter/nvim-treesitter", { ["do"] = function()
-    vim.fn["TSUpdateSync"]()
+    vim.fn["TSUpdate"]()
 end })
 
 vim.call("plug#end")
