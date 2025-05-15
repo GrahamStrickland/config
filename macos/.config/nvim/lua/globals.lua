@@ -58,4 +58,4 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 -- UI SETUP --
-vim.cmd("colorscheme vscode")
+vim.cmd("colorscheme gruvbox")
