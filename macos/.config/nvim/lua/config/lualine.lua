@@ -2,7 +2,7 @@
 require("lualine").setup({
     options = {
         icons_enabled = false,
-        theme = "gruvbox",
+        theme = "posterpole",
         section_separators = { left = '', right = '' },
         component_separators = { left = '|', right = '|' }
     },
