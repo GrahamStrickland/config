@@ -66,3 +66,7 @@ lspconfig.texlab.setup({
 lspconfig.ts_ls.setup({
     capabilities = capabilities
 })
+lspconfig.julials.setup({
+    on_attach = on_attach,
+    capabilities = cmp_capabilities,
+})
