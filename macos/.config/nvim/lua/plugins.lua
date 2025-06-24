@@ -5,7 +5,7 @@ local Plug = vim.fn["plug#"]
 vim.call("plug#begin")
 
 Plug("nvim-lualine/lualine.nvim")
-Plug("ilof2/posterpole.nvim")
+Plug("webhooked/kanso.nvim")
 Plug("scrooloose/nerdtree")
 Plug("tpope/vim-dispatch")
 Plug("tpope/vim-unimpaired")
