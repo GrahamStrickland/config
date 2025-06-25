@@ -14,8 +14,9 @@ require("neodev").setup({
 })
 require("dapui").setup()
 
+local dap = require("dap")
 -- Python
-require("dap").configurations.python = {
+dap.configurations.python = {
     {
         type = "python",
         request = "launch",
@@ -53,5 +54,30 @@ require("dap").configurations.python = {
         port = function()
             return tonumber(vim.fn.input("Port [5678]: ")) or 5678
         end,
+    },
+}
+
+
+-- Rust
+dap.adapters.codelldb = {
+    type = "server",
+    port = "${port}",
+    executable = {
+        command = "/Users/graham/.vscode/extensions/vadimcn.vscode-lldb-1.11.5/adapter/codelldb",
+        args = {"--port", "${port}"},
+    }
+}
+dap.configurations.rust = {
+    {
+        name = "Rust debug",
+        type = "codelldb",
+        request = "launch",
+        program = function()
+            vim.fn.jobstart("cargo build")
+            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/target/debug/", "file")
+        end,
+        cwd = "${workspaceFolder}",
+        stopOnEntry = true,
+        showDisassembly = "never",
     },
 }
