@@ -6,7 +6,7 @@ local get_python_path = function()
     end
     return venv .. "/bin/python3"
 end
-require("dap-python").setup(get_python_path())
+local dap_python = require("dap-python")
 
 -- UI setup
 require("neodev").setup({
@@ -16,9 +16,13 @@ require("dapui").setup()
 
 local dap = require("dap")
 -- Python
+dap_python.setup(get_python_path())
+dap_python.setup("uv")
+dap_python.test_runner = "pytest"
+
 dap.configurations.python = {
     {
-        type = "python",
+        type = "debugpy",
         request = "launch",
         name = "Launch file",
         justMyCode = false,
@@ -28,18 +32,18 @@ dap.configurations.python = {
         pythonPath = get_python_path(),
     },
     {
-        type = "python",
+        type = "debugpy",
         request = "launch",
         name = "Launch Module",
         justMyCode = false,
         module = function()
-            return vim.fn.input("Module name >", vim.fn.getcwd(), "module")
+            return vim.fn.input("Module name: ")
         end,
         console = "integratedTerminal",
         pythonPath = get_python_path(),
     },
     {
-        type = "python",
+        type = "debugpy",
         request = "attach",
         name = "Attach remote",
         justMyCode = false,
