@@ -6,7 +6,8 @@ local get_python_path = function()
     end
     return venv .. "\\Scripts\\python.exe"
 end
-require("dap-python").setup(get_python_path())
+local dap_python = require("dap-python")
+dap_python.setup(get_python_path())
 
 -- UI setup
 require("neodev").setup({
@@ -19,6 +20,7 @@ dap_python.setup(get_python_path())
 dap_python.setup("uv")
 dap_python.test_runner = "pytest"
 
+local dap = require("dap")
 dap.configurations.python = {
     {
         type = "debugpy",
