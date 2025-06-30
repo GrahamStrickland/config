@@ -15,11 +15,15 @@ require("neodev").setup({
 require("dapui").setup()
 
 -- Python
-require("dap").configurations.python = {
+dap_python.setup(get_python_path())
+dap_python.setup("uv")
+dap_python.test_runner = "pytest"
+
+dap.configurations.python = {
     {
-        type = "python",
+        type = "debugpy",
         request = "launch",
-        name = "Launch file",
+        name = "Python: launch file",
         justMyCode = false,
         cwd = vim.fn.getcwd(),
         program = "${file}",
@@ -27,20 +31,20 @@ require("dap").configurations.python = {
         pythonPath = get_python_path(),
     },
     {
-        type = "python",
+        type = "debugpy",
         request = "launch",
-        name = "Launch Module",
+        name = "Python: launch Module",
         justMyCode = false,
         module = function()
-            return vim.fn.input("Module name >", vim.fn.getcwd(), "module")
+            return vim.fn.input("Module name: ")
         end,
         console = "integratedTerminal",
         pythonPath = get_python_path(),
     },
     {
-        type = "python",
+        type = "debugpy",
         request = "attach",
-        name = "Attach remote",
+        name = "Python: attach remote",
         justMyCode = false,
         pythonPath = get_python_path(),
         host = function()
