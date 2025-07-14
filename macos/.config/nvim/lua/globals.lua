@@ -22,6 +22,10 @@ vim.api.nvim_create_autocmd("FileType", {
     end
 })
 
+-- Override filetype settings
+vim.g.filetype_pl = "prolog"
+vim.lsp.enable({"prolog"})
+
 -- Adapted for MacOS from 
 -- https://toddknutson.bio/posts/how-to-enable-neovim-undo-backup-and-swap-files-when-switching-linux-groups/
 USER = os.getenv("USER")
