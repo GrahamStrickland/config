@@ -27,6 +27,19 @@ config.keys = {
     }
 }
 
+for i = 1, 8 do
+    table.insert(config.keys, {
+        key = tostring(i),
+        mods = "CTRL|ALT",
+        action = wezterm.action.ActivateTab(i - 1),
+    })
+    table.insert(config.keys, {
+        key = tostring(i),
+        mods = "CTRL|CMD",
+        action = wezterm.action.MoveTab(i - 1),
+    })
+end
+
 local function segments_for_right_status(window, pane)
     local cells = {}
     local cwd_uri = pane:get_current_working_dir()
