@@ -4,8 +4,13 @@ local vim = vim
 local Plug = vim.fn["plug#"]
 vim.call("plug#begin")
 
+Plug("junegunn/fzf", { ["do"] = function() 
+    vim.call("fzf#install()")
+end })
+Plug("junegunn/fzf.vim")
+Plug("wincent/ferret")
 Plug("nvim-lualine/lualine.nvim")
-Plug("webhooked/kanso.nvim")
+Plug("vague2k/vague.nvim")
 Plug("scrooloose/nerdtree")
 Plug("tpope/vim-dispatch")
 Plug("tpope/vim-unimpaired")

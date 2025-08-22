@@ -62,4 +62,4 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 -- UI SETUP --
-vim.cmd("colorscheme kanso")
+vim.cmd("colorscheme vague")
