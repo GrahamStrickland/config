@@ -24,4 +24,6 @@ export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
 eval "$(atuin init zsh)"
 
 # File path setup
-hash -d uni=/Users/graham/Documents/university/unisa/bsc98923
+hash -d unisa=/Users/graham/Documents/university/unisa/bsc98923
+
+source ~/.zsh_aliases

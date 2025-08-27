@@ -1,0 +1,8 @@
+# File operations
+alias vic="vim -c 'execute \"silent \!echo \" . &fileencoding | q'"
+
+# Git operations
+alias gc="git clone"
+alias gl="git log"
+alias gfp="git fetch origin && git pull origin"
+alias gps="git push origin"
