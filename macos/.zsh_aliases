@@ -1,3 +1,6 @@
+# File path setup
+hash -d unisa=/Users/graham/Documents/university/unisa/bsc98923
+
 # File operations
 alias vic="vim -c 'execute \"silent \!echo \" . &fileencoding | q'"
 
@@ -9,3 +12,6 @@ alias gcl="git clone"
 alias glg="git log"
 alias gfp="git fetch origin && git pull origin"
 alias gps="git push origin"
+
+# ripgrep shortcuts
+alias rgf="rg --files | rg"
