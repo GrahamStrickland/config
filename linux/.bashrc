@@ -112,19 +112,30 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Neovim setup
+# Setup prompt
+if [ -f /user/share/git-core/contrib/completion/git-prompt.sh ]; then
+    souce /user/share/git-core/contrib/completion/git-prompt.share
+elif [ -f /etch/bash_completion.d/git-prompt ]; then
+    source /etc/bash_completion.d/git-prompt
+fi
+
+PS1='\[\e[32m\]\t\[\e[0m\] \[\e[34m\]\w\[\e[0m\] \[\e[32m\]$(__git_ps1 "%s")\[\e[0m\] \$ '
+
+# neovim setup
 export PATH="$PATH:/opt/nvim"
 
 . "$HOME/.local/bin/env"
 
+# atuin setup
 . "$HOME/.atuin/bin/env"
 
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 eval "$(atuin init bash)"
 
-source ~/.bash_aliases
-
+# nvm setup
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# cargo setup
 . "$HOME/.cargo/env"

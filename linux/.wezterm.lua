@@ -1,9 +1,9 @@
 local wezterm = require "wezterm"
 local config = wezterm.config_builder()
 
-config.color_scheme = "Apple System Colors"
+config.color_scheme = "Material Darker (base16)"
 config.font = wezterm.font({ family = "JetBrains Mono" })
-config.font_size = 12
+config.font_size = 10
 config.freetype_load_flags = "NO_HINTING"
 config.freetype_load_target = "Light"
 config.freetype_render_target = "HorizontalLcd"
