@@ -3,12 +3,11 @@ local config = wezterm.config_builder()
 
 config.color_scheme = "Apple System Colors"
 config.font = wezterm.font({ family = "JetBrains Mono" })
-config.font_size = 10
+config.font_size = 12
 config.freetype_load_flags = "NO_HINTING"
 config.freetype_load_target = "Light"
 config.freetype_render_target = "HorizontalLcd"
 config.cell_width = 0.9
-config.window_frame = { font_size = 10 }
 
 config.window_decorations = "RESIZE|INTEGRATED_BUTTONS"
 
@@ -27,6 +26,19 @@ config.keys = {
         action = wezterm.action.ToggleFullScreen,
     }
 }
+
+for i = 1, 8 do
+    table.insert(config.keys, {
+        key = tostring(i),
+        mods = "CTRL|ALT",
+        action = wezterm.action.ActivateTab(i - 1),
+    })
+    table.insert(config.keys, {
+        key = tostring(i),
+        mods = "CTRL|CMD",
+        action = wezterm.action.MoveTab(i - 1),
+    })
+end
 
 local function segments_for_right_status(window, pane)
     local cells = {}

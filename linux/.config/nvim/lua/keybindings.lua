@@ -312,26 +312,6 @@ cmp.setup({
     }
 })
 
--- VimTeX keybindings
-vim.keymap.set(
-    "n",
-    "<leader>wc",
-    "<cmd>VimtexCountWords<cr>",
-    { noremap = true }
-)
-vim.keymap.set(
-    "n",
-    "<leader>ll",
-    "<cmd>VimtexCompile<cr>",
-    { noremap = true }
-)
-vim.keymap.set(
-    "n",
-    "<leader>v",
-     "<plug>(vimtex-view)",
-    { noremap = true }
-)
-
 -- CSVView keybindings
 vim.keymap.set(
     "n",

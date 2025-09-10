@@ -14,16 +14,6 @@ lspconfig.clangd.setup({
 lspconfig.cmake.setup({
     capabilities = capabilities
 })
-lspconfig.clojure_lsp.setup({
-    capabilities = capabilities
-})
-lspconfig.gopls.setup({
-    cmd = {"gopls", "--remote=auto"},
-    capabilities = capabilities
-})
-lspconfig.r_language_server.setup({
-    capabilities = capabilities
-})
 lspconfig.basedpyright.setup({
     capabilies = capabilities,
     settings = {
@@ -66,9 +56,6 @@ lspconfig.rust_analyzer.setup({
         }
     }
 
-})
-lspconfig.texlab.setup({
-    capabilities = capabilities
 })
 lspconfig.ts_ls.setup({
     capabilities = capabilities
