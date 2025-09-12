@@ -19,4 +19,4 @@ Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' `
 Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 
 # Oh My Posh - https://ohmyposh.dev/docs/installation/prompt
-oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/material.omp.json" | Invoke-Expression
+oh-my-posh init pwsh --config "$env:USERPROFILE\config\windows\PowerShell\grahamstrickland.omp.json" | Invoke-Expression
