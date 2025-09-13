@@ -5,7 +5,7 @@
       "alignment": "left",
       "segments": [
         {
-          "foreground": "#66F68F",
+          "foreground": "#C3E88D",
           "properties": {
             "time_format": "15:04:05"
           },
@@ -14,7 +14,7 @@
           "type": "time"
         },
         {
-          "foreground": "#56B6C2",
+          "foreground": "#82AAFF",
           "properties": {
             "style": "folder"
           },
@@ -23,7 +23,7 @@
           "type": "path"
         },
         {
-          "foreground": "#D0666F",
+          "foreground": "#FF5370",
           "properties": {
             "branch_icon": "",
             "fetch_status": false
@@ -33,7 +33,7 @@
           "type": "git"
         },
         {
-          "foreground": "#FFFFFF",
+          "foreground": "#EEFFFF",
           "style": "plain",
           "template": " $ ",
           "type": "text"
