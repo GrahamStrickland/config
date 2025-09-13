@@ -119,7 +119,7 @@ elif [ -f /etch/bash_completion.d/git-prompt ]; then
     source /etc/bash_completion.d/git-prompt
 fi
 
-PS1='\[\e[32m\]\t\[\e[0m\] \[\e[34m\]\w\[\e[0m\] \[\e[32m\]$(__git_ps1 "%s")\[\e[0m\] \$ '
+PS1='\[\e[32m\]\t\[\e[0m\] \[\e[34m\]\w\[\e[0m\] \[\e[31m\]$(__git_ps1 "%s")\[\e[0m\] \$ '
 
 # neovim setup
 export PATH="$PATH:/opt/nvim"
