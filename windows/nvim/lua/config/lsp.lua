@@ -20,13 +20,6 @@ vim.lsp.config["clangd"] = {
 }
 vim.lsp.enable("clangd")
 
-vim.lsp.config["cmake"] = {
-    cmd = { "cmake-language-server" },
-    filetypes = { "cmake" },
-    root_markers = { "CMakeLists.txt" },
-}
-vim.lsp.enable("cmake")
-
 -- JavaScript/TypeScript setup
 vim.lsp.config["ts_ls"] = {
     cmd = { "typescript-language-server", "--stdio" },
