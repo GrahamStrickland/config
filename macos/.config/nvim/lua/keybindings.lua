@@ -261,7 +261,7 @@ vim.keymap.set(
 )
 vim.keymap.set(
     "n",
-    "<leader>o",
+    "<leader>d",
     function() vim.diagnostic.open_float() end
 )
 
