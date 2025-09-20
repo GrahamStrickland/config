@@ -9,9 +9,6 @@ end
 local dap_python = require("dap-python")
 
 -- UI setup
-require("neodev").setup({
-    library = { plugins = { "nvim-dap-ui" }, types = true },
-})
 require("dapui").setup()
 
 local dap = require("dap")
@@ -24,7 +21,7 @@ dap.configurations.python = {
     {
         type = "debugpy",
         request = "launch",
-        name = "Launch file",
+        name = "Python: launch file",
         justMyCode = false,
         cwd = vim.fn.getcwd(),
         program = "${file}",
@@ -34,7 +31,7 @@ dap.configurations.python = {
     {
         type = "debugpy",
         request = "launch",
-        name = "Launch Module",
+        name = "Python: launch module",
         justMyCode = false,
         module = function()
             return vim.fn.input("Module name: ")
@@ -45,7 +42,7 @@ dap.configurations.python = {
     {
         type = "debugpy",
         request = "attach",
-        name = "Attach remote",
+        name = "Python: attach to remote",
         justMyCode = false,
         pythonPath = get_python_path(),
         host = function()
@@ -73,7 +70,7 @@ dap.adapters.codelldb = {
 }
 dap.configurations.rust = {
     {
-        name = "Rust debug",
+        name = "Rust: launch process",
         type = "codelldb",
         request = "launch",
         program = function()
