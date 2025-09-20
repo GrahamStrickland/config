@@ -1,9 +1,7 @@
 -- LSP SETUP
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
-local lspconfig = require("lspconfig")
-local util = require("lspconfig.util")
 
-lspconfig.clangd.setup({
+vim.lsp.config("clangd", {
     name = "clangd",
     cmd = {"clangd", "--background-index", "--clang-tidy", "--log=verbose"},
     initialization_options = {
@@ -11,13 +9,13 @@ lspconfig.clangd.setup({
     },
     capabilities = capabilities
 })
-lspconfig.cmake.setup({
+vim.lsp.config("cmake", {
     capabilities = capabilities
 })
-lspconfig.r_language_server.setup({
+vim.lsp.config("r_language_server", {
     capabilities = capabilities
 })
-lspconfig.basedpyright.setup({
+vim.lsp.config("basedpyright", {
     capabilies = capabilities,
     settings = {
         basedpyright = {
@@ -28,7 +26,7 @@ lspconfig.basedpyright.setup({
         }
     }
 })
-lspconfig.ruff.setup({
+vim.lsp.config("ruff", {
     capabilities = capabilities,
     init_options = {
         settings = {
@@ -36,7 +34,7 @@ lspconfig.ruff.setup({
         }
     }
 })
-lspconfig.rust_analyzer.setup({
+vim.lsp.config("rust_analyzer", {
     on_attach = function(client, bufnr)
         vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
     end,
@@ -60,13 +58,13 @@ lspconfig.rust_analyzer.setup({
     }
 
 })
-lspconfig.texlab.setup({
+vim.lsp.config("texlab", {
     capabilities = capabilities
 })
-lspconfig.ts_ls.setup({
+vim.lsp.config("ts_ls", {
     capabilities = capabilities
 })
-lspconfig.julials.setup({
+vim.lsp.config("julials", {
     on_attach = on_attach,
     capabilities = cmp_capabilities,
 })
