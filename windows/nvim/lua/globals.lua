@@ -49,3 +49,4 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 -- UI SETUP --
 vim.cmd("colorscheme vague")
+vim.o.winborder = "rounded"
