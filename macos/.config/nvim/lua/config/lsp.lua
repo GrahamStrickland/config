@@ -19,8 +19,8 @@ vim.lsp.config["clangd"] = {
     },
     filetypes = { "c", "cpp" },
 }
-
 vim.lsp.enable("clangd")
+
 vim.lsp.config["cmake"] = {
     cmd = { "cmake-language-server" },
     filetypes = { "cmake" },
