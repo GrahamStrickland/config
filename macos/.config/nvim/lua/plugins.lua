@@ -1,6 +1,5 @@
 -- PLUGIN MANAGEMENT --
 -- Manage plugins with vim-plug.
-local vim = vim
 local Plug = vim.fn["plug#"]
 vim.call("plug#begin")
 
@@ -19,16 +18,10 @@ Plug("tpope/vim-fugitive")
 Plug("tpope/vim-repeat")
 Plug("tpope/vim-surround")
 Plug("yorickpeterse/nvim-pqf")
-Plug("akinsho/git-conflict.nvim")
-Plug("guns/vim-sexp")
 Plug("ctrlpvim/ctrlp.vim")
 Plug("mileszs/ack.vim")
 Plug("easymotion/vim-easymotion")
-Plug("christoomey/vim-tmux-navigator")
 Plug("tomtom/tcomment_vim")
-Plug("neovim/nvim-lspconfig")
-Plug("nvim-lua/lsp-status.nvim")
-Plug("glepnir/lspsaga.nvim")
 Plug("hrsh7th/cmp-nvim-lsp")
 Plug("hrsh7th/cmp-buffer")
 Plug("hrsh7th/cmp-path")
@@ -49,9 +42,6 @@ Plug("mfussenegger/nvim-dap-python")
 Plug("mfussenegger/nvim-jdtls")
 Plug("nvim-neotest/nvim-nio")
 Plug("rcarriga/nvim-dap-ui")
-Plug("folke/neodev.nvim")
-Plug("andrewradev/switch.vim")
-Plug("radenling/vim-dispatch-neovim")
 Plug("mrcjkb/haskell-tools.nvim")
 Plug("hat0uma/csvview.nvim")
 Plug("JuliaEditorSupport/julia-vim")
