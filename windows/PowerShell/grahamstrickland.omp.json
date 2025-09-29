@@ -35,7 +35,7 @@
         {
           "foreground": "#EEFFFF",
           "style": "plain",
-          "template": " $ ",
+          "template": " \u276f ",
           "type": "text"
         }
       ],
