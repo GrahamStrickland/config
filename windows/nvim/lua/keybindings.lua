@@ -257,53 +257,6 @@ vim.keymap.set(
     function() vim.lsp.buf.hover() end
 )
 
--- LuaSnip keybindings -- see https://github.com/L3MON4D3/LuaSnip#keymaps
-local ls = require("luasnip")
-local cmp = require("cmp")
-
-cmp.setup({
-    mapping = {
-        ["<cr>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                if ls.expandable() then
-                    ls.expand()
-                else
-                    cmp.confirm({
-                        select = true,
-                    })
-                end
-            else
-                fallback()
-            end
-        end),
-        ["<tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item()
-            elseif ls.locally_jumpable(1) then
-                ls.jump(1)
-            else
-                fallback()
-            end
-        end, {"i", "s"}),
-        ["<s-tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_prev_item()
-            elseif ls.locally_jumpable(-1) then
-                ls.jump(-1)
-            else
-                fallback()
-            end
-        end, {"i", "s"}),
-        ["<down>"] = cmp.mapping(function(fallback) 
-            if ls.choice_active() then
-                ls.change_choice(1)
-            else
-                fallback()
-            end
-        end, {"i", "s"})
-    }
-})
-
 -- CSVView keybindings
 vim.keymap.set(
     "n",
