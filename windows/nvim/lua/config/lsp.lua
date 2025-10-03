@@ -44,15 +44,33 @@ vim.lsp.config["basedpyright"] = {
     cmd = { "uv", "run", "basedpyright-langserver", "--stdio" },
     settings = {
         basedpyright = {
-            disableOrganizeImports = { true },
             analysis = {
-                ignore = { "*" }
-            }
-        }
+                autoSearchPaths = true,
+                diagnosticMode = "workspace",
+                useLibraryCodeForTypes = true,
+                autoImportCompletion = true,
+                typeCheckingMode = "standard",
+            },
+            disableOrganizeImports = true,
+        },
     },
+    root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt" },
     filetypes = { "python" },
 }
-vim.lsp.enable("basedpyright")
+vim.lsp.config["ruff"] = {
+    cmd = { "uv", "run", "ruff", "server" },
+    on_attach = function(client, bufnr)
+        -- Disable capabilities that basedpyright should handle
+        client.server_capabilities.hoverProvider = false
+        client.server_capabilities.definitionProvider = false
+        client.server_capabilities.referencesProvider = false
+        client.server_capabilities.documentSymbolProvider = false
+        client.server_capabilities.imports = false
+    end,
+    root_markers = { "pyproject.toml", "ruff.toml" },
+    filetypes = { "python" },
+}
+vim.lsp.enable({ "basedpyright", "ruff" })
 
 -- Rust setup
 vim.lsp.config["rust_analyzer"] = {
