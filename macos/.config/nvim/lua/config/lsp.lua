@@ -43,7 +43,7 @@ vim.lsp.enable("ts_ls")
 vim.lsp.config("julials", {
     cmd = {
         "julia",
-        "--project=".."~/.julia/environments/lsp/",
+        "--project=" .. "~/.julia/environments/lsp/",
         "--startup-file=no",
         "--history-file=no",
         "-e", [[
@@ -90,7 +90,7 @@ vim.lsp.enable("texlab")
 -- Lua setup
 vim.lsp.config["luals"] = {
     cmd = { "lua-language-server" },
-    root_markers = { {".luarc.json", ".luarc.jsonc"}, ".git" },
+    root_markers = { ".luarc.json", ".luarc.jsonc" },
     filetypes = { "lua" },
 }
 vim.lsp.enable("luals")
@@ -100,15 +100,33 @@ vim.lsp.config["basedpyright"] = {
     cmd = { "uv", "run", "basedpyright-langserver", "--stdio" },
     settings = {
         basedpyright = {
-            disableOrganizeImports = { true },
             analysis = {
-                ignore = { "*" }
-            }
-        }
+                autoSearchPaths = true,
+                diagnosticMode = "workspace",
+                useLibraryCodeForTypes = true,
+                autoImportCompletion = true,
+                typeCheckingMode = "standard",
+            },
+            disableOrganizeImports = true,
+        },
     },
+    root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt" },
     filetypes = { "python" },
 }
-vim.lsp.enable("basedpyright")
+vim.lsp.config["ruff"] = {
+    cmd = { "uv", "run", "ruff", "server" },
+    on_attach = function(client, bufnr)
+        -- Disable capabilities that basedpyright should handle
+        client.server_capabilities.hoverProvider = false
+        client.server_capabilities.definitionProvider = false
+        client.server_capabilities.referencesProvider = false
+        client.server_capabilities.documentSymbolProvider = false
+        client.server_capabilities.imports = false
+    end,
+    root_markers = { "pyproject.toml", "ruff.toml" },
+    filetypes = { "python" },
+}
+vim.lsp.enable({ "basedpyright", "ruff" })
 
 -- R setup
 vim.lsp.config["r_language_server"] = {
