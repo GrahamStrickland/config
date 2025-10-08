@@ -38,6 +38,14 @@ vim.lsp.config["roslyn"] = {
 }
 vim.lsp.enable("roslyn")
 
+-- CMake setup
+vim.lsp.config["cmake"] = {
+    cmd = { "cmake-language-server" },
+    filetypes = { "cmake" },
+    root_markers = { "CMakeLists.txt" },
+}
+vim.lsp.enable("cmake")
+
 -- JavaScript/TypeScript setup
 vim.lsp.config["ts_ls"] = {
     cmd = { "typescript-language-server", "--stdio" },
