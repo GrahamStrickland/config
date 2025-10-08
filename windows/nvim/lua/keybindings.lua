@@ -248,7 +248,7 @@ vim.keymap.set(
 -- Open diagnostics in floating window
 vim.keymap.set(
     "n",
-    "<leader>o",
+    "<leader>d",
     function() vim.diagnostic.open_float() end
 )
 vim.keymap.set(

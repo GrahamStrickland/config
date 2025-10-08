@@ -1,3 +1,6 @@
+-- PATH SETUP --
+vim.env.PATH = vim.env.PATH .. [[;C:\Users\graham\AppData\Local\Microsoft\VisualStudio\Roslyn\content\LanguageServer\win-x64]]
+
 -- OPTION SETUP --
 vim.g.NERDTreeHijackNetrw = 0
 
