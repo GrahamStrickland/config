@@ -21,6 +21,24 @@ vim.lsp.config["clangd"] = {
 }
 vim.lsp.enable("clangd")
 
+-- C# setup
+vim.lsp.config["roslyn"] = {
+    on_attach = function()
+        print("Roslyn server attached.")
+    end,
+    settings = {
+        ["csharp|inlay_hints"] = {
+            csharp_enable_inlay_hints_for_implicit_object_creation = true,
+            csharp_enable_inlay_hints_for_implicit_variable_types = true,
+        },
+        ["csharp|code_lens"] = {
+            dotnet_enable_references_code_lens = true,
+        },
+    },
+}
+vim.lsp.enable("roslyn")
+
+-- CMake setup
 vim.lsp.config["cmake"] = {
     cmd = { "cmake-language-server" },
     filetypes = { "cmake" },

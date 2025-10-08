@@ -1,3 +1,6 @@
+-- PATH SETUP --
+vim.env.PATH = vim.env.PATH .. ":/Users/graham/.local/bin/roslyn/content/LanguageServer/osx-arm64"
+
 -- OPTIONS SETUP --
 vim.g.NERDTreeHijackNetrw = 0
 
