@@ -11,7 +11,7 @@ export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 
 # Ruby
-export PATH="/opt/homebrew/Cellar/ruby/3.4.6/bin/:$PATH"
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 
 # PostgreSQL
 export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
@@ -19,3 +19,7 @@ export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
 # GHC
 [ -f "/Users/graham/.ghcup/env" ] && . "/Users/graham/.ghcup/env" # ghcup-env
 export PATH="$PATH:$HOME/.ghcup/bin"
+
+# Harbour
+export PATH="/Users/graham/dev/harbour-3.2.0core/bin/darwin/clang:$PATH"
+
