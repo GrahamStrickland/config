@@ -3,22 +3,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "  "
 
--- Save a file with leader-w
-vim.api.nvim_set_keymap(
-    "n",
-    "<leader>w",
-    ":w<cr>",
-    { noremap = true }
-)
-
--- Quit buffer with leader-q
-vim.api.nvim_set_keymap(
-    "n",
-    "<leader>q",
-    ":q<cr>",
-    { noremap = true }
-)
-
 -- Fast split navigation with <Ctrl> + hjkl
 vim.api.nvim_set_keymap(
     "n",
@@ -56,26 +40,6 @@ vim.api.nvim_set_keymap(
     "n",
     "<c-u>",
     "<c-u>zz",
-    { noremap = true }
-)
-
--- Immediately add closing quotes or braces in insert mode
-vim.api.nvim_set_keymap(
-    "i",
-    "(",
-    "()<esc>i",
-    { noremap = true }
-)
-vim.api.nvim_set_keymap(
-    "i",
-    "{",
-    "{}<esc>i",
-    { noremap = true }
-)
-vim.api.nvim_set_keymap(
-    "i",
-    "[",
-    "[]<esc>i",
     { noremap = true }
 )
 
