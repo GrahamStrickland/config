@@ -33,3 +33,5 @@ Plug("seblyng/roslyn.nvim")
 Plug("nvim-treesitter/nvim-treesitter", { ["do"] = function()
     vim.fn["TSUpdate"]()
 end })
+
+vim.call("plug#end")

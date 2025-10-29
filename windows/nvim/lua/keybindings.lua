@@ -3,24 +3,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "  "
 
--- Save a file with leader-w
-vim.api.nvim_set_keymap(
-    "n",
-    "<leader>w",
-    ":w<cr>",
-    { noremap = true }
-)
-
--- Quit buffer with leader-q
-vim.api.nvim_set_keymap(
-    "n",
-    "<leader>q",
-    ":q<cr>",
-    { noremap = true }
-)
-
--- MORE KEY MAPPINGS --
-vim.call("plug#end")
 -- Open NERDTree for viewing files
 vim.api.nvim_set_keymap(
     "n",
