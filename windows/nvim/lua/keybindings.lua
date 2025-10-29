@@ -51,26 +51,6 @@ vim.api.nvim_set_keymap(
     { noremap = true }
 )
 
--- Immediately add closing quotes or braces in insert mode
-vim.api.nvim_set_keymap(
-    "i",
-    "(",
-    "()<esc>i",
-    { noremap = true }
-)
-vim.api.nvim_set_keymap(
-    "i",
-    "{",
-    "{}<esc>i",
-    { noremap = true }
-)
-vim.api.nvim_set_keymap(
-    "i",
-    "[",
-    "[]<esc>i",
-    { noremap = true }
-)
-
 -- Remap terminal mode escape
 vim.api.nvim_set_keymap(
     "t",
