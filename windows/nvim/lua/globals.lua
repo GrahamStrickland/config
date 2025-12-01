@@ -51,9 +51,8 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 -- UI SETUP --
-vim.o.background = 'dark'
-
-local c = require('vscode.colors').get_colors()
+vim.o.background = "dark"
+local c = require("vscode.colors").get_colors()
 require('vscode').setup({
     transparent = true,
     italic_comments = true,
@@ -62,12 +61,12 @@ require('vscode').setup({
     disable_nvimtree_bg = true,
     terminal_colors = true,
     color_overrides = {
-        vscLineNumber = '#FFFFFF',
+        vscLineNumber = "#FFFFFF",
     },
     group_overrides = {
         Cursor = { fg=c.vscDarkBlue, bg=c.vscLightGreen, bold=true },
     }
 })
--- require('vscode').load()
-vim.cmd.colorscheme "vscode"
+require("vscode").load()
+vim.cmd.colorscheme = "vscode"
 vim.o.winborder = "rounded"
