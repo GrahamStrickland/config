@@ -137,5 +137,53 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
+-- Setup Harper for spell checking
+vim.lsp.config["harper_ls"] = {
+    cmd = { "harper-ls", "--stdio" },
+    settings = {
+        ["harper-ls"] = {
+             userDictPath = "",
+             workspaceDictPath = "",
+             fileDictPath = "",
+             linters = {
+                 SpellCheck = true,
+                 SpelledNumbers = false,
+                 AnA = true,
+                 SentenceCapitalization = true,
+                 UnclosedQuotes = true,
+                 WrongQuotes = false,
+                 LongSentences = true,
+                 RepeatedWords = true,
+                 Spaces = true,
+                 Matcher = true,
+                 CorrectNumberSuffix = true
+             },
+             codeActions = {
+                ForceStable = false
+             },
+             markdown = {
+                IgnoreLinkTitle = false
+             },
+             diagnosticSeverity = "hint",
+             isolateEnglish = false,
+             dialect = "American",
+             maxFileLength = 120000,
+             ignoredLintsPath = "",
+             excludePatterns = {}
+        }
+    },
+    filetypes = { 
+        "markdown", 
+        "tex",
+        "gitcommit",
+        "html",
+        "markdown",
+        "toml",
+        "typst",
+        "text"
+    },
+}
+vim.lsp.enable("harper_ls")
+
 -- Make auto-complete less annoying
 vim.cmd("set completeopt+=noselect")
