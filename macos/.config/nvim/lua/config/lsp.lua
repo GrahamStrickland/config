@@ -170,13 +170,11 @@ vim.lsp.config["harper_ls"] = {
         }
     },
     filetypes = { 
-        "markdown", 
-        "tex",
         "gitcommit",
         "html",
         "markdown",
         "toml",
-        "typst",
+        "tex",
         "text"
     },
 }

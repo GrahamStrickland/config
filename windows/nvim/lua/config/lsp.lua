@@ -166,20 +166,18 @@ vim.lsp.config["harper_ls"] = {
              },
              diagnosticSeverity = "hint",
              isolateEnglish = false,
-             dialect = "American",
+             dialect = "British",
              maxFileLength = 120000,
              ignoredLintsPath = "",
              excludePatterns = {}
         }
     },
     filetypes = { 
-        "markdown", 
-        "tex",
         "gitcommit",
         "html",
         "markdown",
         "toml",
-        "typst",
+        "tex",
         "text"
     },
 }
