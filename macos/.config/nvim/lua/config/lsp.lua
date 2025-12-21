@@ -56,23 +56,6 @@ vim.lsp.config["luals"] = {
 vim.lsp.enable("luals")
 
 -- Python setup
-vim.lsp.config["basedpyright"] = {
-    cmd = { "uv", "run", "basedpyright-langserver", "--stdio" },
-    settings = {
-        basedpyright = {
-            analysis = {
-                autoSearchPaths = true,
-                diagnosticMode = "workspace",
-                useLibraryCodeForTypes = true,
-                autoImportCompletion = true,
-                typeCheckingMode = "standard",
-            },
-            disableOrganizeImports = true,
-        },
-    },
-    root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt" },
-    filetypes = { "python" },
-}
 vim.lsp.config["ruff"] = {
     cmd = { "uv", "run", "ruff", "server" },
     on_attach = function(client, bufnr)
@@ -86,7 +69,14 @@ vim.lsp.config["ruff"] = {
     root_markers = { "pyproject.toml", "ruff.toml" },
     filetypes = { "python" },
 }
-vim.lsp.enable({ "basedpyright", "ruff" })
+vim.lsp.config["ty"] = {
+    cmd = { "uv", "run", "ty", "server" },
+    settings = {
+    },
+    root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt" },
+    filetypes = { "python" },
+}
+vim.lsp.enable({ "ty", "ruff" })
 
 -- R setup
 vim.lsp.config["r_language_server"] = {
