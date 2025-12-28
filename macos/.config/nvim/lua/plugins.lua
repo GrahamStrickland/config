@@ -41,6 +41,7 @@ Plug("rcarriga/nvim-dap-ui")
 Plug("mrcjkb/haskell-tools.nvim")
 Plug("hat0uma/csvview.nvim")
 Plug("JuliaEditorSupport/julia-vim")
+Plug("seblyng/roslyn.nvim")
 Plug("nvim-treesitter/nvim-treesitter", { ["do"] = ":TSUpdate" })
 
 vim.call("plug#end")
