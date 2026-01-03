@@ -30,10 +30,17 @@ dap.adapters.codelldb = {
 -- Python setup
 local get_python_path = function()
     local venv = os.getenv("VIRTUAL_ENV")
-    if venv == nil then
-        return "py.exe"
+    if venv then
+        return venv .. "/bin/python3"
     end
-    return venv .. "/bin/python3"
+    local cwd = vim.fn.getcwd()
+    if vim.fn.executable(cwd .. "/.venv/bin/python3") == 1 then
+        return cwd .. "/.venv/bin/python3"
+    elseif vim.fn.executable(cwd .. "/../.venv/bin/python3") == 1 then
+        return cwd .. "/../.venv/bin/python3"
+    else
+        return "python3"
+    end
 end
 local dap_python = require("dap-python")
 
@@ -61,7 +68,6 @@ require("netcoredbg-macOS-arm64").setup(dap)
 
 -- Python
 dap_python.setup(get_python_path())
-dap_python.setup("uv")
 dap_python.test_runner = "pytest"
 
 dap.configurations.python = {
