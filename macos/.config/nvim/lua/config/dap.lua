@@ -12,6 +12,10 @@ local dap_python = require("dap-python")
 require("dapui").setup()
 
 local dap = require("dap")
+
+-- C#
+require("netcoredbg-macOS-arm64").setup(dap)
+
 -- Python
 dap_python.setup(get_python_path())
 dap_python.setup("uv")
@@ -58,7 +62,6 @@ dap.configurations.python = {
     },
 }
 
-
 -- Rust
 dap.adapters.codelldb = {
     type = "server",
@@ -82,3 +85,4 @@ dap.configurations.rust = {
         showDisassembly = "never",
     },
 }
+
