@@ -1,6 +1,35 @@
--- DAP ADAPTER SETUP/CONFIGURATION
+-- DAP ADAPTER SETUP
+local dap = require("dap")
+
+-- CodeLLDB setup
+local function find_codelldb_executable()
+    local files = vim.fn.glob("/Users/graham/.vscode/extensions/vadimcn.vscode-lldb-*/adapter/codelldb", true, true)
+
+    if #files == 0 then
+        return "codelldb"
+    end
+
+    for _, file in ipairs(files) do
+        if file:match("/Users/graham/.vscode/extensions/vadimcn.vscode-lldb-$") then
+            return file
+        end
+    end
+
+    return files[1]
+end
+
+dap.adapters.codelldb = {
+    type = "server",
+    port = "${port}",
+    executable = {
+        command = find_codelldb_executable(),
+        args = { "--port", "${port}" },
+    }
+}
+
+-- Python setup
 local get_python_path = function()
-    local venv = os.getenv("VIRTUAL_ENV") 
+    local venv = os.getenv("VIRTUAL_ENV")
     if venv == nil then
         return "py.exe"
     end
@@ -11,7 +40,21 @@ local dap_python = require("dap-python")
 -- UI setup
 require("dapui").setup()
 
-local dap = require("dap")
+-- DAP ADAPTER CONFIGURATION
+-- C++
+dap.configurations.cpp = {
+    {
+        name = "C++: launch process",
+        type = "codelldb",
+        request = "launch",
+        program = function()
+            return vim.fn.input("Path to executable: ", vim.fn.getcwd(), "file")
+        end,
+        cwd = "${workspaceFolder}",
+        stopOnEntry = false,
+        showDisassembly = "never",
+    },
+}
 
 -- C#
 require("netcoredbg-macOS-arm64").setup(dap)
@@ -52,7 +95,7 @@ dap.configurations.python = {
         host = function()
             local value = vim.fn.input("Host [127.0.0.1]: ")
             if value ~= "" then
-              return value
+                return value
             end
             return "127.0.0.1"
         end,
@@ -63,26 +106,17 @@ dap.configurations.python = {
 }
 
 -- Rust
-dap.adapters.codelldb = {
-    type = "server",
-    port = "${port}",
-    executable = {
-        command = "/Users/graham/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/adapter/codelldb",
-        args = {"--port", "${port}"},
-    }
-}
 dap.configurations.rust = {
     {
         name = "Rust: launch process",
         type = "codelldb",
         request = "launch",
         program = function()
-            vim.fn.jobstart("cargo build")
+            vim.fn.system("cargo build")
             return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/target/debug/", "file")
         end,
         cwd = "${workspaceFolder}",
-        stopOnEntry = true,
+        stopOnEntry = false,
         showDisassembly = "never",
     },
 }
-
