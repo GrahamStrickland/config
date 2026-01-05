@@ -59,30 +59,31 @@ vim.lsp.enable("ts_ls")
 
 -- Lua setup
 vim.lsp.config["luals"] = {
-    cmd = { "lua-language-server" },
+    cmd = { "lua-language-server", "--logpath=" .. vim.fn.stdpath("cache") .. "/luals.log" },
     root_markers = { {".luarc.json", ".luarc.jsonc"}, ".git" },
     filetypes = { "lua" },
+    on_attach = function(client, bufnr)
+        if client:supports_method("textDocument/formatting") then
+            vim.lsp.buf.format({ bufnr = bufnr })
+        end
+    end,
+    settings = {
+        Lua = {
+            workspace = {
+                checkThirdParty = false,
+            },
+            telemetry = {
+                enable = false,
+            },
+            misc = {
+                cachePath = vim.fn.stdpath("cache") .. "/luals",
+            },
+        },
+    },
 }
 vim.lsp.enable("luals")
 
 -- Python setup
-vim.lsp.config["basedpyright"] = {
-    cmd = { "uv", "run", "basedpyright-langserver", "--stdio" },
-    settings = {
-        basedpyright = {
-            analysis = {
-                autoSearchPaths = true,
-                diagnosticMode = "workspace",
-                useLibraryCodeForTypes = true,
-                autoImportCompletion = true,
-                typeCheckingMode = "standard",
-            },
-            disableOrganizeImports = true,
-        },
-    },
-    root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt" },
-    filetypes = { "python" },
-}
 vim.lsp.config["ruff"] = {
     cmd = { "uv", "run", "ruff", "server" },
     on_attach = function(client, bufnr)
@@ -96,7 +97,14 @@ vim.lsp.config["ruff"] = {
     root_markers = { "pyproject.toml", "ruff.toml" },
     filetypes = { "python" },
 }
-vim.lsp.enable({ "basedpyright", "ruff" })
+vim.lsp.config["ty"] = {
+    cmd = { "uv", "run", "ty", "server" },
+    settings = {
+    },
+    root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt" },
+    filetypes = { "python" },
+}
+vim.lsp.enable({ "ty", "ruff" })
 
 -- Rust setup
 vim.lsp.config["rust_analyzer"] = {

@@ -1,23 +1,70 @@
--- DAP ADAPTER SETUP/CONFIGURATION
-local get_python_path = function()
-    local venv = os.getenv("VIRTUAL_ENV") 
-    if venv == nil then
-        return "py.exe"
+-- DAP ADAPTER SETUP
+local dap = require("dap")
+
+-- CodeLLDB setup
+local function find_codelldb_executable()
+    local files = vim.fn.glob([[C:\Users\graham\.vscode\extensions\vadimcn.vscode-lldb-*\adapter\codelldb]], true, true)
+
+    if #files == 0 then
+        return "codelldb"
     end
-    return venv .. "\\Scripts\\python.exe"
+
+    for _, file in ipairs(files) do
+        if file:match([[C:\Users\graham\.vscode\extensions\vadimcn.vscode-lldb-$]]) then
+            return file
+        end
+    end
+
+    return files[1]
+end
+
+dap.adapters.codelldb = {
+    type = "server",
+    port = "${port}",
+    executable = {
+        command = find_codelldb_executable(),
+        args = { "--port", "${port}" },
+    }
+}
+
+-- Python setup
+local get_python_path = function()
+    local venv = os.getenv("VIRTUAL_ENV")
+    if venv then
+        return venv .. "\\Scripts\\python.exe"
+    end
+
+    local cwd = vim.fn.getcwd()
+    if vim.fn.executable(cwd .. "\\.venv\\Scripts\\python.exe") == 1 then
+        return cwd .. "\\.venv\\Scripts\\python.exe"
+    end
+
+    return "py.exe"
 end
 local dap_python = require("dap-python")
 
 -- UI setup
 require("dapui").setup()
 
-local dap = require("dap")
+-- DAP ADAPTER CONFIGURATION
+-- C++
+dap.configurations.cpp = {
+    {
+        name = "C++: launch process",
+        type = "codelldb",
+        request = "launch",
+        program = function()
+            return vim.fn.input("Path to executable: ", vim.fn.getcwd(), "file")
+        end,
+        cwd = "${workspaceFolder}",
+        stopOnEntry = false,
+        showDisassembly = "never",
+    },
+}
 
 -- Python
 dap_python.setup(get_python_path())
-dap_python.setup("uv")
 dap_python.test_runner = "pytest"
-
 dap.configurations.python = {
     {
         type = "debugpy",
@@ -49,7 +96,7 @@ dap.configurations.python = {
         host = function()
             local value = vim.fn.input("Host [127.0.0.1]: ")
             if value ~= "" then
-              return value
+                return value
             end
             return "127.0.0.1"
         end,
