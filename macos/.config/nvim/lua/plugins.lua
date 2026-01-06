@@ -43,6 +43,7 @@ Plug("mrcjkb/haskell-tools.nvim")
 Plug("hat0uma/csvview.nvim")
 Plug("JuliaEditorSupport/julia-vim")
 Plug("seblyng/roslyn.nvim")
+Plug("Cliffback/netcoredbg-macOS-arm64.nvim")
 Plug("nvim-treesitter/nvim-treesitter", { ["do"] = ":TSUpdate" })
 
 vim.call("plug#end")
