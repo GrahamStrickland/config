@@ -23,6 +23,7 @@ vim.lsp.enable("clangd")
 
 -- C# setup
 vim.lsp.config["roslyn"] = {
+    cmd = { [[C:\Users\graham\AppData\Local\Microsoft\VisualStudio\Roslyn\content\LanguageServer\win-x64\Microsoft.CodeAnalysis.LanguageServer]], "--logLevel=Information", [[--extensionLogDirectory=C:\Users\graham\AppData\Local\nvim-data]], "--stdio" },
     on_attach = function()
         print("Roslyn server attached.")
     end,
