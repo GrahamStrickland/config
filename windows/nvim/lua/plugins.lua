@@ -1,5 +1,4 @@
 -- PLUGIN MANAGEMENT --
--- Manage plugins with vim-plug.
 local Plug = vim.fn["plug#"]
 vim.call("plug#begin")
 
@@ -23,6 +22,7 @@ Plug("hrsh7th/cmp-buffer")
 Plug("hrsh7th/cmp-path")
 Plug("hrsh7th/cmp-cmdline")
 Plug("hrsh7th/nvim-cmp")
+Plug("kosayoda/nvim-lightbulb")
 Plug("nvim-lua/plenary.nvim")
 Plug("nvim-telescope/telescope.nvim")
 Plug("nvim-telescope/telescope-ui-select.nvim")
