@@ -114,6 +114,22 @@ vim.lsp.config("julials", {
 })
 vim.lsp.enable("julials")
 
+-- Prolog setup
+vim.lsp.config("prolog", {
+    cmd = { "swipl",
+            "-g", "use_module(library(lsp_server))",
+            "-g", "lsp_server:main",
+            "-t", "halt",
+            "--", "stdio" },
+    root_markers = { ".git", },
+    filetypes = { "prolog" },
+})
+
+-- Override filetype settings
+vim.g.filetype_pl = "prolog"
+
+vim.lsp.enable({"prolog"})
+
 -- Python setup
 vim.lsp.config["ruff"] = {
     cmd = { "uv", "run", "ruff", "server" },
