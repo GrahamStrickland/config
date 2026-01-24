@@ -62,5 +62,5 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 -- UI SETUP --
 vim.o.background = "dark"
-vim.cmd("colorscheme vague")
+vim.cmd("colorscheme vscode")
 vim.o.winborder = "rounded"
