@@ -51,6 +51,7 @@ Plug("hat0uma/csvview.nvim")
 Plug("JuliaEditorSupport/julia-vim")
 Plug("seblyng/roslyn.nvim")
 Plug("Cliffback/netcoredbg-macOS-arm64.nvim")
+Plug("HiPhish/rainbow-delimiters.nvim")
 Plug("nvim-treesitter/nvim-treesitter", { ["do"] = ":TSUpdate" })
 
 vim.call("plug#end")
