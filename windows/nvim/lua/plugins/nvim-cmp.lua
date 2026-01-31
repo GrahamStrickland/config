@@ -1,4 +1,4 @@
--- nvim-cmp setup
+-- nvim-cmp SETUP
 local cmp = require("cmp")
 
 cmp.setup({
