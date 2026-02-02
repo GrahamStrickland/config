@@ -5,10 +5,37 @@ require("nvim-treesitter").setup({
   },
 })
 
+whitelist = { 
+    "bash",
+    "c",
+    "c_sharp",
+    "clojure",
+    "cmake",
+    "commonlisp",
+    "cpp",
+    "haskell",
+    "java",
+    "javascript",
+    "julia",
+    "latex",
+    "lua",
+    "prolog",
+    "python",
+    "query",
+    "r",
+    "rust",
+    "sql",
+    "toml",
+    "typescript",
+    "vim"
+}           
+
 -- Parse on buffer load to enable rainbow delimiters, see https://github.com/HiPhish/rainbow-delimiters.nvim/issues/187
 local function on_buf_win_enter(_args)
-    if vim.bo.filetype ~= "" and vim.bo.filetype ~= "git" and vim.bo.filetype ~= "clipper" and vim.bo.filetype ~= "lean" and vim.bo.filetype ~= "dap-repl" then
-        vim.treesitter.start()
+    for _, filetype in pairs(whitelist) do
+        if vim.bo.filetype == filetype then
+            vim.treesitter.start()
+        end
     end
 end
 
