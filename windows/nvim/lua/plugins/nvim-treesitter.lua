@@ -7,7 +7,7 @@ require("nvim-treesitter").setup({
 
 -- Parse on buffer load to enable rainbow delimiters, see https://github.com/HiPhish/rainbow-delimiters.nvim/issues/187
 local function on_buf_win_enter(_args)
-    if vim.bo.filetype ~= "" and vim.bo.filetype ~= "clipper" and vim.bo.filetype ~= "dap-repl" then
+    if vim.bo.filetype ~= "" and vim.bo.filetype ~= "git" and vim.bo.filetype ~= "clipper" and vim.bo.filetype ~= "dap-repl" then
         vim.treesitter.start()
     end
 end
