@@ -3,7 +3,7 @@ local Plug = vim.fn["plug#"]
 vim.call("plug#begin")
 
 Plug("nvim-lualine/lualine.nvim")
-Plug("rebelot/kanagawa.nvim")
+Plug("thesimonho/kanagawa-paper.nvim")
 Plug("scrooloose/nerdtree")
 Plug("tpope/vim-dispatch")
 Plug("tpope/vim-unimpaired")
