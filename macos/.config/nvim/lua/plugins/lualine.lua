@@ -2,7 +2,7 @@
 require("lualine").setup({
     options = {
         icons_enabled = false,
-        theme = "kanagawa-paper",
+        theme = "kanagawa",
         section_separators = { left = '', right = '' },
         component_separators = { left = '|', right = '|' }
     },
