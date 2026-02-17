@@ -49,6 +49,21 @@ require("dapui").setup()
 
 -- DAP ADAPTER CONFIGURATION
 -- C++
+dap.configurations.c = {
+    {
+        name = "C: launch process",
+        type = "codelldb",
+        request = "launch",
+        program = function()
+            return vim.fn.input("Path to executable: ", vim.fn.getcwd(), "file")
+        end,
+        cwd = "${workspaceFolder}",
+        stopOnEntry = false,
+        showDisassembly = "never",
+    },
+}
+
+-- C++
 dap.configurations.cpp = {
     {
         name = "C++: launch process",
@@ -108,21 +123,5 @@ dap.configurations.python = {
         port = function()
             return tonumber(vim.fn.input("Port [5678]: ")) or 5678
         end,
-    },
-}
-
--- Rust
-dap.configurations.rust = {
-    {
-        name = "Rust: launch process",
-        type = "codelldb",
-        request = "launch",
-        program = function()
-            vim.fn.system("cargo build")
-            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/target/debug/", "file")
-        end,
-        cwd = "${workspaceFolder}",
-        stopOnEntry = false,
-        showDisassembly = "never",
     },
 }

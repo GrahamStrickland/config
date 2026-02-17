@@ -50,6 +50,7 @@ Plug("hat0uma/csvview.nvim")
 Plug("JuliaEditorSupport/julia-vim")
 Plug("Cliffback/netcoredbg-macOS-arm64.nvim")
 Plug("GustavEikaas/easy-dotnet.nvim")
+Plug("mrcjkb/rustaceanvim")
 Plug("nvim-treesitter/nvim-treesitter", { ["do"] = ":TSUpdate" })
 
 vim.call("plug#end")
