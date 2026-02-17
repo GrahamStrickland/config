@@ -4,29 +4,3 @@ require("nvim-treesitter").setup({
         enable =true,
     },
 })
-
-whitelist = { 
-    "bash", 
-    "c", 
-    "c_sharp", 
-    "cmake", 
-    "cpp", 
-    "lua",
-    "powershell",
-    "python",
-    "query",
-    "toml",
-    "vim",
-    "yaml"
-}           
-
--- Parse on buffer load to enable rainbow delimiters, see https://github.com/HiPhish/rainbow-delimiters.nvim/issues/187
-local function on_buf_win_enter(_args)
-    for _, filetype in pairs(whitelist) do
-        if vim.bo.filetype == filetype then
-            vim.treesitter.start()
-        end
-    end
-end
-
-vim.api.nvim_create_autocmd("BufWinEnter", {pattern = "*", callback = on_buf_win_enter})
