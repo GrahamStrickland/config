@@ -33,7 +33,6 @@ Plug("nvim-neotest/nvim-nio")
 Plug("rcarriga/nvim-dap-ui")
 Plug("hat0uma/csvview.nvim")
 Plug("GustavEikaas/easy-dotnet.nvim")
-Plug("HiPhish/rainbow-delimiters.nvim")
 Plug("nvim-treesitter/nvim-treesitter", { ["do"] = ":TSUpdate" })
 
 vim.call("plug#end")
