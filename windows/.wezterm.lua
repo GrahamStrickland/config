@@ -8,7 +8,7 @@ config.freetype_load_flags = "NO_HINTING"
 config.freetype_load_target = "Light"
 config.freetype_render_target = "HorizontalLcd"
 config.cell_width = 0.9
-config.default_prog = { "pwsh.exe", "-NoLogo" }
+config.default_prog = { "C:\\Program Files\\PowerShell\\7\\pwsh.exe", "-NoLogo" }
 
 config.window_decorations = "RESIZE|INTEGRATED_BUTTONS"
 
@@ -23,7 +23,7 @@ config.keys = {
     },
     {
         key = "f",
-        mods = "CMD|CTRL",
+        mods = "WIN|CTRL",
         action = wezterm.action.ToggleFullScreen,
     }
 }
@@ -36,7 +36,7 @@ for i = 1, 8 do
     })
     table.insert(config.keys, {
         key = tostring(i),
-        mods = "CTRL|CMD",
+        mods = "CTRL",
         action = wezterm.action.MoveTab(i - 1),
     })
 end
