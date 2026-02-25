@@ -35,7 +35,7 @@ for i = 1, 8 do
     })
     table.insert(config.keys, {
         key = tostring(i),
-        mods = "CTRL|CMD",
+        mods = "CTRL",
         action = wezterm.action.MoveTab(i - 1),
     })
 end
