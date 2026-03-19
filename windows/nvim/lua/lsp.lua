@@ -66,6 +66,20 @@ vim.lsp.config["luals"] = {
 }
 vim.lsp.enable("luals")
 
+-- Harbour setup
+vim.lsp.config["harbour_ls"] = {
+    cmd = { "node", [[C:\Users\graham\dev\harbourCodeExtension\server\src\main.js]] },
+    filetypes = { "clipper" },
+    on_attach = function(client, bufnr)
+        print("Harbour LSP attached")
+    end,
+    flags = {
+        allow_incremental_sync = true,
+        debounce_text_changes = 150,
+    }
+}
+vim.lsp.enable("harbour_ls")
+
 -- Python setup
 vim.lsp.config["ruff"] = {
     cmd = { "uv", "run", "ruff", "server" },
