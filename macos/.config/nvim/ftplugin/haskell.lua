@@ -4,19 +4,19 @@ local opts = { noremap = true, silent = true, buffer = bufnr, }
 
 vim.keymap.set(
     "n",
-    "<space>cl",
+    "<leader>cl",
     vim.lsp.codelens.run,
     opts
 )
 vim.keymap.set(
     "n",
-    "<space>hs",
+    "<leader>hs",
     ht.hoogle.hoogle_signature,
     opts
 )
 vim.keymap.set(
     "n",
-    "<space>ea",
+    "<leader>ea",
     ht.lsp.buf_eval_all,
     opts
 )
