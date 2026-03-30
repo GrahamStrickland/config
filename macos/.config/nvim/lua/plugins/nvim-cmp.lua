@@ -1,5 +1,5 @@
 -- nvim-cmp setup
-local cmp = require"cmp"
+local cmp = require "cmp"
 
 cmp.setup({
     snippet = {
@@ -19,14 +19,14 @@ cmp.setup({
         ["<cr>"] = cmp.mapping.confirm({ select = true }),
     }),
     sources = cmp.config.sources({
-        { name = "nvim_lsp" },
-        { name = "luasnip" },
-    }, {
-        { name = "buffer" },
-    },
-    {
-        { name = "conjure" },
-    })
+            { name = "nvim_lsp" },
+            { name = "luasnip" },
+        }, {
+            { name = "buffer" },
+        },
+        {
+            { name = "conjure" },
+        })
 })
 cmp.setup.cmdline({ "/", "?" }, {
     mapping = cmp.mapping.preset.cmdline(),
