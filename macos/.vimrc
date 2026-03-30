@@ -69,32 +69,10 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mileszs/ack.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/vim-plug'
-Plug 'doums/darcula'
-Plug 'tomasiser/vim-code-dark'
 Plug 'morhetz/gruvbox'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-if has('nvim')
-    " Lean support (https://github.com/Julian/lean.nvim/)
-    Plug 'Julian/lean.nvim'
-    Plug 'neovim/nvim-lspconfig'
-    Plug 'nvim-lua/plenary.nvim'
-
-    Plug 'hrsh7th/nvim-cmp'        " For LSP completion
-    Plug 'hrsh7th/cmp-nvim-lsp'
-    Plug 'hrsh7th/cmp-buffer'
-    Plug 'hrsh7th/vim-vsnip'       " For snippets
-    Plug 'andrewradev/switch.vim'  " For Lean switch support
-    Plug 'tomtom/tcomment_vim'     " For commenting motions
-    Plug 'nvim-telescope/telescope.nvim' " For Loogle search
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    Plug 'kosayoda/nvim-lightbulb'
-    Plug 'rmagatti/goto-preview'
-    Plug 'nvim-lua/lsp-status.nvim'
-    Plug 'mfussenegger/nvim-dap'
-endif
 
 call plug#end()
 
