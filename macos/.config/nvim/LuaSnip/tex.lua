@@ -35,88 +35,90 @@ end
 
 
 return {
-    s({trig = ";a", snippetType = "autosnippet"},
+    s({ trig = ";a", snippetType = "autosnippet" },
         {
             t("\\alpha"),
         }
     ),
-    s({trig = ";b", snippetType = "autosnippet"},
+    s({ trig = ";b", snippetType = "autosnippet" },
         {
             t("\\beta"),
         }
     ),
-    s({trig = ";g", snippetType = "autosnippet"},
+    s({ trig = ";g", snippetType = "autosnippet" },
         {
             t("\\gamma"),
         }
     ),
-    s({trig = "([%a%)%}])00", regTrig = true, wordTrig = false, snippetType = "autosnippet"},
+    s({ trig = "([%a%)%}])00", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
         fmta("<>_{<>}",
             {
-                f( function(_, snip) return snip.captures[1] end ),
+                f(function(_, snip) return snip.captures[1] end),
                 t("0")
             }
         )
     ),
-    s({trig = "([^%a])ee", regTrig = true, wordTrig = false},
+    s({ trig = "([^%a])ee", regTrig = true, wordTrig = false },
         fmta("<>e^{<>}",
             {
-                f( function(_, snip) return snip.captures[1] end),
+                f(function(_, snip) return snip.captures[1] end),
                 d(1, get_visual),
             }
         )
     ),
-    s({trig = "([^%a])mm", wordTrig = false, regTrig = true, snippetType = "autosnippet", dscr = "Expands 'mm' into '$$'"},
+    s(
+        { trig = "([^%a])mm", wordTrig = false, regTrig = true, snippetType = "autosnippet", dscr =
+        "Expands 'mm' into '$$'" },
         fmta("<>$<>$",
-            { 
-                f( function(_, snip) return snip.captures[1] end),
-                d(1, get_visual), 
+            {
+                f(function(_, snip) return snip.captures[1] end),
+                d(1, get_visual),
             }
         )
     ),
-    s({trig = "bb", dscr = "Expands 'bb' into '[]'"},
+    s({ trig = "bb", dscr = "Expands 'bb' into '[]'" },
         fmta([[
                 \[
                     <>
                 \]
              ]],
-            { 
-                d(1, get_visual), 
+            {
+                d(1, get_visual),
             }
         )
     ),
-    s({trig = "h1", dscr = "Top-level section", snippetType = "autosnippet"},
+    s({ trig = "h1", dscr = "Top-level section", snippetType = "autosnippet" },
         fmta([[\section*{<>}]],
             { i(1) }
         ),
-        {condition = line_begin}
+        { condition = line_begin }
     ),
-    s({trig = "tt", dscr = "Expands 'tt' into '\texttt{}'"},
+    s({ trig = "tt", dscr = "Expands 'tt' into '\texttt{}'" },
         fmta("\\texttt{<>}",
-            { 
-                d(1, get_visual), 
+            {
+                d(1, get_visual),
             }
         )
     ),
-    s({trig = "tii", dscr = "Expands 'tii' into '\textit{}'"},
+    s({ trig = "tii", dscr = "Expands 'tii' into '\textit{}'" },
         fmta("\\textit{<>}",
             {
                 d(1, get_visual),
             }
         )
     ),
-    s({trig = "ff", dscr = "Expands 'ff' into '\frac{}{}'", snippetType = "autosnippet"},
+    s({ trig = "ff", dscr = "Expands 'ff' into '\frac{}{}'", snippetType = "autosnippet" },
         fmt(
             "\\frac{<>}{<>}",
             {
                 i(1),
                 i(2)
             },
-            {delimiters = "<>"}
+            { delimiters = "<>" }
         ),
-        {condition = tex_utils.in_mathzone}
+        { condition = tex_utils.in_mathzone }
     ),
-    s({trig = "eq", dscr = "Expands 'eq' into an equation environment"},
+    s({ trig = "eq", dscr = "Expands 'eq' into an equation environment" },
         fmta(
             [[
                 \begin{equation*}
@@ -126,7 +128,7 @@ return {
             { i(0) }
         )
     ),
-    s({trig = "new", snippetType = "autosnippet"},
+    s({ trig = "new", snippetType = "autosnippet" },
         fmta(
             [[
                 \begin{<>}
@@ -139,17 +141,17 @@ return {
                 rep(1),
             }
         ),
-        {condition = line_begin}
+        { condition = line_begin }
     ),
-    s({trig = "dd"},
+    s({ trig = "dd" },
         fmta("\\draw [<>]",
             {
                 i(1, "params"),
             }
         ),
-        {condition = tex_utils.in_tikz}
+        { condition = tex_utils.in_tikz }
     ),
-    s({trig = "hr", dscr = "The hyperref package's href{}{} command (for url links)"},
+    s({ trig = "hr", dscr = "The hyperref package's href{}{} command (for url links)" },
         fmta(
             [[\href{<>}{<>}]],
             {
