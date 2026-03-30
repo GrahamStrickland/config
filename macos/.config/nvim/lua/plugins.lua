@@ -1,56 +1,66 @@
 -- PLUGIN MANAGEMENT --
--- Manage plugins with vim-plug.
-local Plug = vim.fn["plug#"]
-vim.call("plug#begin")
+local gh = function(x) return "https://github.com/" .. x end
 
-Plug("junegunn/fzf", { ["do"] = ":call fzf#install()" })
-Plug("junegunn/fzf.vim")
-Plug("wincent/ferret")
-Plug("nvim-lualine/lualine.nvim")
-Plug("vague2k/vague.nvim")
-Plug("scrooloose/nerdtree")
-Plug("tpope/vim-dispatch")
-Plug("tpope/vim-unimpaired")
-Plug("tpope/vim-vinegar")
-Plug("tpope/vim-fugitive")
-Plug("tpope/vim-repeat")
-Plug("tpope/vim-surround")
-Plug("tpope/vim-repeat")
-Plug("guns/vim-sexp")
-Plug("lewis6991/gitsigns.nvim")
-Plug("yorickpeterse/nvim-pqf")
-Plug("ctrlpvim/ctrlp.vim")
-Plug("mileszs/ack.vim")
-Plug("easymotion/vim-easymotion")
-Plug("tomtom/tcomment_vim")
-Plug("hrsh7th/cmp-nvim-lsp")
-Plug("hrsh7th/cmp-buffer")
-Plug("hrsh7th/cmp-path")
-Plug("hrsh7th/cmp-cmdline")
-Plug("hrsh7th/nvim-cmp")
-Plug("lervag/vimtex")
-Plug("L3MON4D3/LuaSnip", { ["do"] = ":make install_jsregexp()" })
-Plug("saadparwaiz1/cmp_luasnip")
-Plug("nvim-lua/plenary.nvim")
-Plug("Julian/lean.nvim")
-Plug("radenling/vim-dispatch-neovim")
-Plug("clojure-vim/vim-jack-in")
-Plug("Olical/conjure")
-Plug("nvim-telescope/telescope.nvim")
-Plug("nvim-telescope/telescope-ui-select.nvim")
-Plug("rmagatti/logger.nvim")
-Plug("rmagatti/goto-preview")
-Plug("mfussenegger/nvim-dap")
-Plug("mfussenegger/nvim-dap-python")
-Plug("mfussenegger/nvim-jdtls")
-Plug("nvim-neotest/nvim-nio")
-Plug("rcarriga/nvim-dap-ui")
-Plug("mrcjkb/haskell-tools.nvim")
-Plug("hat0uma/csvview.nvim")
-Plug("JuliaEditorSupport/julia-vim")
-Plug("Cliffback/netcoredbg-macOS-arm64.nvim")
-Plug("GustavEikaas/easy-dotnet.nvim")
-Plug("mrcjkb/rustaceanvim")
-Plug("nvim-treesitter/nvim-treesitter", { ["do"] = ":TSUpdate" })
+vim.api.nvim_create_autocmd("PackChanged", {
+    callback = function(ev)
+        local name, kind = ev.data.spec.name, ev.data.kind
+        if name == "nvim-treesitter" and kind == "update" then
+            if not ev.data.active then vim.cmd.packadd("nvim-treesitter") end
+            vim.cmd("TSUpdate")
+        elseif name == "fzf" and kind == "update" then
+            vim.cmd("fzf#install()")
+        elseif name == "LuaSnip" and kind == "update" then
+            vim.cmd(":make install_jsregexp()")
+        end
+    end
+})
 
-vim.call("plug#end")
+vim.pack.add({
+    gh("junegunn/fzf"),
+    gh("nvim-lualine/lualine.nvim"),
+    gh("vague2k/vague.nvim"),
+    gh("scrooloose/nerdtree"),
+    gh("tpope/vim-dispatch"),
+    gh("tpope/vim-unimpaired"),
+    gh("tpope/vim-vinegar"),
+    gh("tpope/vim-fugitive"),
+    gh("tpope/vim-repeat"),
+    gh("tpope/vim-surround"),
+    gh("tpope/vim-repeat"),
+    gh("guns/vim-sexp"),
+    gh("lewis6991/gitsigns.nvim"),
+    gh("yorickpeterse/nvim-pqf"),
+    gh("ctrlpvim/ctrlp.vim"),
+    gh("mileszs/ack.vim"),
+    gh("easymotion/vim-easymotion"),
+    gh("tomtom/tcomment_vim"),
+    gh("hrsh7th/cmp-nvim-lsp"),
+    gh("hrsh7th/cmp-buffer"),
+    gh("hrsh7th/cmp-path"),
+    gh("hrsh7th/cmp-cmdline"),
+    gh("hrsh7th/nvim-cmp"),
+    gh("lervag/vimtex"),
+    gh("L3MON4D3/LuaSnip"),
+    gh("saadparwaiz1/cmp_luasnip"),
+    gh("nvim-lua/plenary.nvim"),
+    gh("Julian/lean.nvim"),
+    gh("radenling/vim-dispatch-neovim"),
+    gh("clojure-vim/vim-jack-in"),
+    gh("Olical/conjure"),
+    gh("nvim-telescope/telescope.nvim"),
+    gh("nvim-telescope/telescope-ui-select.nvim"),
+    gh("rmagatti/logger.nvim"),
+    gh("rmagatti/goto-preview"),
+    gh("mfussenegger/nvim-dap"),
+    gh("mfussenegger/nvim-dap-python"),
+    gh("mfussenegger/nvim-jdtls"),
+    gh("nvim-neotest/nvim-nio"),
+    gh("rcarriga/nvim-dap-ui"),
+    gh("mrcjkb/haskell-tools.nvim"),
+    gh("hat0uma/csvview.nvim"),
+    gh("JuliaEditorSupport/julia-vim"),
+    gh("Cliffback/netcoredbg-macOS-arm64.nvim"),
+    gh("GustavEikaas/easy-dotnet.nvim"),
+    gh("mrcjkb/rustaceanvim"),
+    gh("nvim-treesitter/nvim-treesitter"),
+})
