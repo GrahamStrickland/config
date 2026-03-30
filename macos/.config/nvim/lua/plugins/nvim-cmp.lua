@@ -1,6 +1,8 @@
 -- nvim-cmp setup
 local cmp = require "cmp"
 
+cmp.register_source("easy-dotnet", require("easy-dotnet").package_completion_source)
+
 cmp.setup({
     snippet = {
         expand = function(args)
@@ -19,14 +21,12 @@ cmp.setup({
         ["<cr>"] = cmp.mapping.confirm({ select = true }),
     }),
     sources = cmp.config.sources({
-            { name = "nvim_lsp" },
-            { name = "luasnip" },
-        }, {
-            { name = "buffer" },
-        },
-        {
-            { name = "conjure" },
-        })
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
+        { name = "easy-dotnet" },
+        { name = "buffer" },
+        { name = "conjure" },
+    })
 })
 cmp.setup.cmdline({ "/", "?" }, {
     mapping = cmp.mapping.preset.cmdline(),
