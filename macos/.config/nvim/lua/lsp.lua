@@ -24,7 +24,7 @@ vim.lsp.enable("clangd")
 -- Clojure setup
 vim.lsp.config["clojure_lsp"] = {
     cmd = { "clojure-lsp" },
-    filetypes = { "clojure", "edn", "clojurescript" },
+    filetypes = { "clojure" },
     root_markers = { "project.clj", "deps.edn", "build.boot", "shadow-cljs.edn", ".git" },
     single_file_support = true,
 }
@@ -41,7 +41,7 @@ vim.lsp.enable("cmake")
 -- JavaScript/TypeScript setup
 vim.lsp.config["ts_ls"] = {
     cmd = { "typescript-language-server", "--stdio" },
-    filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+    filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
     root_markers = { "tsconfig.json", "jsconfig.json", "package.json" },
     init_options = {
         hostInfo = "neovim",
@@ -147,7 +147,7 @@ vim.lsp.enable({ "ty", "ruff" })
 -- R setup
 vim.lsp.config["r_language_server"] = {
     cmd = { "R", "--no-echo", "-e", "languageserver::run()" },
-    filetypes = { "r", "R" },
+    filetypes = { "r" },
 }
 vim.lsp.enable("r_language_server")
 
