@@ -61,66 +61,66 @@ vim.api.nvim_set_keymap(
 
 -- DAP Mappings
 vim.keymap.set(
-    "n", 
-    "<F5>", 
+    "n",
+    "<F5>",
     function() require("dap").continue() end
 )
 vim.keymap.set(
-    "n", 
-    "<S-F5>", 
+    "n",
+    "<S-F5>",
     function() require("dap").terminate() end
 )
 vim.keymap.set(
-    "n", 
-    "<F10>", 
+    "n",
+    "<F10>",
     function() require("dap").step_over() end
 )
 vim.keymap.set(
-    "n", 
-    "<F11>", 
+    "n",
+    "<F11>",
     function() require("dap").step_into() end
 )
 vim.keymap.set(
-    "n", 
-    "<S-F11>", 
+    "n",
+    "<S-F11>",
     function() require("dap").step_out() end
 )
 vim.keymap.set(
-    "n", 
-    "<F9>", 
+    "n",
+    "<F9>",
     function() require("dap").toggle_breakpoint() end
 )
 vim.keymap.set(
-    "n", 
-    "<leader>dpr", 
+    "n",
+    "<leader>dpr",
     function() require("dap").repl.open() end
 )
 vim.keymap.set(
-    "n", 
-    "<leader>dpa", 
+    "n",
+    "<leader>dpa",
     function() require("dap").run_last() end
 )
 vim.keymap.set(
-    {"n", "v"}, 
-    "<leader>dph", 
+    { "n", "v" },
+    "<leader>dph",
     function() require("dap.ui.widgets").hover() end
 )
 vim.keymap.set(
-    {"n", "v"}, 
-    "<leader>dpp", 
+    { "n", "v" },
+    "<leader>dpp",
     function() require("dap.ui.widgets").preview() end
 )
 vim.keymap.set(
-    "n", 
-    "<leader>dpf", 
+    "n",
+    "<leader>dpf",
     function()
         local widgets = require("dap.ui.widgets")
         widgets.centered_float(widgets.frames)
     end
 )
 vim.keymap.set(
-    "n", 
-    "<leader>dps", 
+    "n",
+    "<leader>dps",
     function()
         local widgets = require("dap.ui.widgets")
         widgets.centered_float(widgets.scopes)
@@ -142,59 +142,30 @@ vim.keymap.set(
     function() require("dapui").toggle() end
 )
 
--- Telescope settings
-local builtin = require("telescope.builtin")
-vim.keymap.set(
-    "n",    
-    "<leader>ff", 
-    builtin.find_files, 
-    {}
-)
-vim.keymap.set(
-    "n", 
-    "<leader>fg", 
-    builtin.live_grep, 
-    {}
-)
-vim.keymap.set(
-    "n", 
-    "<leader>fb", 
-    builtin.buffers, 
-    {}
-)
-vim.keymap.set(
-    "n", 
-    "<leader>fh", 
-    builtin.help_tags, 
-    {}
-)
-vim.keymap.set(
-    "n",
-    "<leader>fd",
-    builtin.lsp_definitions,
-    {}
-)
-vim.keymap.set(
-    "n",
-    "<leader>fi",
-    builtin.lsp_implementations,
-    {}
-)
-vim.keymap.set(
-    "n",
-    "<leader>fr",
-    builtin.lsp_references,
-    {}
-)
+-- Telescope settings (deferred loading)
+local function setup_telescope_keybindings()
+    local ok, builtin = pcall(require, "telescope.builtin")
+    if not ok then
+        return
+    end
 
--- Code actions
+    vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+    vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
+    vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
+    vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
+    vim.keymap.set("n", "<leader>fd", builtin.lsp_definitions, {})
+    vim.keymap.set("n", "<leader>fi", builtin.lsp_implementations, {})
+    vim.keymap.set("n", "<leader>fr", builtin.lsp_references, {})
+end
+
+-- Try to setup telescope keybindings when possible
+vim.defer_fn(setup_telescope_keybindings, 100)
+
+-- LSP keybindings 
 vim.keymap.set(
-    "n", 
-    "<leader>ca", 
-    function()
-	    vim.lsp.buf.code_action()
-    end, 
-    { noremap = true, silent = true }
+    "n",
+    "gd",
+    function() vim.lsp.buf.definition() end
 )
 
 -- Formatting
@@ -243,54 +214,4 @@ vim.keymap.set(
         require("csvview").toggle()
     end,
     { noremap = true, silent = true }
-)
-
--- Goto Preview
-vim.keymap.set(
-    "n", 
-    "<leader>gpd", 
-    function()
-        require("goto-preview").goto_preview_definition()
-    end,
-    {noremap=true}
-)
-vim.keymap.set(
-    "n", 
-    "<leader>gpt", 
-    function()
-        require("goto-preview").goto_preview_type_definition()
-    end,
-    {noremap=true}
-)
-vim.keymap.set(
-    "n", 
-    "<leader>gpi", 
-    function()
-        require("goto-preview").goto_preview_implementation()
-    end,
-    {noremap=true}
-)
-vim.keymap.set(
-    "n", 
-    "<leader>gpD", 
-    function()
-        require("goto-preview").goto_preview_declaration()
-    end,
-    {noremap=true}
-)
-vim.keymap.set(
-    "n", 
-    "<leader>gpr", 
-    function()
-        require("goto-preview").goto_preview_references()
-    end,
-    {noremap=true}
-)
-vim.keymap.set(
-    "n", 
-    "<leader>gP", 
-    function()
-        require("goto-preview").close_all_win()
-    end,
-    {noremap=true}
 )

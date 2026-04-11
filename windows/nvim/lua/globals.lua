@@ -1,3 +1,6 @@
+-- UI SETUP --
+require("vim._core.ui2").enable({})
+
 -- OPTION SETUP --
 vim.g.NERDTreeHijackNetrw = 0
 
@@ -33,17 +36,18 @@ end
 
 -- WINDOWS SHELL SETUP
 if vim.fn.has("win32") == 1 then
-  if vim.fn.executable("pwsh") == 1 then
-    vim.opt.shell = "pwsh"
-  else
-    vim.opt.shell = "powershell"
-  end
+    if vim.fn.executable("pwsh") == 1 then
+        vim.opt.shell = "pwsh"
+    else
+        vim.opt.shell = "powershell"
+    end
 
-  vim.opt.shellcmdflag = "-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"
-  vim.opt.shellredir = "2>&1 | Out-File -Encoding utf8 %s; exit $LastExitCode"
-  vim.opt.shellpipe = "2>&1 | Out-File -Encoding utf8 %s; exit $LastExitCode"
-  vim.opt.shellquote = ""
-  vim.opt.shellxquote = ""
+    vim.opt.shellcmdflag =
+    "-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"
+    vim.opt.shellredir = "2>&1 | Out-File -Encoding utf8 %s; exit $LastExitCode"
+    vim.opt.shellpipe = "2>&1 | Out-File -Encoding utf8 %s; exit $LastExitCode"
+    vim.opt.shellquote = ""
+    vim.opt.shellxquote = ""
 end
 
 -- Enable swap, backup, and persistant undo

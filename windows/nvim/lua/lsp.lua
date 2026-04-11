@@ -1,4 +1,6 @@
 -- LSP SETUP
+vim.o.autocomplete = true
+
 vim.lsp.config("*", {
     capabilities = {
         textDocument = {
@@ -21,18 +23,10 @@ vim.lsp.config["clangd"] = {
 }
 vim.lsp.enable("clangd")
 
--- CMake setup
-vim.lsp.config["cmake"] = {
-    cmd = { "cmake-language-server" },
-    filetypes = { "cmake" },
-    root_markers = { "CMakeLists.txt" },
-}
-vim.lsp.enable("cmake")
-
 -- JavaScript/TypeScript setup
 vim.lsp.config["ts_ls"] = {
     cmd = { "typescript-language-server", "--stdio" },
-    filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+    filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
     root_markers = { "tsconfig.json", "jsconfig.json", "package.json" },
     init_options = {
         hostInfo = "neovim",
@@ -43,7 +37,7 @@ vim.lsp.enable("ts_ls")
 -- Lua setup
 vim.lsp.config["luals"] = {
     cmd = { "lua-language-server", "--logpath=" .. vim.fn.stdpath("cache") .. "/luals.log" },
-    root_markers = { {".luarc.json", ".luarc.jsonc"}, ".git" },
+    root_markers = { { ".luarc.json", ".luarc.jsonc" }, ".git" },
     filetypes = { "lua" },
     on_attach = function(client, bufnr)
         if client:supports_method("textDocument/formatting") then
@@ -102,35 +96,6 @@ vim.lsp.config["ty"] = {
     filetypes = { "python" },
 }
 vim.lsp.enable({ "ty", "ruff" })
-
--- Rust setup
-vim.lsp.config["rust_analyzer"] = {
-    cmd = { "rust-analyzer" },
-    workspace_required = true,
-    on_attach = function(client, bufnr)
-        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-    end,
-    settings = {
-        ["rust-analyzer"] = {
-            imports = {
-                granularity = {
-                    group = "module",
-                },
-                prefix = "self",
-            },
-            cargo = {
-                buildScripts = {
-                    enable = true,
-                },
-            },
-            procMacro = {
-                enable = true
-            },
-        }
-    },
-    filetypes = { "rust" },
-}
-vim.lsp.enable("rust_analyzer")
 
 -- Setup auto-completion
 vim.api.nvim_create_autocmd("LspAttach", {
