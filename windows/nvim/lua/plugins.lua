@@ -7,14 +7,11 @@ vim.api.nvim_create_autocmd("PackChanged", {
         if name == "nvim-treesitter" and kind == "update" then
             if not ev.data.active then vim.cmd.packadd("nvim-treesitter") end
             vim.cmd("TSUpdate")
-        elseif name == "fzf" and kind == "update" then
-            vim.cmd("fzf#install()")
         end
     end
 })
 
 vim.pack.add({
-    gh("junegunn/fzf"),
     gh("nvim-lualine/lualine.nvim"),
     gh("vague2k/vague.nvim"),
     gh("scrooloose/nerdtree"),
