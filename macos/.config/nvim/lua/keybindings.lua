@@ -197,6 +197,23 @@ vim.keymap.set(
     {}
 )
 
+-- LSP keybindings
+vim.keymap.set(
+    "n",
+    "gd",
+    function() vim.lsp.buf.definition() end
+)
+vim.keymap.set(
+    "n",
+    "gD",
+    function() vim.lsp.buf.declaration() end
+)
+vim.keymap.set(
+    "n",
+    "gt",
+    function() vim.lsp.buf.type_definition() end
+)
+
 -- Formatting
 vim.keymap.set(
     "n",
