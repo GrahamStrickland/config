@@ -1,4 +1,6 @@
 -- LSP SETUP
+vim.o.autocomplete = true
+
 vim.lsp.config("*", {
     capabilities = {
         textDocument = {
