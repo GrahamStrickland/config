@@ -10,7 +10,7 @@ vim.keymap.set(
 )
 vim.keymap.set(
     "n",
-    "<leader>hs",
+    "<leader>hg",
     ht.hoogle.hoogle_signature,
     opts
 )
