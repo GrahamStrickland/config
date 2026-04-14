@@ -4,10 +4,6 @@
       "rev": "a62e1083a3cfe8b6b206e7d3d33a51091df25357",
       "src": "https://github.com/L3MON4D3/LuaSnip"
     },
-    "ack.vim": {
-      "rev": "36e40f9ec91bdbf6f1adf408522a73a6925c3042",
-      "src": "https://github.com/mileszs/ack.vim"
-    },
     "cmp-buffer": {
       "rev": "b74fab3656eea9de20a9b8116afa3cfc4ec09657",
       "src": "https://github.com/hrsh7th/cmp-buffer"
@@ -36,24 +32,16 @@
       "rev": "7022e18a0fbae9aecf99a3ba02b2a541edc2b8a1",
       "src": "https://github.com/hat0uma/csvview.nvim"
     },
-    "ctrlp.vim": {
-      "rev": "3739dcd638f457559d5a1ae1e398276175694e4b",
-      "src": "https://github.com/ctrlpvim/ctrlp.vim"
-    },
     "easy-dotnet.nvim": {
-      "rev": "ccef27ec34d757f557960477f029ead51dc8b089",
+      "rev": "77c1eb76a8a248d5803323bf9d54eb6451ffac27",
       "src": "https://github.com/GustavEikaas/easy-dotnet.nvim"
     },
     "gitsigns.nvim": {
       "rev": "8d82c240f190fc33723d48c308ccc1ed8baad69d",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
-    "goto-preview": {
-      "rev": "d2d6923c9b9e0e43f0b9b566f261a8b1ae016540",
-      "src": "https://github.com/rmagatti/goto-preview"
-    },
     "haskell-tools.nvim": {
-      "rev": "9e548ed8839fa4e74434eee12f833a9ee61ebec0",
+      "rev": "5bcbe6a9fe4aa24833b44b42ae221f68b5f00235",
       "src": "https://github.com/mrcjkb/haskell-tools.nvim"
     },
     "julia-vim": {
@@ -61,12 +49,8 @@
       "src": "https://github.com/JuliaEditorSupport/julia-vim"
     },
     "lean.nvim": {
-      "rev": "d114cd31478407a6f4391e4e1b7ad53873e4ea41",
+      "rev": "9e1367b424059461b5b85ceee6e4752d9863c4bd",
       "src": "https://github.com/Julian/lean.nvim"
-    },
-    "logger.nvim": {
-      "rev": "63dd10c9b9a159fd6cfe08435d9606384ff103c5",
-      "src": "https://github.com/rmagatti/logger.nvim"
     },
     "lualine.nvim": {
       "rev": "a905eeebc4e63fdc48b5135d3bf8aea5618fb21c",
@@ -117,7 +101,7 @@
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "rustaceanvim": {
-      "rev": "b9fea85bd55010b10c79bbe4707ce3ddb7638e42",
+      "rev": "f95309a90295be99644efc46fa8127336d21730c",
       "src": "https://github.com/mrcjkb/rustaceanvim"
     },
     "tcomment_vim": {
@@ -129,7 +113,7 @@
       "src": "https://github.com/nvim-telescope/telescope-ui-select.nvim"
     },
     "telescope.nvim": {
-      "rev": "f7c673b8e46e8f233ff581d3624a517d33a7e264",
+      "rev": "3ab376cfae65b921dda454df5967f8df673effc6",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
     },
     "vague.nvim": {
