@@ -21,19 +21,15 @@
       "src": "https://github.com/hat0uma/csvview.nvim"
     },
     "easy-dotnet.nvim": {
-      "rev": "1b1d5ff97960a88484b3307f18ec425ea6bc6d05",
+      "rev": "77c1eb76a8a248d5803323bf9d54eb6451ffac27",
       "src": "https://github.com/GustavEikaas/easy-dotnet.nvim"
-    },
-    "fzf": {
-      "rev": "0eb2ae9f8bd57fed6242d76d2273df4a1be31cc8",
-      "src": "https://github.com/junegunn/fzf"
     },
     "gitsigns.nvim": {
       "rev": "8d82c240f190fc33723d48c308ccc1ed8baad69d",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "lualine.nvim": {
-      "rev": "f5d2a8570f8b736ddb9bb4be504355bcd6e15ec8",
+      "rev": "a905eeebc4e63fdc48b5135d3bf8aea5618fb21c",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
     "nerdtree": {
@@ -81,7 +77,7 @@
       "src": "https://github.com/nvim-telescope/telescope-ui-select.nvim"
     },
     "telescope.nvim": {
-      "rev": "f7c673b8e46e8f233ff581d3624a517d33a7e264",
+      "rev": "3ab376cfae65b921dda454df5967f8df673effc6",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
     },
     "vague.nvim": {
