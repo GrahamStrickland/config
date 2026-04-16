@@ -44,9 +44,6 @@ local get_python_path = function()
 end
 local dap_python = require("dap-python")
 
--- UI setup
-require("dapui").setup()
-
 -- DAP ADAPTER CONFIGURATION
 -- C++
 dap.configurations.c = {

@@ -110,47 +110,6 @@ vim.keymap.set(
     "<leader>dpa",
     function() require("dap").run_last() end
 )
-vim.keymap.set(
-    { "n", "v" },
-    "<leader>dph",
-    function() require("dap.ui.widgets").hover() end
-)
-vim.keymap.set(
-    { "n", "v" },
-    "<leader>dpp",
-    function() require("dap.ui.widgets").preview() end
-)
-vim.keymap.set(
-    "n",
-    "<leader>dpf",
-    function()
-        local widgets = require("dap.ui.widgets")
-        widgets.centered_float(widgets.frames)
-    end
-)
-vim.keymap.set(
-    "n",
-    "<leader>dps",
-    function()
-        local widgets = require("dap.ui.widgets")
-        widgets.centered_float(widgets.scopes)
-    end
-)
-vim.keymap.set(
-    "n",
-    "<leader>duo",
-    function() require("dapui").open() end
-)
-vim.keymap.set(
-    "n",
-    "<leader>duc",
-    function() require("dapui").close() end
-)
-vim.keymap.set(
-    "n",
-    "<leader>dut",
-    function() require("dapui").toggle() end
-)
 
 -- Telescope key bindings
 local builtin = require("telescope.builtin")

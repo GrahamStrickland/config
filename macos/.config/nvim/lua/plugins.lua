@@ -48,7 +48,7 @@ vim.pack.add({
     gh("mfussenegger/nvim-dap-python"),
     gh("mfussenegger/nvim-jdtls"),
     gh("nvim-neotest/nvim-nio"),
-    gh("rcarriga/nvim-dap-ui"),
+    gh("igorlfs/nvim-dap-view"),
     gh("mrcjkb/haskell-tools.nvim"),
     gh("hat0uma/csvview.nvim"),
     gh("JuliaEditorSupport/julia-vim"),
