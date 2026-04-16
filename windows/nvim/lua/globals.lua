@@ -15,6 +15,8 @@ vim.opt.background = "dark"   -- Set to dark mode.
 vim.opt.hlsearch = true       -- Highlight search results.
 vim.opt.incsearch = true      -- Show where search pattern matches.
 vim.opt.clipboard = "unnamed" -- Copy into system (*) register.
+vim.opt.ignorecase = true     -- Ignores case when searching patterns
+vim.opt.smartcase = true      -- Automatically switches to case-sensitive search if a capital letter is used
 
 -- Adapted for Windows from
 -- https://toddknutson.bio/posts/how-to-enable-neovim-undo-backup-and-swap-files-when-switching-linux-groups/
