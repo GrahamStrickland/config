@@ -44,7 +44,12 @@ end
 local dap_python = require("dap-python")
 
 -- UI setup
-require("dapui").setup()
+local dapui = require("dapui")
+dapui.setup()
+dap.listeners.before.attach.dapui_config = function() dapui.open() end
+dap.listeners.before.launch.dapui_config = function() dapui.open() end
+dap.listeners.before.event_terminated.dapui_config = function() dapui.close() end
+dap.listeners.before.event_exited.dapui_config = function() dapui.close() end
 
 -- DAP ADAPTER CONFIGURATION
 -- C++
@@ -59,6 +64,27 @@ dap.configurations.cpp = {
         cwd = "${workspaceFolder}",
         stopOnEntry = false,
         showDisassembly = "never",
+    },
+}
+
+-- Harbour
+dap.adapters["harbour-dbg"] = {
+    type = "executable",
+    command = "node",
+    args = { "C:/Users/graham/dev/harbourCodeExtension/client/dist/debugger.js" },
+}
+
+-- Default configs (used when no .vscode/launch.json is present)
+dap.configurations.clipper = {
+    {
+        type = "harbour-dbg",
+        request = "launch",
+        name = "Launch Harbour program",
+        program = "${workspaceFolder}/Program",
+        workingDir = "${workspaceFolder}/",
+        sourcePaths = { "${workspaceFolder}" },
+        stopOnEntry = false,
+        terminalType = "none",
     },
 }
 

@@ -64,7 +64,7 @@ vim.lsp.enable("luals")
 vim.lsp.config["harbour_ls"] = {
     cmd = { "node", [[C:\Users\graham\dev\harbourCodeExtension\server\src\main.js]] },
     filetypes = { "clipper" },
-    on_attach = function(client, bufnr)
+    on_attach = function(_, _)
         print("Harbour LSP attached")
     end,
     flags = {
