@@ -92,6 +92,16 @@ vim.keymap.set(
 )
 vim.keymap.set(
     "n",
+    "<leader>db",
+    function() require("dap").set_breakpoint() end
+)
+vim.keymap.set(
+    "n",
+    "<leader>dc",
+    function() require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: ")) end
+)
+vim.keymap.set(
+    "n",
     "<leader>dpr",
     function() require("dap").repl.open() end
 )
@@ -99,47 +109,6 @@ vim.keymap.set(
     "n",
     "<leader>dpa",
     function() require("dap").run_last() end
-)
-vim.keymap.set(
-    { "n", "v" },
-    "<leader>dph",
-    function() require("dap.ui.widgets").hover() end
-)
-vim.keymap.set(
-    { "n", "v" },
-    "<leader>dpp",
-    function() require("dap.ui.widgets").preview() end
-)
-vim.keymap.set(
-    "n",
-    "<leader>dpf",
-    function()
-        local widgets = require("dap.ui.widgets")
-        widgets.centered_float(widgets.frames)
-    end
-)
-vim.keymap.set(
-    "n",
-    "<leader>dps",
-    function()
-        local widgets = require("dap.ui.widgets")
-        widgets.centered_float(widgets.scopes)
-    end
-)
-vim.keymap.set(
-    "n",
-    "<leader>duo",
-    function() require("dapui").open() end
-)
-vim.keymap.set(
-    "n",
-    "<leader>duc",
-    function() require("dapui").close() end
-)
-vim.keymap.set(
-    "n",
-    "<leader>dut",
-    function() require("dapui").toggle() end
 )
 
 -- Telescope settings (deferred loading)
@@ -161,11 +130,21 @@ end
 -- Try to setup telescope keybindings when possible
 vim.defer_fn(setup_telescope_keybindings, 100)
 
--- LSP keybindings 
+-- LSP keybindings
 vim.keymap.set(
     "n",
     "gd",
     function() vim.lsp.buf.definition() end
+)
+vim.keymap.set(
+    "n",
+    "gD",
+    function() vim.lsp.buf.declaration() end
+)
+vim.keymap.set(
+    "n",
+    "gt",
+    function() vim.lsp.buf.type_definition() end
 )
 
 -- Formatting
