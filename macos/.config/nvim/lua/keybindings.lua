@@ -183,16 +183,26 @@ vim.keymap.set(
     { noremap = true, silent = true }
 )
 
--- Inspection
+-- Diagnostics/hover
 vim.keymap.set(
     "n",
-    "<leader>h",
-    function() vim.lsp.buf.hover() end
+    "<leader>dn",
+    function() vim.diagnostic.goto_next() end
+)
+vim.keymap.set(
+    "n",
+    "<leader>dN",
+    function() vim.diagnostic.goto_prev() end
 )
 vim.keymap.set(
     "n",
     "<leader>d",
     function() vim.diagnostic.open_float() end
+)
+vim.keymap.set(
+    "n",
+    "<leader>h",
+    function() vim.lsp.buf.hover() end
 )
 
 -- LuaSnip keybindings -- see https://github.com/L3MON4D3/LuaSnip#keymaps
