@@ -111,6 +111,28 @@ vim.keymap.set(
     function() require("dap").run_last() end
 )
 
+-- nvim-dap-view key bindings
+vim.keymap.set(
+    "n",
+    "<leader>dvo",
+    function() require("dap-view").open() end
+)
+vim.keymap.set(
+    "n",
+    "<leader>dvc",
+    function() require("dap-view").close() end
+)
+vim.keymap.set(
+    "n",
+    "<leader>dvt",
+    function() require("dap-view").toggle() end
+)
+vim.keymap.set(
+    "n",
+    "<leader>dve",
+    function() require("dap-view").virtual_text_enable() end
+)
+
 -- Telescope settings (deferred loading)
 local function setup_telescope_keybindings()
     local ok, builtin = pcall(require, "telescope.builtin")

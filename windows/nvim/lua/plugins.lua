@@ -1,5 +1,6 @@
 -- PLUGIN MANAGEMENT --
 local gh = function(x) return "https://github.com/" .. x end
+local cb = function(x) return 'https://codeberg.org/' .. x end
 
 vim.api.nvim_create_autocmd("PackChanged", {
     callback = function(ev)
@@ -34,9 +35,10 @@ vim.pack.add({
     gh("nvim-telescope/telescope.nvim"),
     gh("nvim-telescope/telescope-ui-select.nvim"),
     gh("mfussenegger/nvim-dap"),
+    cb("Jorenar/nvim-dap-disasm"),
+    gh("igorlfs/nvim-dap-view"),
     gh("mfussenegger/nvim-dap-python"),
     gh("nvim-neotest/nvim-nio"),
-    gh("igorlfs/nvim-dap-view"),
     gh("hat0uma/csvview.nvim"),
     gh("GustavEikaas/easy-dotnet.nvim"),
     gh("nvim-treesitter/nvim-treesitter"),
