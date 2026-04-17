@@ -4,22 +4,25 @@
 
 local M = {}
 
+-- Shared include paths used by both the diagnostics compiler and the LSP server.
+M.extraIncludePaths = {
+    [[C:\Users\graham\dev\harbour-3.2.0dev\include]],
+    [[C:\Users\graham\dev\hwgui-2.23-b2\include]],
+    [[C:\Users\graham\dev\harbour-3.2.0dev\contrib\hbfimage]],
+    [[C:\Users\graham\dev\harbour-3.2.0dev\contrib\hbhpdf]],
+    [[C:\Users\graham\dev\harbour-3.2.0dev\contrib\hbzebra]],
+    [[C:\Users\graham\dev\harbour-3.2.0dev\contrib\hbcurl]],
+    [[C:\Users\graham\dev\harbour-3.2.0dev\contrib\hbwin]],
+    [[C:\Users\graham\dev\harbour-3.2.0dev\contrib\hbsqlit3]],
+    [[C:\Users\graham\dev\easipos-8.0\EasiPosX\include]],
+}
+
 -- With -s -q0 -m -n0 it performs a pure syntax/semantic check and emits
 -- "file(line) Error/Warning msg" lines that validation.js parses.
 local config = {
     compilerExecutable = [[C:\Users\graham\dev\harbour-3.2.0core\bin\win\msvc\harbour.exe]],
     warningLevel = 3,
-    extraIncludePaths = {
-        [[C:\Users\graham\dev\harbour-3.2.0dev\include]],
-        [[C:\Users\graham\dev\hwgui-2.23-b2\include]],
-        [[C:\Users\graham\dev\harbour-3.2.0dev\contrib\hbfimage]],
-        [[C:\Users\graham\dev\harbour-3.2.0dev\contrib\hbhpdf]],
-        [[C:\Users\graham\dev\harbour-3.2.0dev\contrib\hbzebra]],
-        [[C:\Users\graham\dev\harbour-3.2.0dev\contrib\hbcurl]],
-        [[C:\Users\graham\dev\harbour-3.2.0dev\contrib\hbwin]],
-        [[C:\Users\graham\dev\harbour-3.2.0dev\contrib\hbsqlit3]],
-        [[C:\Users\graham\dev\easipos-8.0\EasiPosX\include]]
-    },
+    extraIncludePaths = M.extraIncludePaths,
     extraOptions = "",
     validating = true,
 }

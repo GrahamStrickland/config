@@ -61,16 +61,26 @@ vim.lsp.config["luals"] = {
 vim.lsp.enable("luals")
 
 -- Harbour setup
+local harbour = require("plugins.harbour")
 vim.lsp.config["harbour_ls"] = {
-    cmd = { "node", [[C:\Users\graham\dev\harbourCodeExtension\server\src\main.js]] },
+    cmd = { "node", [[C:\Users\graham\dev\harbourCodeExtension\server\src\main.js]], "--stdio" },
     filetypes = { "clipper" },
+    root_markers = { ".git" },
     on_attach = function(_, _)
         print("Harbour LSP attached")
     end,
     flags = {
         allow_incremental_sync = true,
         debounce_text_changes = 150,
-    }
+    },
+    settings = {
+        harbour = {
+            workspaceDepth = 3,
+            extraIncludePaths = harbour.extraIncludePaths,
+        },
+        search = { exclude = {} },
+        editor = { wordBasedSuggestions = true },
+    },
 }
 vim.lsp.enable("harbour_ls")
 
