@@ -157,7 +157,17 @@ vim.keymap.set(
     { noremap = true, silent = true }
 )
 
--- Open diagnostics in floating window
+-- Diagnostics/hover
+vim.keymap.set(
+    "n",
+    "<leader>dn",
+    function() vim.diagnostic.goto_next() end
+)
+vim.keymap.set(
+    "n",
+    "<leader>dN",
+    function() vim.diagnostic.goto_prev() end
+)
 vim.keymap.set(
     "n",
     "<leader>d",
