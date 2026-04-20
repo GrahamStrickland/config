@@ -132,6 +132,16 @@ vim.keymap.set(
     "<leader>dve",
     function() require("dap-view").virtual_text_enable() end
 )
+vim.keymap.set(
+    "n",
+    "<leader>dvd",
+    function() require("dap-view").virtual_text_disable() end
+)
+vim.keymap.set(
+    "n",
+    "<leader>dvv",
+    function() require("dap-view").virtual_text_toggle() end
+)
 
 -- Telescope settings (deferred loading)
 local function setup_telescope_keybindings()
