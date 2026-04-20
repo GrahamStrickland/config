@@ -38,7 +38,6 @@ vim.pack.add({
     cb("Jorenar/nvim-dap-disasm"),
     gh("igorlfs/nvim-dap-view"),
     gh("mfussenegger/nvim-dap-python"),
-    gh("nvim-neotest/nvim-nio"),
     gh("hat0uma/csvview.nvim"),
     gh("GustavEikaas/easy-dotnet.nvim"),
     gh("nvim-treesitter/nvim-treesitter"),
