@@ -1,3 +1,6 @@
+# Homebrew
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+
 # Rust
 . "$HOME/.cargo/env"
 
@@ -27,4 +30,3 @@ export PATH="/opt/homebrew/opt/qt/bin:$PATH"
 # .NET tools
 export PATH="$PATH:/Users/graham/.dotnet/tools"
 export DOTNET_ROOT="/opt/homebrew/opt/dotnet/libexec"
-

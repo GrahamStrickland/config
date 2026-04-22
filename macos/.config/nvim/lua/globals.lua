@@ -1,6 +1,6 @@
 -- PATH SETUP --
 -- For easy-dotnet
-vim.env.DOTNET_ROOT = "/opt/homebrew/Cellar/dotnet/10.0.105/libexec"
+vim.env.DOTNET_ROOT = "/opt/homebrew/opt/dotnet/libexec"
 vim.env.PATH = vim.env.PATH .. ":/Users/graham/.local/bin/roslyn/content/LanguageServer/osx-arm64"
 
 -- UI SETUP --
