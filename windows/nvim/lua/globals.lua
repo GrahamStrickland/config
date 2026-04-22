@@ -18,6 +18,13 @@ vim.opt.clipboard = "unnamed" -- Copy into system (*) register.
 vim.opt.ignorecase = true     -- Ignores case when searching patterns
 vim.opt.smartcase = true      -- Automatically switches to case-sensitive search if a capital letter is used
 
+vim.o.autocomplete = true
+vim.api.nvim_create_autocmd({ "BufNew", "BufEnter", "FileType" }, {
+    callback = function(args)
+        vim.bo[args.buf].autocomplete = vim.bo[args.buf].buftype == ""
+    end,
+})
+
 -- Adapted for Windows from
 -- https://toddknutson.bio/posts/how-to-enable-neovim-undo-backup-and-swap-files-when-switching-linux-groups/
 SWAPDIR = [[C:\Users\graham\AppData\Local\nvim\swap\]]
