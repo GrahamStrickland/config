@@ -25,6 +25,15 @@ vim.api.nvim_create_autocmd({ "BufNew", "BufEnter", "FileType" }, {
     end,
 })
 
+-- Set tabs/spaces for different file types
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "c", "cpp", "javascript", "typescript" },
+    callback = function()
+        vim.opt_local.tabstop = 2
+        vim.opt_local.shiftwidth = 2
+    end
+})
+
 -- Adapted for Windows from
 -- https://toddknutson.bio/posts/how-to-enable-neovim-undo-backup-and-swap-files-when-switching-linux-groups/
 SWAPDIR = [[C:\Users\graham\AppData\Local\nvim\swap\]]
