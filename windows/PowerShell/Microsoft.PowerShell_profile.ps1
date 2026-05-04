@@ -20,3 +20,10 @@ Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 
 # Oh My Posh - https://ohmyposh.dev/docs/installation/prompt
 oh-my-posh init pwsh --config "C:\Users\graham\dev\config\windows\PowerShell\grahamstrickland.omp.json" | Invoke-Expression
+
+function GitLog() {
+    git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+}
+
+Set-Alias -Name glg -Value GitLog
+
