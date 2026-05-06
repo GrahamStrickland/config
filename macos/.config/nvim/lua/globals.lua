@@ -23,10 +23,25 @@ vim.opt.clipboard = "unnamed" -- Copy into system (*) register.
 vim.opt.ignorecase = true     -- Ignores case when searching patterns
 vim.opt.smartcase = true      -- Automatically switches to case-sensitive search if a capital letter is used
 
+vim.opt.completeopt =
+"menu,menuone,noselect,popup" -- Ensures the menu appears even for a single match and uses the native popup window.
 vim.o.autocomplete = true
-vim.api.nvim_create_autocmd({ "BufNew", "BufEnter", "FileType" }, {
+vim.api.nvim_create_autocmd("LspAttach", {
+    group = vim.api.nvim_create_augroup("lsp_completion", { clear = true }),
     callback = function(args)
-        vim.bo[args.buf].autocomplete = vim.bo[args.buf].buftype == ""
+        local client_id = args.data.client_id
+        if not client_id then
+            return
+        end
+
+        local client = vim.lsp.get_client_by_id(client_id)
+        if client and client:supports_method("textDocument/completion") then
+            -- Enable native LSP completion for this client + buffer
+            vim.lsp.completion.enable(true, client_id, args.buf, {
+                autotrigger = true, -- auto-show menu as you type (recommended)
+                -- You can also set { autotrigger = false } and trigger manually with <C-x><C-o>
+            })
+        end
     end,
 })
 
