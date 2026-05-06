@@ -1,12 +1,15 @@
 -- LSP SETUP
 vim.lsp.config("*", {
-    capabilities = {
-        textDocument = {
-            semanticTokens = {
-                multilineTokenSupport = true,
-            }
-        }
-    },
+    capabilities = vim.tbl_deep_extend("force",
+        vim.lsp.protocol.make_client_capabilities(),
+        {
+            textDocument = {
+                semanticTokens = { multilineTokenSupport = true },
+                completion = {
+                    completionItem = { snippetSupport = true },
+                },
+            },
+        }),
     root_markers = { ".git" },
 })
 
