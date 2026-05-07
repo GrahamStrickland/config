@@ -64,7 +64,7 @@ vim.lsp.enable("luals")
 -- Harbour setup
 local harbour = require("plugins.harbour")
 vim.lsp.config["harbour_ls"] = {
-    cmd = { "node", [[C:\Users\graham\dev\harbourCodeExtension\server\src\main.js]], "--stdio" },
+    cmd = { "node", [[C:\Users\graham\dev\harbourCodeExtension\server\dist\hb_server.js]], "--stdio" },
     filetypes = { "clipper" },
     root_markers = { ".git" },
     on_attach = function(_, _)
