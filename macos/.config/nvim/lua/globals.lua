@@ -4,7 +4,7 @@ vim.env.DOTNET_ROOT = "/opt/homebrew/opt/dotnet/libexec"
 vim.env.PATH = vim.env.PATH .. ":/Users/graham/.local/bin/roslyn/content/LanguageServer/osx-arm64"
 
 -- UI SETUP --
-require("vim._core.ui2").enable({})
+-- require("vim._core.ui2").enable({})
 
 -- OPTIONS SETUP --
 vim.g.NERDTreeHijackNetrw = 0
