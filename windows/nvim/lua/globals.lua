@@ -40,6 +40,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
+-- Disable native autocomplete in special buffers (e.g. Telescope's prompt).
+vim.api.nvim_create_autocmd({ "BufNew", "BufEnter", "FileType" }, {
+    callback = function(args)
+        vim.bo[args.buf].autocomplete = vim.bo[args.buf].buftype == ""
+    end,
+})
+
 -- Set tabs/spaces for different file types
 vim.api.nvim_create_autocmd("FileType", {
     pattern = { "c", "cpp", "javascript", "typescript" },
