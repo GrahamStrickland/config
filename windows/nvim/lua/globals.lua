@@ -18,8 +18,8 @@ vim.opt.clipboard = "unnamed" -- Copy into system (*) register.
 vim.opt.ignorecase = true     -- Ignores case when searching patterns
 vim.opt.smartcase = true      -- Automatically switches to case-sensitive search if a capital letter is used
 
-vim.opt.completeopt =
-"menu,menuone,noselect,popup" -- Ensures the menu appears even for a single match and uses the native popup window.
+-- Ensures the menu appears even for a single match and uses the native popup window.
+vim.opt.completeopt = { "menu", "menuone", "noinsert", "noselect", "popup" }
 vim.o.autocomplete = true
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("lsp_completion", { clear = true }),
