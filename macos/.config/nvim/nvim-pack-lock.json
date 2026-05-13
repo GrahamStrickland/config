@@ -4,10 +4,6 @@
       "rev": "a62e1083a3cfe8b6b206e7d3d33a51091df25357",
       "src": "https://github.com/L3MON4D3/LuaSnip"
     },
-    "cmp-nvim-lsp": {
-      "rev": "cbc7b02bb99fae35cb42f514762b89b5126651ef",
-      "src": "https://github.com/hrsh7th/cmp-nvim-lsp"
-    },
     "conjure": {
       "rev": "f7a375995a19fbf085707ea0fdb1f9c167e27e27",
       "src": "https://github.com/Olical/conjure"
@@ -17,7 +13,7 @@
       "src": "https://github.com/hat0uma/csvview.nvim"
     },
     "easy-dotnet.nvim": {
-      "rev": "abf4f55c3d770ec4e65c8af5364b35e94c3d93e0",
+      "rev": "c67f4812a45880f5ba08c44cafb49d3247e6c55d",
       "src": "https://github.com/GustavEikaas/easy-dotnet.nvim"
     },
     "gitsigns.nvim": {
@@ -29,7 +25,7 @@
       "src": "https://github.com/mrcjkb/haskell-tools.nvim"
     },
     "lean.nvim": {
-      "rev": "cd6d8702cb90d9e12e28e06c53d2ccc6611d902d",
+      "rev": "da55583c966745aaddb6e1fd4f8287b759126649",
       "src": "https://github.com/Julian/lean.nvim"
     },
     "lualine.nvim": {
@@ -96,6 +92,18 @@
       "rev": "fd58046b9d64259d9785e4aeb6d6f494c6943cad",
       "src": "https://github.com/vague2k/vague.nvim"
     },
+    "vim-dadbod": {
+      "rev": "6d1d41da4873a445c5605f2005ad2c68c99d8770",
+      "src": "https://github.com/tpope/vim-dadbod"
+    },
+    "vim-dadbod-completion": {
+      "rev": "a8dac0b3cf6132c80dc9b18bef36d4cf7a9e1fe6",
+      "src": "https://github.com/kristijanhusak/vim-dadbod-completion"
+    },
+    "vim-dadbod-ui": {
+      "rev": "07e92e22114cc5b1ba4938d99897d85b58e20475",
+      "src": "https://github.com/kristijanhusak/vim-dadbod-ui"
+    },
     "vim-dispatch": {
       "rev": "a2ff28abdb2d89725192db5b8562977d392a4d3f",
       "src": "https://github.com/tpope/vim-dispatch"
@@ -121,7 +129,7 @@
       "src": "https://github.com/tpope/vim-repeat"
     },
     "vim-sexp": {
-      "rev": "0284743c84bebaf04b4862743f692718a3774d30",
+      "rev": "2328c1b7236eec847e0ee9abda0ae83a0a77dea9",
       "src": "https://github.com/guns/vim-sexp"
     },
     "vim-surround": {
