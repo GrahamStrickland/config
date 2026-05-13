@@ -18,7 +18,6 @@ vim.pack.add({
     gh("scrooloose/nerdtree"),
     gh("tpope/vim-dispatch"),
     gh("tpope/vim-unimpaired"),
-    gh("tpope/vim-vinegar"),
     gh("tpope/vim-fugitive"),
     gh("tpope/vim-repeat"),
     gh("tpope/vim-surround"),

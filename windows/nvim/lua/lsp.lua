@@ -88,7 +88,7 @@ vim.lsp.enable("harbour_ls")
 -- Python setup
 vim.lsp.config["ruff"] = {
     cmd = { "uv", "run", "ruff", "server" },
-    on_attach = function(client, bufnr)
+    on_attach = function(client, _)
         -- Disable capabilities that basedpyright should handle
         client.server_capabilities.hoverProvider = false
         client.server_capabilities.definitionProvider = false
