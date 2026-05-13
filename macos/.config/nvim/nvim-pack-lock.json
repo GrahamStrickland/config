@@ -4,56 +4,36 @@
       "rev": "a62e1083a3cfe8b6b206e7d3d33a51091df25357",
       "src": "https://github.com/L3MON4D3/LuaSnip"
     },
-    "cmp-buffer": {
-      "rev": "b74fab3656eea9de20a9b8116afa3cfc4ec09657",
-      "src": "https://github.com/hrsh7th/cmp-buffer"
-    },
-    "cmp-cmdline": {
-      "rev": "d126061b624e0af6c3a556428712dd4d4194ec6d",
-      "src": "https://github.com/hrsh7th/cmp-cmdline"
-    },
     "cmp-nvim-lsp": {
       "rev": "cbc7b02bb99fae35cb42f514762b89b5126651ef",
       "src": "https://github.com/hrsh7th/cmp-nvim-lsp"
     },
-    "cmp-path": {
-      "rev": "c642487086dbd9a93160e1679a1327be111cbc25",
-      "src": "https://github.com/hrsh7th/cmp-path"
-    },
-    "cmp_luasnip": {
-      "rev": "98d9cb5c2c38532bd9bdb481067b20fea8f32e90",
-      "src": "https://github.com/saadparwaiz1/cmp_luasnip"
-    },
     "conjure": {
-      "rev": "f66b3e7f45d325bd556cd785502761e583971920",
+      "rev": "f7a375995a19fbf085707ea0fdb1f9c167e27e27",
       "src": "https://github.com/Olical/conjure"
     },
     "csvview.nvim": {
-      "rev": "7022e18a0fbae9aecf99a3ba02b2a541edc2b8a1",
+      "rev": "5c22774c3ecc7f8883af5d143b366e45b1f0875d",
       "src": "https://github.com/hat0uma/csvview.nvim"
     },
     "easy-dotnet.nvim": {
-      "rev": "db34bd56ea682fcb0efc4a8896f9702ee22b6b22",
+      "rev": "abf4f55c3d770ec4e65c8af5364b35e94c3d93e0",
       "src": "https://github.com/GustavEikaas/easy-dotnet.nvim"
     },
     "gitsigns.nvim": {
-      "rev": "6d808f99bd63303646794406e270bd553ad7792e",
+      "rev": "dd3f588bacbeb041be6facf1742e42097f62165d",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "haskell-tools.nvim": {
-      "rev": "5a8cc186def20eb7f7da2e298fe3d9aee99d1135",
+      "rev": "b3a3b29bb1f0dc5e9fd08d3af8cff245a9010923",
       "src": "https://github.com/mrcjkb/haskell-tools.nvim"
     },
-    "julia-vim": {
-      "rev": "52b30547346b21bc93acda28d626795667f9e087",
-      "src": "https://github.com/JuliaEditorSupport/julia-vim"
-    },
     "lean.nvim": {
-      "rev": "6921f06f4d3b39f2cbc38d184ce628d6c96320d4",
+      "rev": "cd6d8702cb90d9e12e28e06c53d2ccc6611d902d",
       "src": "https://github.com/Julian/lean.nvim"
     },
     "lualine.nvim": {
-      "rev": "a905eeebc4e63fdc48b5135d3bf8aea5618fb21c",
+      "rev": "131a558e13f9f28b15cd235557150ccb23f89286",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
     "nerdtree": {
@@ -63,10 +43,6 @@
     "netcoredbg-macOS-arm64.nvim": {
       "rev": "90c6fe7fa864cd753670fcd95b229da261760bc1",
       "src": "https://github.com/Cliffback/netcoredbg-macOS-arm64.nvim"
-    },
-    "nvim-cmp": {
-      "rev": "a1d504892f2bc56c2e79b65c6faded2fd21f3eca",
-      "src": "https://github.com/hrsh7th/nvim-cmp"
     },
     "nvim-dap": {
       "rev": "45a69eba683a2c448dd9ecfc4de89511f0646b5f",
@@ -81,7 +57,7 @@
       "src": "https://github.com/mfussenegger/nvim-dap-python"
     },
     "nvim-dap-view": {
-      "rev": "03c22bb2bc0d6ed60ee6f7351f8a5e65dd2e80d3",
+      "rev": "3e30b31a23e3b9b15be90da05d13cc9bcc59e73d",
       "src": "https://github.com/igorlfs/nvim-dap-view"
     },
     "nvim-jdtls": {
@@ -101,7 +77,7 @@
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "rustaceanvim": {
-      "rev": "824491c58bdba1f6f5e35e64e0ab8b2e2425d6b2",
+      "rev": "2499b3cc494b3f8e07c0a6cb0ae1d24fa372a487",
       "src": "https://github.com/mrcjkb/rustaceanvim"
     },
     "tcomment_vim": {
@@ -113,11 +89,11 @@
       "src": "https://github.com/nvim-telescope/telescope-ui-select.nvim"
     },
     "telescope.nvim": {
-      "rev": "028d9a0695a0cc4cfa893889f8c408ed7ccc8adc",
+      "rev": "f04ab730b8f9c6bf3f54a206d0dcddfd70c52d59",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
     },
     "vague.nvim": {
-      "rev": "8751181a1aa431b4e8983b0a183afef5cbc08381",
+      "rev": "fd58046b9d64259d9785e4aeb6d6f494c6943cad",
       "src": "https://github.com/vague2k/vague.nvim"
     },
     "vim-dispatch": {
@@ -145,7 +121,7 @@
       "src": "https://github.com/tpope/vim-repeat"
     },
     "vim-sexp": {
-      "rev": "2fc0a7c7e44fe94e48156d6a5b5fea28538430eb",
+      "rev": "0284743c84bebaf04b4862743f692718a3774d30",
       "src": "https://github.com/guns/vim-sexp"
     },
     "vim-surround": {
@@ -156,12 +132,8 @@
       "rev": "db65482581a28e4ccf355be297f1864a4e66985c",
       "src": "https://github.com/tpope/vim-unimpaired"
     },
-    "vim-vinegar": {
-      "rev": "bb1bcddf43cfebe05eb565a84ab069b357d0b3d6",
-      "src": "https://github.com/tpope/vim-vinegar"
-    },
     "vimtex": {
-      "rev": "0f42a5130432d4af2e6fd21fb93a76915ff1f090",
+      "rev": "182ad387e3f3107699483606c9a2b6648f8437b2",
       "src": "https://github.com/lervag/vimtex"
     }
   }

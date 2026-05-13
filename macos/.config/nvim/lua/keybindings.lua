@@ -247,52 +247,50 @@ vim.keymap.set(
     function() vim.lsp.buf.hover() end
 )
 
--- LuaSnip keybindings -- see https://github.com/L3MON4D3/LuaSnip#keymaps
+-- LuaSnip + native LSP completion keybindings
 local ls = require("luasnip")
-local cmp = require("cmp")
 
-cmp.setup({
-    mapping = {
-        ["<cr>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                if ls.expandable() then
-                    ls.expand()
-                else
-                    cmp.confirm({
-                        select = true,
-                    })
-                end
-            else
-                fallback()
-            end
-        end),
-        ["<tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item()
-            elseif ls.locally_jumpable(1) then
-                ls.jump(1)
-            else
-                fallback()
-            end
-        end, { "i", "s" }),
-        ["<s-tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_prev_item()
-            elseif ls.locally_jumpable(-1) then
-                ls.jump(-1)
-            else
-                fallback()
-            end
-        end, { "i", "s" }),
-        ["<down>"] = cmp.mapping(function(fallback)
-            if ls.choice_active() then
-                ls.change_choice(1)
-            else
-                fallback()
-            end
-        end, { "i", "s" })
-    }
-})
+-- <cr>: expand a snippet trigger, else accept the pum item, else newline
+vim.keymap.set("i", "<cr>", function()
+    if ls.expandable() then
+        ls.expand()
+        return ""
+    elseif vim.fn.pumvisible() == 1 then
+        return "<C-y>"
+    end
+    return "<CR>"
+end, { expr = true, silent = true })
+
+-- <tab>: next pum item, else jump forward in snippet, else literal tab
+vim.keymap.set({ "i", "s" }, "<tab>", function()
+    if vim.fn.pumvisible() == 1 then
+        return "<C-n>"
+    elseif ls.locally_jumpable(1) then
+        ls.jump(1)
+        return ""
+    end
+    return "<Tab>"
+end, { expr = true, silent = true })
+
+-- <s-tab>: prev pum item, else jump back in snippet, else literal shift-tab
+vim.keymap.set({ "i", "s" }, "<s-tab>", function()
+    if vim.fn.pumvisible() == 1 then
+        return "<C-p>"
+    elseif ls.locally_jumpable(-1) then
+        ls.jump(-1)
+        return ""
+    end
+    return "<S-Tab>"
+end, { expr = true, silent = true })
+
+-- <down>: cycle through LuaSnip choice nodes when active
+vim.keymap.set({ "i", "s" }, "<down>", function()
+    if ls.choice_active() then
+        ls.change_choice(1)
+        return ""
+    end
+    return "<Down>"
+end, { expr = true, silent = true })
 
 -- VimTeX keybindings
 vim.keymap.set(
