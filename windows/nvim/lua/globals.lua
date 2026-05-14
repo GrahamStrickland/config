@@ -75,19 +75,29 @@ if vim.fn.isdirectory(UNDODIR) == 0 then
 end
 
 -- WINDOWS SHELL SETUP
+-- Use cmd.exe for `!`, system(), and plugin shell-outs (e.g. vim-fugitive).
+-- pwsh startup is ~200-500ms per spawn, which makes fugitive feel sluggish;
+-- cmd.exe spawns in single-digit ms. :terminal is rerouted to pwsh below.
 if vim.fn.has("win32") == 1 then
-    if vim.fn.executable("pwsh") == 1 then
-        vim.opt.shell = "pwsh"
-    else
-        vim.opt.shell = "powershell"
-    end
-
-    vim.opt.shellcmdflag =
-    "-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"
-    vim.opt.shellredir = "2>&1 | Out-File -Encoding utf8 %s; exit $LastExitCode"
-    vim.opt.shellpipe = "2>&1 | Out-File -Encoding utf8 %s; exit $LastExitCode"
+    vim.opt.shell = "cmd.exe"
+    vim.opt.shellcmdflag = "/s /c"
+    vim.opt.shellxquote = '"'
     vim.opt.shellquote = ""
-    vim.opt.shellxquote = ""
+    vim.opt.shellredir = ">%s 2>&1"
+    vim.opt.shellpipe = "2>&1| tee"
+
+    -- Route bare `:terminal` (and `:term`) through pwsh while leaving
+    -- `:terminal <cmd>` alone so explicit invocations still hit &shell.
+    local pwsh = vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell"
+    vim.keymap.set("c", "<CR>", function()
+        if vim.fn.getcmdtype() == ":" then
+            local line = vim.fn.getcmdline()
+            if line == "terminal" or line == "term" then
+                return string.format("<C-u>terminal %s<CR>", pwsh)
+            end
+        end
+        return "<CR>"
+    end, { expr = true, desc = "Route bare :terminal through pwsh" })
 end
 
 -- Enable swap, backup, and persistant undo
