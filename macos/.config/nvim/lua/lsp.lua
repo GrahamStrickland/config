@@ -24,15 +24,6 @@ vim.lsp.config["clangd"] = {
 }
 vim.lsp.enable("clangd")
 
--- Clojure setup
-vim.lsp.config["clojure_lsp"] = {
-    cmd = { "clojure-lsp" },
-    filetypes = { "clojure" },
-    root_markers = { "project.clj", "deps.edn", "build.boot", "shadow-cljs.edn", ".git" },
-    single_file_support = true,
-}
-vim.lsp.enable("clojure_lsp")
-
 -- CMake setup
 vim.lsp.config["cmake"] = {
     cmd = { "cmake-language-server" },
@@ -112,6 +103,14 @@ vim.lsp.config["r_language_server"] = {
     filetypes = { "r" },
 }
 vim.lsp.enable("r_language_server")
+
+-- QML setup
+vim.lsp.config["qmlls"] = {
+    cmd = { "qmlls" },
+    root_markers = { ".git", "qmlls.ini", "." },
+    filetypes = { "qml", "qtquick" }
+}
+vim.lsp.enable("qmlls")
 
 -- Setup auto-completion
 vim.api.nvim_create_autocmd("LspAttach", {
