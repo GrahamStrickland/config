@@ -13,3 +13,6 @@ eval "$(atuin init zsh)"
 
 # Setup aliases
 source ~/.zsh_aliases
+
+# Default editor
+export EDITOR="nvim"
