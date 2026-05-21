@@ -4,16 +4,12 @@
       "rev": "0abc8f390b278c3b4aabc4c004ac8a088b65cf24",
       "src": "https://github.com/L3MON4D3/LuaSnip"
     },
-    "arctic.nvim": {
-      "rev": "46da33aeb3a8ee48533f41911b3aaf4f1541dd6f",
-      "src": "https://github.com/rockyzhang24/arctic.nvim"
-    },
     "csvview.nvim": {
       "rev": "5c22774c3ecc7f8883af5d143b366e45b1f0875d",
       "src": "https://github.com/hat0uma/csvview.nvim"
     },
     "easy-dotnet.nvim": {
-      "rev": "c19beea905e0c51c27a0f65c8757de6a8ed77d93",
+      "rev": "9549333f231ec918500cd5033c646e390c932e9c",
       "src": "https://github.com/GustavEikaas/easy-dotnet.nvim"
     },
     "gitsigns.nvim": {
@@ -21,7 +17,7 @@
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "haskell-tools.nvim": {
-      "rev": "da7b298980f59fe25d9c062c1701f8fbb58db33f",
+      "rev": "853329198e16d67bc525d5da046107fb61a687e5",
       "src": "https://github.com/mrcjkb/haskell-tools.nvim"
     },
     "lean.nvim": {
@@ -32,10 +28,6 @@
       "rev": "131a558e13f9f28b15cd235557150ccb23f89286",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
-    "lush.nvim": {
-      "rev": "9c60ec2279d62487d942ce095e49006af28eed6e",
-      "src": "https://github.com/rktjmp/lush.nvim"
-    },
     "nerdtree": {
       "rev": "690d061b591525890f1471c6675bcb5bdc8cdff9",
       "src": "https://github.com/scrooloose/nerdtree"
@@ -45,7 +37,7 @@
       "src": "https://github.com/Cliffback/netcoredbg-macOS-arm64.nvim"
     },
     "nvim-dap": {
-      "rev": "45a69eba683a2c448dd9ecfc4de89511f0646b5f",
+      "rev": "531771530d4f82ad2d21e436e3cc052d68d7aebb",
       "src": "https://github.com/mfussenegger/nvim-dap"
     },
     "nvim-dap-disasm": {
@@ -61,7 +53,7 @@
       "src": "https://github.com/igorlfs/nvim-dap-view"
     },
     "nvim-jdtls": {
-      "rev": "77ccaeb422f8c81b647605da5ddb4a7f725cda90",
+      "rev": "6e9d953f0b82bccdb834cfde0e893f3119c22592",
       "src": "https://github.com/mfussenegger/nvim-jdtls"
     },
     "nvim-pqf": {
@@ -77,7 +69,7 @@
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "rustaceanvim": {
-      "rev": "6ba2ec95c01e49622676aeb0abdd88bfe2ce575d",
+      "rev": "1d89cf1b7b84862706398a263396b24960d80695",
       "src": "https://github.com/mrcjkb/rustaceanvim"
     },
     "tcomment_vim": {
@@ -91,6 +83,10 @@
     "telescope.nvim": {
       "rev": "7d324792b7943e4aa16ad007212e6acc6f9fe335",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
+    },
+    "vague.nvim": {
+      "rev": "fd58046b9d64259d9785e4aeb6d6f494c6943cad",
+      "src": "https://github.com/vague2k/vague.nvim"
     },
     "vim-dadbod": {
       "rev": "6d1d41da4873a445c5605f2005ad2c68c99d8770",
@@ -131,10 +127,6 @@
     "vimtex": {
       "rev": "182ad387e3f3107699483606c9a2b6648f8437b2",
       "src": "https://github.com/lervag/vimtex"
-    },
-    "vscode.nvim": {
-      "rev": "aa1102a7e15195c9cca22730b09224a7f7745ba8",
-      "src": "https://github.com/mofiqul/vscode.nvim"
     }
   }
 }
