@@ -20,7 +20,7 @@ vim.lsp.config["clangd"] = {
     initialization_options = {
         fallback_flags = { "-std=c++20" },
     },
-    filetypes = { "c", "cpp" },
+    filetypes = { "c", "cpp", "objc", "objcpp" },
 }
 vim.lsp.enable("clangd")
 

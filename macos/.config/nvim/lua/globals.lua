@@ -54,7 +54,7 @@ vim.api.nvim_create_autocmd({ "BufNew", "BufEnter", "FileType" }, {
 
 -- Set tabs/spaces for different file types
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "c", "cpp", "javascript", "lean", "r", "typescript" },
+    pattern = { "c", "cpp", "javascript", "lean", "objc", "objcpp", "r", "typescript" },
     callback = function()
         vim.opt_local.tabstop = 2
         vim.opt_local.shiftwidth = 2
