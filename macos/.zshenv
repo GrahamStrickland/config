@@ -30,3 +30,9 @@ export PATH="/opt/homebrew/opt/qt/bin:$PATH"
 # .NET tools
 export PATH="$PATH:/Users/graham/.dotnet/tools"
 export DOTNET_ROOT="/opt/homebrew/opt/dotnet/libexec"
+
+# For QML debugging
+# export QML_IMPORT_TRACE=1
+
+# Lean
+export PATH="$HOME/.elan/bin:$PATH"
