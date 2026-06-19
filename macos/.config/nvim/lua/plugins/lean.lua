@@ -1,8 +1,7 @@
 -- LEAN4 SETUP
-local lean = require("lean")
 local telescope = require("telescope")
 
-lean.setup { mappings = true }
+vim.g.lean_config = { mappings = true }
 
 vim.keymap.set(
     "n",
