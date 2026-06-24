@@ -1,30 +1,12 @@
+vim.env.HARBOUR_DBG_TRACE = "1"
+
 -- DAP ADAPTER SETUP
 local dap = require("dap")
 
--- CodeLLDB setup
-local function find_codelldb_executable()
-    local files = vim.fn.glob([[C:\Users\graham\.vscode\extensions\vadimcn.vscode-lldb-*\adapter\codelldb]], true, true)
-
-    if #files == 0 then
-        return "codelldb"
-    end
-
-    for _, file in ipairs(files) do
-        if file:match([[C:\Users\graham\.vscode\extensions\vadimcn.vscode-lldb-$]]) then
-            return file
-        end
-    end
-
-    return files[1]
-end
-
-dap.adapters.codelldb = {
-    type = "server",
-    port = "${port}",
-    executable = {
-        command = find_codelldb_executable(),
-        args = { "--port", "${port}" },
-    }
+dap.adapters.lldb = {
+    type = "executable",
+    command = "C:/Program Files/LLVM/bin/lldb-dap.exe",
+    name = "lldb",
 }
 
 -- Python setup
@@ -48,7 +30,7 @@ local dap_python = require("dap-python")
 dap.configurations.c = {
     {
         name = "C: launch process",
-        type = "codelldb",
+        type = "lldb",
         request = "launch",
         program = function()
             return vim.fn.input("Path to executable: ", vim.fn.getcwd(), "file")
@@ -59,7 +41,7 @@ dap.configurations.c = {
     },
     {
         name = "C: launch process with arguments",
-        type = "codelldb",
+        type = "lldb",
         request = "launch",
         program = function()
             return vim.fn.input("Path to executable: ", vim.fn.getcwd(), "file")
@@ -78,7 +60,7 @@ dap.configurations.c = {
 dap.configurations.cpp = {
     {
         name = "C++: launch process",
-        type = "codelldb",
+        type = "lldb",
         request = "launch",
         program = function()
             return vim.fn.input("Path to executable: ", vim.fn.getcwd(), "file")
@@ -89,7 +71,7 @@ dap.configurations.cpp = {
     },
     {
         name = "C++: launch process with arguments",
-        type = "codelldb",
+        type = "lldb",
         request = "launch",
         program = function()
             return vim.fn.input("Path to executable: ", vim.fn.getcwd(), "file")
