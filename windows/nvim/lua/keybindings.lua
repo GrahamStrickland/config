@@ -193,12 +193,12 @@ vim.keymap.set(
 vim.keymap.set(
     "n",
     "<leader>dn",
-    function() vim.diagnostic.goto_next() end
+    function() vim.diagnostic.jump({ count = 1, float = true }) end
 )
 vim.keymap.set(
     "n",
     "<leader>dN",
-    function() vim.diagnostic.goto_prev() end
+    function() vim.diagnostic.jump({ count = -1, float = true }) end
 )
 vim.keymap.set(
     "n",
