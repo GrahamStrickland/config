@@ -1,7 +1,7 @@
 -- PRE-PLUGIN KEY MAPPINGS --
 -- Map the leader key to a space
 vim.g.mapleader = " "
-vim.g.maplocalleader = "  "
+vim.g.maplocalleader = ","
 
 -- Fast split navigation with <Ctrl> + hjkl
 vim.api.nvim_set_keymap(
