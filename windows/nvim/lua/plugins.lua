@@ -14,7 +14,7 @@ vim.api.nvim_create_autocmd("PackChanged", {
 
 vim.pack.add({
     gh("nvim-lualine/lualine.nvim"),
-    gh("vague2k/vague.nvim"),
+    gh("Mofiqul/vscode.nvim"),
     gh("scrooloose/nerdtree"),
     gh("tpope/vim-dispatch"),
     gh("tpope/vim-unimpaired"),
