@@ -5,7 +5,7 @@
       "src": "https://github.com/hat0uma/csvview.nvim"
     },
     "easy-dotnet.nvim": {
-      "rev": "c56975348b235b54beaf8cf26f08047ed16ca7dd",
+      "rev": "5823c50d0de015c01f591319f6e846506518165e",
       "src": "https://github.com/GustavEikaas/easy-dotnet.nvim"
     },
     "gitsigns.nvim": {
@@ -41,7 +41,7 @@
       "src": "https://github.com/yorickpeterse/nvim-pqf"
     },
     "nvim-treesitter": {
-      "rev": "7248feaca45e4d944591497964bc19afa89ad1c6",
+      "rev": "a45a920ec04cda5624f6dea0ff6454c81c3ad2d5",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "plenary.nvim": {
@@ -95,10 +95,6 @@
     "vim-unimpaired": {
       "rev": "db65482581a28e4ccf355be297f1864a4e66985c",
       "src": "https://github.com/tpope/vim-unimpaired"
-    },
-    "vscode.nvim": {
-      "rev": "aa1102a7e15195c9cca22730b09224a7f7745ba8",
-      "src": "https://github.com/Mofiqul/vscode.nvim"
     }
   }
 }

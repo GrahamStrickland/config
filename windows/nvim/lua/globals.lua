@@ -118,5 +118,5 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 -- UI SETUP --
 vim.o.background = "dark"
-vim.cmd("colorscheme vscode")
+vim.cmd("colorscheme retrobox")
 vim.o.winborder = "rounded"
