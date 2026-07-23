@@ -13,7 +13,7 @@
       "src": "https://github.com/hat0uma/csvview.nvim"
     },
     "easy-dotnet.nvim": {
-      "rev": "c56975348b235b54beaf8cf26f08047ed16ca7dd",
+      "rev": "5823c50d0de015c01f591319f6e846506518165e",
       "src": "https://github.com/GustavEikaas/easy-dotnet.nvim"
     },
     "gitsigns.nvim": {
@@ -21,7 +21,7 @@
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "haskell-tools.nvim": {
-      "rev": "e60175460cac798330d3463d91717c7df22d1cd6",
+      "rev": "33f2a99a271b7466b595c456af004719a54788d8",
       "src": "https://github.com/mrcjkb/haskell-tools.nvim"
     },
     "lean.nvim": {
@@ -73,7 +73,7 @@
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "rustaceanvim": {
-      "rev": "30041b520b50af82830c57939a104b79d01d4994",
+      "rev": "746d84daa3678397e7b9595b86db30b3e7af7c28",
       "src": "https://github.com/mrcjkb/rustaceanvim"
     },
     "tcomment_vim": {
@@ -137,12 +137,8 @@
       "src": "https://github.com/tpope/vim-unimpaired"
     },
     "vimtex": {
-      "rev": "6368e31fdaf766ff908a2c06e9ee14fc66dec409",
+      "rev": "1d27d95258d8273d0690c7d3d4ff6e1fa2bd24af",
       "src": "https://github.com/lervag/vimtex"
-    },
-    "vscode.nvim": {
-      "rev": "aa1102a7e15195c9cca22730b09224a7f7745ba8",
-      "src": "https://github.com/Mofiqul/vscode.nvim"
     }
   }
 }
