@@ -3,32 +3,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
--- Fast split navigation with <Ctrl> + hjkl
-vim.api.nvim_set_keymap(
-    "n",
-    "<c-h>",
-    "<c-w><c-h>",
-    { noremap = true }
-)
-vim.api.nvim_set_keymap(
-    "n",
-    "<c-j>",
-    "<c-w><c-j>",
-    { noremap = true }
-)
-vim.api.nvim_set_keymap(
-    "n",
-    "<c-k>",
-    "<c-w><c-k>",
-    { noremap = true }
-)
-vim.api.nvim_set_keymap(
-    "n",
-    "<c-l>",
-    "<c-w><c-l>",
-    { noremap = true }
-)
-
 -- Page down/up and center
 vim.api.nvim_set_keymap(
     "n",
@@ -51,21 +25,12 @@ vim.api.nvim_set_keymap(
     { noremap = true }
 )
 
-
 -- PLUGIN-DEPENDENT KEY MAPPINGS --
 -- Open NERDTree for viewing files
 vim.api.nvim_set_keymap(
     "n",
     "<leader>n",
     ":NERDTreeToggle<cr>",
-    { noremap = true }
-)
-
--- Map Ctrlp buffer mode to Ctrl + B
-vim.api.nvim_set_keymap(
-    "n",
-    "<c-b>",
-    "CtrlPBuffer<cr>",
     { noremap = true }
 )
 
