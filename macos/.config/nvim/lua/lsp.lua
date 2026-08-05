@@ -42,15 +42,12 @@ vim.lsp.config["cmake"] = {
 vim.lsp.enable("cmake")
 
 -- JavaScript/TypeScript setup
-vim.lsp.config["ts_ls"] = {
-    cmd = { "typescript-language-server", "--stdio" },
+vim.lsp.config["ts_go"] = {
+    cmd = { "tsgo", "--lsp", "--stdio" },
     filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
     root_markers = { "tsconfig.json", "jsconfig.json", "package.json" },
-    init_options = {
-        hostInfo = "neovim",
-    }
 }
-vim.lsp.enable("ts_ls")
+vim.lsp.enable("ts_go")
 
 -- LaTeX setup
 vim.lsp.config["texlab"] = {
