@@ -25,15 +25,12 @@ vim.lsp.config["clangd"] = {
 vim.lsp.enable("clangd")
 
 -- JavaScript/TypeScript setup
-vim.lsp.config["ts_ls"] = {
-    cmd = { "typescript-language-server", "--stdio" },
+vim.lsp.config["ts_go"] = {
+    cmd = { "tsgo", "--lsp", "--stdio" },
     filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
     root_markers = { "tsconfig.json", "jsconfig.json", "package.json" },
-    init_options = {
-        hostInfo = "neovim",
-    }
 }
-vim.lsp.enable("ts_ls")
+vim.lsp.enable("ts_go")
 
 -- Lua setup
 vim.lsp.config["luals"] = {
