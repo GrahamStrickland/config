@@ -1,4 +1,4 @@
--- Copied from https://github.com/smnatale/nvim_native/blob/main/lua/find.lua
+-- Adapted from https://github.com/smnatale/nvim_native/blob/main/lua/find.lua
 local ignore_patterns = {
     "node_modules",
     "%.git",
@@ -7,6 +7,8 @@ local ignore_patterns = {
     "build",
     "%.tmp",
     "%.log",
+    "__pycache__",
+    ".venv"
 }
 
 function _G.native_find(text, _)
