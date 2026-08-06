@@ -15,6 +15,7 @@ M.extraIncludePaths = {
     [[C:\Users\graham\dev\harbour-3.2.0dev\contrib\hbwin]],
     [[C:\Users\graham\dev\harbour-3.2.0dev\contrib\hbsqlit3]],
     [[C:\Users\graham\dev\easipos-8.0\EasiPosX\include]],
+    [[C:\Users\graham\dev\easipos-9.0\EasiPosX\include]],
 }
 
 -- With -s -q0 -m -n0 it performs a pure syntax/semantic check and emits

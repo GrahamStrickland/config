@@ -1,9 +1,3 @@
--- UI SETUP --
-require("vim._core.ui2").enable({})
-
--- OPTION SETUP --
-vim.g.NERDTreeHijackNetrw = 0
-
 vim.opt.number = true         -- Add line numbers to document.
 vim.opt.relativenumber = true -- Add relative line numbers to document.
 vim.opt.autoread = true       -- Automatically reload files.
@@ -17,44 +11,11 @@ vim.opt.incsearch = true      -- Show where search pattern matches.
 vim.opt.clipboard = "unnamed" -- Copy into system (*) register.
 vim.opt.ignorecase = true     -- Ignores case when searching patterns
 vim.opt.smartcase = true      -- Automatically switches to case-sensitive search if a capital letter is used
-
--- Ensures the menu appears even for a single match and uses the native popup window.
+vim.o.signcolumn = "yes"
+vim.o.laststatus = 3
+vim.o.cmdheight = 0
 vim.opt.completeopt = { "menu", "menuone", "noinsert", "noselect", "popup" }
 vim.o.autocomplete = true
-vim.api.nvim_create_autocmd("LspAttach", {
-    group = vim.api.nvim_create_augroup("lsp_completion", { clear = true }),
-    callback = function(args)
-        local client_id = args.data.client_id
-        if not client_id then
-            return
-        end
-
-        local client = vim.lsp.get_client_by_id(client_id)
-        if client and client:supports_method("textDocument/completion") then
-            -- Enable native LSP completion for this client + buffer
-            vim.lsp.completion.enable(true, client_id, args.buf, {
-                autotrigger = true, -- auto-show menu as you type (recommended)
-                -- You can also set { autotrigger = false } and trigger manually with <C-x><C-o>
-            })
-        end
-    end,
-})
-
--- Disable native autocomplete in special buffers (e.g. Telescope's prompt).
-vim.api.nvim_create_autocmd({ "BufNew", "BufEnter", "FileType" }, {
-    callback = function(args)
-        vim.bo[args.buf].autocomplete = vim.bo[args.buf].buftype == ""
-    end,
-})
-
--- Set tabs/spaces for different file types
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "c", "cpp", "javascript", "typescript" },
-    callback = function()
-        vim.opt_local.tabstop = 2
-        vim.opt_local.shiftwidth = 2
-    end
-})
 
 -- Adapted for Windows from
 -- https://toddknutson.bio/posts/how-to-enable-neovim-undo-backup-and-swap-files-when-switching-linux-groups/
@@ -74,7 +35,7 @@ if vim.fn.isdirectory(UNDODIR) == 0 then
     vim.fn.mkdir(UNDODIR, "p", "0o700")
 end
 
--- WINDOWS SHELL SETUP
+-- Windows shell setup
 -- Use cmd.exe for `!`, system(), and plugin shell-outs (e.g. vim-fugitive).
 -- pwsh startup is ~200-500ms per spawn, which makes fugitive feel sluggish;
 -- cmd.exe spawns in single-digit ms. :terminal is rerouted to pwsh below.
@@ -107,16 +68,3 @@ vim.opt.undodir = UNDODIR
 vim.opt.swapfile = true
 vim.opt.backup = true
 vim.opt.undofile = true
-
--- Append backup files with timestamp
-vim.api.nvim_create_autocmd("BufWritePre", {
-    callback = function()
-        local extension = "~" .. vim.fn.strftime("%Y-%m-%d-%H%M%S")
-        vim.o.backupext = extension
-    end,
-})
-
--- UI SETUP --
-vim.o.background = "dark"
-vim.cmd("colorscheme retrobox")
-vim.o.winborder = "rounded"

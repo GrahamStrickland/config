@@ -13,8 +13,6 @@ vim.api.nvim_create_autocmd("PackChanged", {
 })
 
 vim.pack.add({
-    gh("nvim-lualine/lualine.nvim"),
-    gh("scrooloose/nerdtree"),
     gh("tpope/vim-dispatch"),
     gh("tpope/vim-unimpaired"),
     gh("tpope/vim-fugitive"),
@@ -24,7 +22,6 @@ vim.pack.add({
     gh("kristijanhusak/vim-dadbod-completion"),
     gh("kristijanhusak/vim-dadbod-ui"),
     gh("lewis6991/gitsigns.nvim"),
-    gh("yorickpeterse/nvim-pqf"),
     gh("easymotion/vim-easymotion"),
     gh("tomtom/tcomment_vim"),
     gh("nvim-lua/plenary.nvim"),
@@ -34,7 +31,5 @@ vim.pack.add({
     cb("Jorenar/nvim-dap-disasm"),
     gh("igorlfs/nvim-dap-view"),
     gh("mfussenegger/nvim-dap-python"),
-    gh("hat0uma/csvview.nvim"),
     gh("GustavEikaas/easy-dotnet.nvim"),
-    gh("nvim-treesitter/nvim-treesitter"),
 })

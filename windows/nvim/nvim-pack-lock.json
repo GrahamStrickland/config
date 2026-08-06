@@ -1,24 +1,12 @@
 {
   "plugins": {
-    "csvview.nvim": {
-      "rev": "5c22774c3ecc7f8883af5d143b366e45b1f0875d",
-      "src": "https://github.com/hat0uma/csvview.nvim"
-    },
     "easy-dotnet.nvim": {
-      "rev": "5823c50d0de015c01f591319f6e846506518165e",
+      "rev": "ed952b0aff97c100f1b650ba6b08595b7136bcb6",
       "src": "https://github.com/GustavEikaas/easy-dotnet.nvim"
     },
     "gitsigns.nvim": {
       "rev": "31d6fb2d618bca1482b9f274751ead5f03461408",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
-    },
-    "lualine.nvim": {
-      "rev": "221ce6b2d999187044529f49da6554a92f740a96",
-      "src": "https://github.com/nvim-lualine/lualine.nvim"
-    },
-    "nerdtree": {
-      "rev": "690d061b591525890f1471c6675bcb5bdc8cdff9",
-      "src": "https://github.com/scrooloose/nerdtree"
     },
     "nvim-dap": {
       "rev": "9e848e09a697ee95302a3ef2dd43fd6eb709e570",
@@ -33,16 +21,8 @@
       "src": "https://github.com/mfussenegger/nvim-dap-python"
     },
     "nvim-dap-view": {
-      "rev": "b8c8aa91f42055d7f69012587cde4f1d99f2a701",
+      "rev": "eda349094a87c6ff5a9c75bbbc88bce45836ae08",
       "src": "https://github.com/igorlfs/nvim-dap-view"
-    },
-    "nvim-pqf": {
-      "rev": "0f11180718b861986ac06a2fef16c404a58b3645",
-      "src": "https://github.com/yorickpeterse/nvim-pqf"
-    },
-    "nvim-treesitter": {
-      "rev": "a45a920ec04cda5624f6dea0ff6454c81c3ad2d5",
-      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",

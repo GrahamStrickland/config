@@ -1,15 +1,7 @@
--- PRE-PLUGIN KEY MAPPINGS --
+-- Pre-plugin key mappings
 -- Map the leader key to a space
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
-
--- Open NERDTree for viewing files
-vim.api.nvim_set_keymap(
-    "n",
-    "<leader>n",
-    ":NERDTreeToggle<cr>",
-    { noremap = true }
-)
 
 -- Page down/up and center
 vim.api.nvim_set_keymap(
@@ -33,7 +25,14 @@ vim.api.nvim_set_keymap(
     { noremap = true }
 )
 
--- DAP Mappings
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader>n",
+    ":Lexplore<cr>",
+    { silent = true }
+)
+
+-- DAP mappings
 vim.keymap.set(
     "n",
     "<F5>",
@@ -183,30 +182,4 @@ vim.keymap.set(
     "n",
     "<leader>h",
     function() vim.lsp.buf.hover() end
-)
-
--- CSVView keybindings
-vim.keymap.set(
-    "n",
-    "<leader>csv",
-    function()
-        require("csvview").enable()
-    end,
-    { noremap = true, silent = true }
-)
-vim.keymap.set(
-    "n",
-    "<leader>csd",
-    function()
-        require("csvview").disable()
-    end,
-    { noremap = true, silent = true }
-)
-vim.keymap.set(
-    "n",
-    "<leader>cst",
-    function()
-        require("csvview").toggle()
-    end,
-    { noremap = true, silent = true }
 )

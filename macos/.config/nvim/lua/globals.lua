@@ -19,7 +19,7 @@ vim.opt.smartcase = true      -- Automatically switches to case-sensitive search
 vim.o.signcolumn = "yes"
 vim.o.laststatus = 3
 vim.o.cmdheight = 0
-vim.opt.completeopt = { "menu", "menuone", "noinsert", "noselect" , "popup" }
+vim.opt.completeopt = { "menu", "menuone", "noinsert", "noselect", "popup" }
 vim.o.autocomplete = true
 
 -- Adapted for MacOS from
@@ -48,4 +48,3 @@ vim.opt.undodir = UNDODIR
 vim.opt.swapfile = true
 vim.opt.backup = true
 vim.opt.undofile = true
-
