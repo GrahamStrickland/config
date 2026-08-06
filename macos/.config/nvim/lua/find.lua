@@ -7,6 +7,8 @@ local ignore_patterns = {
 	"build",
 	"%.tmp",
 	"%.log",
+    "__pycache__",
+    "%.venv"
 }
 
 function _G.native_find(text, _)
