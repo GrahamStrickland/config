@@ -23,7 +23,7 @@ local get_python_path = function()
 end
 local dap_python = require("dap-python")
 
--- DAP ADAPTER CONFIGURATION
+-- DAP configuration
 -- C
 dap.configurations.c = {
     {
@@ -142,5 +142,37 @@ dap.configurations.python = {
         port = function()
             return tonumber(vim.fn.input("Port [5678]: ")) or 5678
         end,
+    },
+}
+
+-- Rust
+dap.configurations.rust = {
+    {
+        name = "Rust: launch process",
+        type = "lldb",
+        request = "launch",
+        program = function()
+            vim.fn.system("cargo build")
+            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/target/debug/", "file")
+        end,
+        cwd = "${workspaceFolder}",
+        stopOnEntry = false,
+        showDisassembly = "never",
+    },
+    {
+        name = "Rust: launch process with arguments",
+        type = "lldb",
+        request = "launch",
+        program = function()
+            vim.fn.system("cargo build")
+            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/target/debug/", "file")
+        end,
+        args = function()
+            local args_string = vim.fn.input("Arguments: ")
+            return vim.split(args_string, " ")
+        end,
+        cwd = "${workspaceFolder}",
+        stopOnEntry = false,
+        showDisassembly = "never",
     },
 }

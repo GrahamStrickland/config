@@ -40,5 +40,4 @@ vim.pack.add({
     gh("mrcjkb/haskell-tools.nvim"),
     gh("Cliffback/netcoredbg-macOS-arm64.nvim"),
     gh("GustavEikaas/easy-dotnet.nvim"),
-    gh("mrcjkb/rustaceanvim"),
 })

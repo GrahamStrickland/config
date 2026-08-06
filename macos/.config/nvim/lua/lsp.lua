@@ -109,6 +109,35 @@ vim.lsp.config["r_language_server"] = {
 }
 vim.lsp.enable("r_language_server")
 
+-- Rust setup
+vim.lsp.config["rust_analyzer"] = {
+    cmd = { "rust-analyzer" },
+    workspace_required = true,
+    on_attach = function(_, bufnr)
+        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    end,
+    settings = {
+        ["rust-analyzer"] = {
+            imports = {
+                granularity = {
+                    group = "module",
+                },
+                prefix = "self",
+            },
+            cargo = {
+                buildScripts = {
+                    enable = true,
+                },
+            },
+            procMacro = {
+                enable = true
+            },
+        }
+    },
+    filetypes = { "rust" },
+}
+vim.lsp.enable("rust_analyzer")
+
 -- Make auto-complete less annoying
 vim.cmd("set completeopt+=noselect")
 

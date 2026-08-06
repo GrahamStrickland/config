@@ -52,10 +52,6 @@
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
-    "rustaceanvim": {
-      "rev": "818d3565d7b9f86546d0ddf5d16a5e12eb70ef4f",
-      "src": "https://github.com/mrcjkb/rustaceanvim"
-    },
     "tcomment_vim": {
       "rev": "48ab639a461d9b8344f7fee06cb69b4374863b13",
       "src": "https://github.com/tomtom/tcomment_vim"
