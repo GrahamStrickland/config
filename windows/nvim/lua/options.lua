@@ -1,44 +1,25 @@
-vim.opt.number = true         -- Add line numbers to document.
-vim.opt.relativenumber = true -- Add relative line numbers to document.
-vim.opt.autoread = true       -- Automatically reload files.
-vim.opt.autoindent = true     -- Respect indentation when starting a new line.
-vim.opt.expandtab = true      -- Expand tabs to spaces. Essential in Python.
-vim.opt.tabstop = 4           -- Number of spaces tab is counted for.
-vim.opt.shiftwidth = 4        -- Number of spaces to use for autoindent.
-vim.opt.background = "dark"   -- Set to dark mode.
-vim.opt.hlsearch = true       -- Highlight search results.
-vim.opt.incsearch = true      -- Show where search pattern matches.
-vim.opt.clipboard = "unnamed" -- Copy into system (*) register.
+-- Options setup
+vim.opt.number = true         -- Add line numbers to document
+vim.opt.relativenumber = true -- Add relative line numbers to document
+vim.opt.autoread = true       -- Automatically reload files
+vim.opt.autoindent = true     -- Respect indentation when starting a new line
+vim.opt.expandtab = true      -- Expand tabs to spaces. Essential in Python
+vim.opt.tabstop = 4           -- Number of spaces tab is counted for
+vim.opt.shiftwidth = 4        -- Number of spaces to use for autoindent
+vim.opt.hlsearch = true       -- Highlight search results
+vim.opt.incsearch = true      -- Show where search pattern matches
+vim.opt.clipboard = "unnamed" -- Copy into system (*) register
 vim.opt.ignorecase = true     -- Ignores case when searching patterns
 vim.opt.smartcase = true      -- Automatically switches to case-sensitive search if a capital letter is used
 vim.o.signcolumn = "yes"
-vim.o.laststatus = 3
-vim.o.cmdheight = 0
+vim.o.laststatus = 3          -- Use one status for all splits
+vim.o.cmdheight = 0           -- Hide cmd entry when not in use
 vim.opt.completeopt = { "menu", "menuone", "noinsert", "noselect", "popup" }
-vim.o.autocomplete = true
-
--- Adapted for Windows from
--- https://toddknutson.bio/posts/how-to-enable-neovim-undo-backup-and-swap-files-when-switching-linux-groups/
-SWAPDIR = [[C:\Users\graham\AppData\Local\nvim\swap\]]
-BACKUPDIR = [[C:\Users\graham\AppData\Local\nvim\backup\]]
-UNDODIR = [[C:\Users\graham\AppData\Local\nvim\undo\]]
-
-if vim.fn.isdirectory(SWAPDIR) == 0 then
-    vim.fn.mkdir(SWAPDIR, "p", "0o700")
-end
-
-if vim.fn.isdirectory(BACKUPDIR) == 0 then
-    vim.fn.mkdir(BACKUPDIR, "p", "0o700")
-end
-
-if vim.fn.isdirectory(UNDODIR) == 0 then
-    vim.fn.mkdir(UNDODIR, "p", "0o700")
-end
+vim.o.autocomplete = true     -- Enable LSP autocomplete
 
 -- Windows shell setup
--- Use cmd.exe for `!`, system(), and plugin shell-outs (e.g. vim-fugitive).
--- pwsh startup is ~200-500ms per spawn, which makes fugitive feel sluggish;
--- cmd.exe spawns in single-digit ms. :terminal is rerouted to pwsh below.
+-- Use cmd.exe for `!`, system(), and plugin shell-outs (e.g. vim-fugitive)
+-- Use powershell.exe/pwsh.exe for terminal 
 if vim.fn.has("win32") == 1 then
     vim.opt.shell = "cmd.exe"
     vim.opt.shellcmdflag = "/s /c"
@@ -60,11 +41,3 @@ if vim.fn.has("win32") == 1 then
         return "<CR>"
     end, { expr = true, desc = "Route bare :terminal through pwsh" })
 end
-
--- Enable swap, backup, and persistant undo
-vim.opt.directory = SWAPDIR
-vim.opt.backupdir = BACKUPDIR
-vim.opt.undodir = UNDODIR
-vim.opt.swapfile = true
-vim.opt.backup = true
-vim.opt.undofile = true
