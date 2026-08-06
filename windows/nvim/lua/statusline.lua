@@ -63,14 +63,15 @@ function _G._statusline()
         end
     end
 
-    return "%#StlMode# " .. mode .. " %*" .. branch .. " " .. path .. "%=" .. diag .. vim.bo.filetype .. modified .. search_str .. " %l:%c"
+    return "%#StlMode# " ..
+    mode .. " %*" .. branch .. " " .. path .. "%=" .. diag .. vim.bo.filetype .. modified .. search_str .. " %l:%c"
 end
 
 vim.api.nvim_create_autocmd("BufEnter", {
     callback = function()
-        local root = vim.fn.system("git rev-parse --show-toplevel 2>/dev/null"):gsub("%s+$", "")
+        local root = vim.fn.system("git rev-parse --show-toplevel 2>nul"):gsub("%s+$", "")
         if root ~= "" then
-            vim.b.git_branch = vim.fn.system("git branch --show-current 2>/dev/null"):gsub("%s+$", "")
+            vim.b.git_branch = vim.fn.system("git branch --show-current 2>nul"):gsub("%s+$", "")
             vim.b.rel_path = vim.fn.expand("%:p"):sub(#root + 2)
         else
             vim.b.git_branch = nil
