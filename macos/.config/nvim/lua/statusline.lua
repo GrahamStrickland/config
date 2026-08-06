@@ -21,23 +21,6 @@ local modes = {
 
 vim.opt.shortmess:remove("S")
 
-vim.keymap.set(
-    "n",
-    "n",
-    function()
-        vim.cmd("normal! n")
-        pcall(vim.fn.searchcount, { maxcount = 99999 })
-    end
-)
-vim.keymap.set(
-    "n",
-    "N",
-    function()
-        vim.cmd("normal! N")
-        pcall(vim.fn.searchcount, { maxcount = 99999 })
-    end
-)
-
 function _G._statusline()
     local mode = modes[vim.fn.mode()] or vim.fn.mode():upper()
     local branch = vim.b.git_branch and "%#StlGit# " .. vim.b.git_branch .. " %*" or ""
