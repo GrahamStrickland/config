@@ -32,6 +32,55 @@ vim.api.nvim_set_keymap(
     { silent = true }
 )
 
+-- LSP keybindings
+vim.keymap.set(
+    "n",
+    "gd",
+    function() vim.lsp.buf.definition() end
+)
+vim.keymap.set(
+    "n",
+    "gD",
+    function() vim.lsp.buf.declaration() end
+)
+vim.keymap.set(
+    "n",
+    "gt",
+    function() vim.lsp.buf.type_definition() end
+)
+
+-- Formatting
+vim.keymap.set(
+    "n",
+    "<leader>cf",
+    function()
+        vim.lsp.buf.format()
+    end,
+    { noremap = true, silent = true }
+)
+
+-- Plugin-dependent keybindings
+-- Diagnostics/hover
+vim.keymap.set(
+    "n",
+    "<leader>dn",
+    function() vim.diagnostic.jump({ count = 1, float = true }) end
+)
+vim.keymap.set(
+    "n",
+    "<leader>dN",
+    function() vim.diagnostic.jump({ count = -1, float = true }) end
+)
+vim.keymap.set(
+    "n",
+    "<leader>d",
+    function() vim.diagnostic.open_float() end
+)
+vim.keymap.set(
+    "n",
+    "<leader>h",
+    function() vim.lsp.buf.hover() end
+)
 -- DAP mappings
 vim.keymap.set(
     "n",
@@ -134,52 +183,3 @@ end
 
 -- Try to setup telescope keybindings when possible
 vim.defer_fn(setup_telescope_keybindings, 100)
-
--- LSP keybindings
-vim.keymap.set(
-    "n",
-    "gd",
-    function() vim.lsp.buf.definition() end
-)
-vim.keymap.set(
-    "n",
-    "gD",
-    function() vim.lsp.buf.declaration() end
-)
-vim.keymap.set(
-    "n",
-    "gt",
-    function() vim.lsp.buf.type_definition() end
-)
-
--- Formatting
-vim.keymap.set(
-    "n",
-    "<leader>cf",
-    function()
-        vim.lsp.buf.format()
-    end,
-    { noremap = true, silent = true }
-)
-
--- Diagnostics/hover
-vim.keymap.set(
-    "n",
-    "<leader>dn",
-    function() vim.diagnostic.jump({ count = 1, float = true }) end
-)
-vim.keymap.set(
-    "n",
-    "<leader>dN",
-    function() vim.diagnostic.jump({ count = -1, float = true }) end
-)
-vim.keymap.set(
-    "n",
-    "<leader>d",
-    function() vim.diagnostic.open_float() end
-)
-vim.keymap.set(
-    "n",
-    "<leader>h",
-    function() vim.lsp.buf.hover() end
-)

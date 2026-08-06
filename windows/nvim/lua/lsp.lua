@@ -106,3 +106,6 @@ vim.lsp.enable({ "ty", "ruff" })
 
 -- Make auto-complete less annoying
 vim.cmd("set completeopt+=noselect")
+
+-- Inline diagnostics
+vim.diagnostic.config({ virtual_text = true })
