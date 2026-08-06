@@ -1,22 +1,16 @@
--- PLUGIN MANAGEMENT --
 local gh = function(x) return "https://github.com/" .. x end
 local cb = function(x) return 'https://codeberg.org/' .. x end
 
 vim.api.nvim_create_autocmd("PackChanged", {
     callback = function(ev)
         local name, kind = ev.data.spec.name, ev.data.kind
-        if name == "nvim-treesitter" and kind == "update" then
-            if not ev.data.active then vim.cmd.packadd("nvim-treesitter") end
-            vim.cmd("TSUpdate")
-        elseif name == "LuaSnip" and kind == "update" then
+        if name == "LuaSnip" and kind == "update" then
             vim.cmd(":make install_jsregexp()")
         end
     end
 })
 
 vim.pack.add({
-    gh("nvim-lualine/lualine.nvim"),
-    gh("scrooloose/nerdtree"),
     gh("tpope/vim-dispatch"),
     gh("tpope/vim-unimpaired"),
     gh("tpope/vim-fugitive"),
@@ -27,7 +21,6 @@ vim.pack.add({
     gh("kristijanhusak/vim-dadbod-completion"),
     gh("kristijanhusak/vim-dadbod-ui"),
     gh("lewis6991/gitsigns.nvim"),
-    gh("yorickpeterse/nvim-pqf"),
     gh("easymotion/vim-easymotion"),
     gh("tomtom/tcomment_vim"),
     gh("lervag/vimtex"),
@@ -45,9 +38,7 @@ vim.pack.add({
     gh("mfussenegger/nvim-dap-python"),
     gh("mfussenegger/nvim-jdtls"),
     gh("mrcjkb/haskell-tools.nvim"),
-    gh("hat0uma/csvview.nvim"),
     gh("Cliffback/netcoredbg-macOS-arm64.nvim"),
     gh("GustavEikaas/easy-dotnet.nvim"),
     gh("mrcjkb/rustaceanvim"),
-    gh("nvim-treesitter/nvim-treesitter"),
 })

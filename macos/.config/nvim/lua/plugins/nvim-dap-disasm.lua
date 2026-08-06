@@ -1,4 +1,3 @@
--- nvim-dap-disasm SETUP
 require("dap-disasm").setup({
     dapview_register = true,
 

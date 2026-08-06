@@ -1,4 +1,3 @@
--- nvim-dap-disasm SETUP
 require("dap-view").setup({
     winbar = {
         sections = {

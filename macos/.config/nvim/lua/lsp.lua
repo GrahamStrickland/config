@@ -1,4 +1,3 @@
--- LSP SETUP
 vim.lsp.config("*", {
     capabilities = vim.tbl_deep_extend("force",
         vim.lsp.protocol.make_client_capabilities(),
@@ -110,15 +109,8 @@ vim.lsp.config["r_language_server"] = {
 }
 vim.lsp.enable("r_language_server")
 
--- Setup auto-completion
-vim.api.nvim_create_autocmd("LspAttach", {
-    callback = function(ev)
-        local client = vim.lsp.get_client_by_id(ev.data.client_id)
-        if client:supports_method("textDocument/completion") then
-            vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-        end
-    end,
-})
 
 -- Make auto-complete less annoying
 vim.cmd("set completeopt+=noselect")
+
+vim.diagnostic.config({ virtual_text = true })

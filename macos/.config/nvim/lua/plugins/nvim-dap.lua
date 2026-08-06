@@ -1,4 +1,3 @@
--- DAP ADAPTER SETUP
 local dap = require("dap")
 
 dap.adapters.lldb = {
@@ -54,6 +53,7 @@ dap.configurations.c = {
         showDisassembly = "never",
     },
 }
+dap.configurations.objc = dap.configurations.c
 
 -- C++
 dap.configurations.cpp = {
@@ -84,6 +84,7 @@ dap.configurations.cpp = {
         showDisassembly = "never",
     },
 }
+dap.configurations.objcpp = dap.configurations.cpp
 
 -- Java
 -- The `java` adapter is registered per-buffer by require("jdtls").setup_dap()

@@ -1,4 +1,3 @@
--- LEAN4 SETUP
 local telescope = require("telescope")
 
 vim.g.lean_config = { mappings = true }
