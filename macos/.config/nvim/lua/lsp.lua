@@ -109,8 +109,8 @@ vim.lsp.config["r_language_server"] = {
 }
 vim.lsp.enable("r_language_server")
 
-
 -- Make auto-complete less annoying
 vim.cmd("set completeopt+=noselect")
 
+-- Inline diagnostics
 vim.diagnostic.config({ virtual_text = true })

@@ -1,7 +1,7 @@
 require("ui")
 require("plugins")
 require("keybindings")
-require("globals")
+require("options")
 require("autocommands")
 require("lsp")
 require("netrw")
