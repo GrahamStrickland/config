@@ -8,7 +8,8 @@ local ignore_patterns = {
     "%.tmp",
     "%.log",
     "__pycache__",
-    ".venv"
+    ".venv",
+    "%.obj"
 }
 
 function _G.native_find(text, _)
