@@ -30,8 +30,6 @@ vim.pack.add({
     gh("radenling/vim-dispatch-neovim"),
     gh("clojure-vim/vim-jack-in"),
     gh("Olical/conjure"),
-    gh("nvim-telescope/telescope.nvim"),
-    gh("nvim-telescope/telescope-ui-select.nvim"),
     gh("mfussenegger/nvim-dap"),
     cb("Jorenar/nvim-dap-disasm"),
     gh("igorlfs/nvim-dap-view"),
