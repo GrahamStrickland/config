@@ -48,16 +48,6 @@ vim.keymap.set(
     function() vim.lsp.buf.type_definition() end
 )
 
--- Formatting
-vim.keymap.set(
-    "n",
-    "<leader>cf",
-    function()
-        vim.lsp.buf.format()
-    end,
-    { noremap = true, silent = true }
-)
-
 -- Diagnostics/hover
 vim.keymap.set(
     "n",
@@ -78,6 +68,16 @@ vim.keymap.set(
     "n",
     "<leader>h",
     function() vim.lsp.buf.hover() end
+)
+
+-- Formatting
+vim.keymap.set(
+    "n",
+    "<leader>cf",
+    function()
+        vim.lsp.buf.format()
+    end,
+    { noremap = true, silent = true }
 )
 
 -- Plugin-dependent key mappings
