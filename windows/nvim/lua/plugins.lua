@@ -25,8 +25,6 @@ vim.pack.add({
     gh("easymotion/vim-easymotion"),
     gh("tomtom/tcomment_vim"),
     gh("nvim-lua/plenary.nvim"),
-    gh("nvim-telescope/telescope.nvim"),
-    gh("nvim-telescope/telescope-ui-select.nvim"),
     gh("mfussenegger/nvim-dap"),
     cb("Jorenar/nvim-dap-disasm"),
     gh("igorlfs/nvim-dap-view"),
