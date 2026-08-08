@@ -1,6 +1,6 @@
 vim.env.HARBOUR_DBG_TRACE = "1"
 
--- DAP ADAPTER SETUP
+-- DAP adapter setup
 local dap = require("dap")
 
 dap.adapters.lldb = {
@@ -25,7 +25,7 @@ local get_python_path = function()
 end
 local dap_python = require("dap-python")
 
--- DAP ADAPTER CONFIGURATION
+-- DAP adapter configuration
 -- C
 dap.configurations.c = {
     {
@@ -83,6 +83,75 @@ dap.configurations.cpp = {
         cwd = "${workspaceFolder}",
         stopOnEntry = false,
         showDisassembly = "never",
+    },
+}
+
+local function vsdbg_path()
+    local standalone = vim.fs.joinpath(vim.fn.stdpath("data"), "vsdbg", "vsdbg.exe")
+    if vim.fn.executable(standalone) == 1 then
+        return standalone
+    end
+    local pattern = "~/.vscode/extensions/ms-vscode.cpptools-*/debugAdapters/vsdbg/bin/vsdbg.exe"
+    local found = vim.fn.glob(vim.fn.expand(pattern), true, true)
+    return found[#found] or standalone
+end
+
+dap.adapters.cppvsdbg = {
+    type = "executable",
+    command = vsdbg_path(),
+    args = { "--interpreter=vscode" },
+}
+
+local vsdbg_configurations = {
+    {
+        name = "C/C++: launch process (MSVC)",
+        type = "cppvsdbg",
+        request = "launch",
+        program = function()
+            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "\\", "file")
+        end,
+        cwd = "${workspaceFolder}",
+        stopAtEntry = false,
+        console = "integratedTerminal",
+    },
+    {
+        name = "C/C++: launch process with arguments (MSVC)",
+        type = "cppvsdbg",
+        request = "launch",
+        program = function()
+            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "\\", "file")
+        end,
+        args = function()
+            local args_string = vim.fn.input("Arguments: ")
+            return vim.split(args_string, " ")
+        end,
+        cwd = "${workspaceFolder}",
+        stopAtEntry = false,
+        console = "integratedTerminal",
+    },
+}
+
+for i = #vsdbg_configurations, 1, -1 do
+    table.insert(dap.configurations.c, 1, vsdbg_configurations[i])
+    table.insert(dap.configurations.cpp, 1, vsdbg_configurations[i])
+end
+
+-- C#
+dap.adapters.coreclr = {
+    type = "executable",
+    command = vim.fs.joinpath(vim.fn.stdpath("data"), "netcoredbg", "netcoredbg.exe"),
+    args = { "--interpreter=vscode" },
+}
+
+dap.configurations.cs = {
+    {
+        name = "C#: launch process",
+        type = "coreclr",
+        request = "launch",
+        cwd = "${workspaceFolder}",
+        program = function()
+            return vim.fn.input("Path to dll: ", vim.fn.getcwd() .. "/bin/Debug/", "file")
+        end,
     },
 }
 

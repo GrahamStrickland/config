@@ -23,6 +23,18 @@ vim.lsp.config["clangd"] = {
 }
 vim.lsp.enable("clangd")
 
+-- C# setup
+vim.lsp.config["roslyn_ls"] = {
+    settings = {
+        -- better performance
+        ["csharp|background_analysis"] = {
+            dotnet_analyzer_diagnostics_scope = "openFiles",
+            dotnet_compiler_diagnostics_scope = "openFiles",
+        },
+    },
+}
+vim.lsp.enable("roslyn_ls")
+
 -- JavaScript/TypeScript setup
 vim.lsp.config["ts_go"] = {
     cmd = { "tsgo", "--lsp", "--stdio" },

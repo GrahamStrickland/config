@@ -24,10 +24,10 @@ vim.pack.add({
     gh("lewis6991/gitsigns.nvim"),
     gh("easymotion/vim-easymotion"),
     gh("tomtom/tcomment_vim"),
-    gh("nvim-lua/plenary.nvim"),
     gh("mfussenegger/nvim-dap"),
     cb("Jorenar/nvim-dap-disasm"),
     gh("igorlfs/nvim-dap-view"),
     gh("mfussenegger/nvim-dap-python"),
-    gh("GustavEikaas/easy-dotnet.nvim"),
+    gh("neovim/nvim-lspconfig"),
+    gh("nvim-treesitter/nvim-treesitter"),
 })
