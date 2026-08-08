@@ -1,7 +1,7 @@
--- PRE-PLUGIN KEY MAPPINGS --
+-- Pre-plugin key mappings
 -- Map the leader key to a space
 vim.g.mapleader = " "
-vim.g.maplocalleader = "  "
+vim.g.maplocalleader = ","
 
 -- Save a file with leader-w
 vim.api.nvim_set_keymap(
@@ -87,159 +87,73 @@ vim.api.nvim_set_keymap(
     { noremap = true }
 )
 
-
--- PLUGIN-DEPENDENT KEY MAPPINGS --
--- Open NERDTree for viewing files
+-- Browse files with netrw, replacing NERDTree
 vim.api.nvim_set_keymap(
     "n",
     "<leader>n",
-    ":NERDTreeToggle<cr>",
-    { noremap = true }
+    ":Lexplore<cr>",
+    { silent = true }
 )
 
--- Map Ctrlp buffer mode to Ctrl + B
+-- Pick a buffer, replacing CtrlPBuffer
 vim.api.nvim_set_keymap(
     "n",
     "<c-b>",
-    "CtrlPBuffer<cr>",
+    ":buffers<cr>:buffer ",
     { noremap = true }
 )
 
--- DAP Mappings
+-- LSP keybindings
 vim.keymap.set(
-    "n", 
-    "<F5>", 
-    function() require("dap").continue() end
-)
-vim.keymap.set(
-    "n", 
-    "<S-F5>", 
-    function() require("dap").terminate() end
-)
-vim.keymap.set(
-    "n", 
-    "<F10>", 
-    function() require("dap").step_over() end
-)
-vim.keymap.set(
-    "n", 
-    "<F11>", 
-    function() require("dap").step_into() end
-)
-vim.keymap.set(
-    "n", 
-    "<S-F11>", 
-    function() require("dap").step_out() end
-)
-vim.keymap.set(
-    "n", 
-    "<F9>", 
-    function() require("dap").toggle_breakpoint() end
-)
-vim.keymap.set(
-    "n", 
-    "<leader>dpr", 
-    function() require("dap").repl.open() end
-)
-vim.keymap.set(
-    "n", 
-    "<leader>dpa", 
-    function() require("dap").run_last() end
-)
-vim.keymap.set(
-    {"n", "v"}, 
-    "<leader>dph", 
-    function() require("dap.ui.widgets").hover() end
-)
-vim.keymap.set(
-    {"n", "v"}, 
-    "<leader>dpp", 
-    function() require("dap.ui.widgets").preview() end
-)
-vim.keymap.set(
-    "n", 
-    "<leader>dpf", 
-    function()
-        local widgets = require("dap.ui.widgets")
-        widgets.centered_float(widgets.frames)
-    end
-)
-vim.keymap.set(
-    "n", 
-    "<leader>dps", 
-    function()
-        local widgets = require("dap.ui.widgets")
-        widgets.centered_float(widgets.scopes)
-    end
+    "n",
+    "gd",
+    function() vim.lsp.buf.definition() end
 )
 vim.keymap.set(
     "n",
-    "<leader>duo",
-    function() require("dapui").open() end
+    "gD",
+    function() vim.lsp.buf.declaration() end
 )
 vim.keymap.set(
     "n",
-    "<leader>duc",
-    function() require("dapui").close() end
-)
-vim.keymap.set(
-    "n",
-    "<leader>dut",
-    function() require("dapui").toggle() end
+    "gt",
+    function() vim.lsp.buf.type_definition() end
 )
 
--- Telescope key bindings
-local builtin = require("telescope.builtin")
+-- Diagnostics/hover
 vim.keymap.set(
-    "n",    
-    "<leader>ff", 
-    builtin.find_files, 
-    {}
-)
-vim.keymap.set(
-    "n", 
-    "<leader>fg", 
-    builtin.live_grep, 
-    {}
-)
-vim.keymap.set(
-    "n", 
-    "<leader>fb", 
-    builtin.buffers, 
-    {}
-)
-vim.keymap.set(
-    "n", 
-    "<leader>fh", 
-    builtin.help_tags, 
-    {}
+    "n",
+    "<leader>dn",
+    function() vim.diagnostic.jump({ count = 1, float = true }) end
 )
 vim.keymap.set(
     "n",
-    "<leader>fd",
-    builtin.lsp_definitions,
-    {}
+    "<leader>dN",
+    function() vim.diagnostic.jump({ count = -1, float = true }) end
 )
 vim.keymap.set(
     "n",
-    "<leader>fi",
-    builtin.lsp_implementations,
-    {}
+    "<leader>d",
+    function() vim.diagnostic.open_float() end
 )
 vim.keymap.set(
     "n",
-    "<leader>fr",
-    builtin.lsp_references,
-    {}
+    "<leader>o",
+    function() vim.diagnostic.open_float() end
+)
+vim.keymap.set(
+    "n",
+    "<leader>h",
+    function() vim.lsp.buf.hover() end
 )
 
 -- Code actions
 vim.keymap.set(
-    "n", 
-    "<leader>ca", 
+    "n",
+    "<leader>ca",
     function()
         vim.lsp.buf.code_action()
-    end, 
+    end,
     { noremap = true, silent = true }
 )
 
@@ -253,137 +167,138 @@ vim.keymap.set(
     { noremap = true, silent = true }
 )
 
--- Inspection
+-- Plugin-dependent key mappings
+-- DAP mappings
 vim.keymap.set(
     "n",
-    "<leader>h",
-    function() vim.lsp.buf.hover() end
+    "<F5>",
+    function() require("dap").continue() end
 )
 vim.keymap.set(
     "n",
-    "<leader>o",
-    function() vim.diagnostic.open_float() end
+    "<S-F5>",
+    function() require("dap").terminate() end
+)
+vim.keymap.set(
+    "n",
+    "<F10>",
+    function() require("dap").step_over() end
+)
+vim.keymap.set(
+    "n",
+    "<F11>",
+    function() require("dap").step_into() end
+)
+vim.keymap.set(
+    "n",
+    "<S-F11>",
+    function() require("dap").step_out() end
+)
+vim.keymap.set(
+    "n",
+    "<F9>",
+    function() require("dap").toggle_breakpoint() end
+)
+vim.keymap.set(
+    "n",
+    "<leader>db",
+    function() require("dap").set_breakpoint() end
+)
+vim.keymap.set(
+    "n",
+    "<leader>dc",
+    function() require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: ")) end
+)
+vim.keymap.set(
+    "n",
+    "<leader>dpr",
+    function() require("dap").repl.open() end
+)
+vim.keymap.set(
+    "n",
+    "<leader>dpa",
+    function() require("dap").run_last() end
+)
+vim.keymap.set(
+    { "n", "v" },
+    "<leader>dph",
+    function() require("dap.ui.widgets").hover() end
+)
+vim.keymap.set(
+    { "n", "v" },
+    "<leader>dpp",
+    function() require("dap.ui.widgets").preview() end
+)
+vim.keymap.set(
+    "n",
+    "<leader>dpf",
+    function()
+        local widgets = require("dap.ui.widgets")
+        widgets.centered_float(widgets.frames)
+    end
+)
+vim.keymap.set(
+    "n",
+    "<leader>dps",
+    function()
+        local widgets = require("dap.ui.widgets")
+        widgets.centered_float(widgets.scopes)
+    end
 )
 
--- LuaSnip keybindings -- see https://github.com/L3MON4D3/LuaSnip#keymaps
-local ls = require("luasnip")
-local cmp = require("cmp")
-
-cmp.setup({
-    mapping = {
-        ["<cr>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                if ls.expandable() then
-                    ls.expand()
-                else
-                    cmp.confirm({
-                        select = true,
-                    })
-                end
-            else
-                fallback()
-            end
-        end),
-        ["<tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item()
-            elseif ls.locally_jumpable(1) then
-                ls.jump(1)
-            else
-                fallback()
-            end
-        end, {"i", "s"}),
-        ["<s-tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_prev_item()
-            elseif ls.locally_jumpable(-1) then
-                ls.jump(-1)
-            else
-                fallback()
-            end
-        end, {"i", "s"}),
-        ["<down>"] = cmp.mapping(function(fallback) 
-            if ls.choice_active() then
-                ls.change_choice(1)
-            else
-                fallback()
-            end
-        end, {"i", "s"})
-    }
-})
-
--- CSVView keybindings
+-- nvim-dap-view key bindings, replacing nvim-dap-ui
 vim.keymap.set(
     "n",
-    "<leader>csv",
-    function()
-        require("csvview").enable()
-    end,
-    { noremap = true, silent = true }
+    "<leader>dvo",
+    function() require("dap-view").open() end
 )
 vim.keymap.set(
     "n",
-    "<leader>csd",
-    function()
-        require("csvview").disable()
-    end,
-    { noremap = true, silent = true }
+    "<leader>dvc",
+    function() require("dap-view").close() end
 )
 vim.keymap.set(
     "n",
-    "<leader>cst",
-    function()
-        require("csvview").toggle()
-    end,
-    { noremap = true, silent = true }
+    "<leader>dvt",
+    function() require("dap-view").toggle() end
+)
+vim.keymap.set(
+    "n",
+    "<leader>dve",
+    function() require("dap-view").virtual_text_enable() end
+)
+vim.keymap.set(
+    "n",
+    "<leader>dvd",
+    function() require("dap-view").virtual_text_disable() end
+)
+vim.keymap.set(
+    "n",
+    "<leader>dvv",
+    function() require("dap-view").virtual_text_toggle() end
 )
 
--- Goto Preview
-vim.keymap.set(
-    "n", 
-    "<leader>gpd", 
-    function()
-        require("goto-preview").goto_preview_definition()
-    end,
-    {noremap=true}
-)
-vim.keymap.set(
-    "n", 
-    "<leader>gpt", 
-    function()
-        require("goto-preview").goto_preview_type_definition()
-    end,
-    {noremap=true}
-)
-vim.keymap.set(
-    "n", 
-    "<leader>gpi", 
-    function()
-        require("goto-preview").goto_preview_implementation()
-    end,
-    {noremap=true}
-)
-vim.keymap.set(
-    "n", 
-    "<leader>gpD", 
-    function()
-        require("goto-preview").goto_preview_declaration()
-    end,
-    {noremap=true}
-)
-vim.keymap.set(
-    "n", 
-    "<leader>gpr", 
-    function()
-        require("goto-preview").goto_preview_references()
-    end,
-    {noremap=true}
-)
-vim.keymap.set(
-    "n", 
-    "<leader>gP", 
-    function()
-        require("goto-preview").close_all_win()
-    end,
-    {noremap=true}
-)
+-- Native LSP completion keybindings, replacing nvim-cmp
+-- <cr>: accept the pum item, else newline
+vim.keymap.set("i", "<cr>", function()
+    if vim.fn.pumvisible() == 1 then
+        return "<C-y>"
+    end
+    return "<CR>"
+end, { expr = true, silent = true })
+
+-- <tab>: next pum item, else literal tab
+vim.keymap.set("i", "<tab>", function()
+    if vim.fn.pumvisible() == 1 then
+        return "<C-n>"
+    end
+    return "<Tab>"
+end, { expr = true, silent = true })
+
+-- <s-tab>: prev pum item, else literal shift-tab
+vim.keymap.set("i", "<s-tab>", function()
+    if vim.fn.pumvisible() == 1 then
+        return "<C-p>"
+    end
+    return "<S-Tab>"
+end, { expr = true, silent = true })

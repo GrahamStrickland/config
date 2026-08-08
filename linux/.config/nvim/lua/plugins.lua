@@ -1,58 +1,29 @@
--- PLUGIN MANAGEMENT --
--- Manage plugins with vim-plug.
-local vim = vim
-local Plug = vim.fn["plug#"]
-vim.call("plug#begin")
+-- Plugin management
+local gh = function(x) return "https://github.com/" .. x end
 
-Plug("junegunn/fzf", { ["do"] = function() 
-    vim.call("fzf#install()")
-end })
-Plug("junegunn/fzf.vim")
-Plug("wincent/ferret")
-Plug("nvim-lualine/lualine.nvim")
-Plug("vague2k/vague.nvim")
-Plug("scrooloose/nerdtree")
-Plug("tpope/vim-dispatch")
-Plug("tpope/vim-unimpaired")
-Plug("tpope/vim-vinegar")
-Plug("tpope/vim-fugitive")
-Plug("tpope/vim-repeat")
-Plug("tpope/vim-surround")
-Plug("yorickpeterse/nvim-pqf")
-Plug("akinsho/git-conflict.nvim")
-Plug("guns/vim-sexp")
-Plug("ctrlpvim/ctrlp.vim")
-Plug("mileszs/ack.vim")
-Plug("easymotion/vim-easymotion")
-Plug("christoomey/vim-tmux-navigator")
-Plug("tomtom/tcomment_vim")
-Plug("neovim/nvim-lspconfig")
-Plug("nvim-lua/lsp-status.nvim")
-Plug("glepnir/lspsaga.nvim")
-Plug("hrsh7th/cmp-nvim-lsp")
-Plug("hrsh7th/cmp-buffer")
-Plug("hrsh7th/cmp-path")
-Plug("hrsh7th/cmp-cmdline")
-Plug("hrsh7th/nvim-cmp")
-Plug("L3MON4D3/LuaSnip", { ["do"] = function()
-    vim.call("make install_jsregexp")
-end })
-Plug("saadparwaiz1/cmp_luasnip")
-Plug("nvim-lua/plenary.nvim")
-Plug("nvim-telescope/telescope.nvim")
-Plug("nvim-telescope/telescope-ui-select.nvim")
-Plug("rmagatti/logger.nvim")
-Plug("rmagatti/goto-preview")
-Plug("mfussenegger/nvim-dap")
-Plug("mfussenegger/nvim-dap-python")
-Plug("nvim-neotest/nvim-nio")
-Plug("rcarriga/nvim-dap-ui")
-Plug("folke/neodev.nvim")
-Plug("andrewradev/switch.vim")
-Plug("radenling/vim-dispatch-neovim")
-Plug("hat0uma/csvview.nvim")
-Plug("nvim-treesitter/nvim-treesitter", { ["do"] = function()
-    vim.fn["TSUpdate"]()
-end })
+vim.api.nvim_create_autocmd("PackChanged", {
+    callback = function(ev)
+        local name, kind = ev.data.spec.name, ev.data.kind
+        if name == "nvim-treesitter" and kind == "update" then
+            if not ev.data.active then vim.cmd.packadd("nvim-treesitter") end
+            vim.cmd("TSUpdate")
+        end
+    end
+})
 
-vim.call("plug#end")
+vim.pack.add({
+    gh("tpope/vim-dispatch"),
+    gh("tpope/vim-unimpaired"),
+    gh("tpope/vim-fugitive"),
+    gh("tpope/vim-repeat"),
+    gh("tpope/vim-surround"),
+    gh("guns/vim-sexp"),
+    gh("easymotion/vim-easymotion"),
+    gh("tomtom/tcomment_vim"),
+    gh("radenling/vim-dispatch-neovim"),
+    gh("mfussenegger/nvim-dap"),
+    gh("igorlfs/nvim-dap-view"),
+    gh("mfussenegger/nvim-dap-python"),
+    gh("neovim/nvim-lspconfig"),
+    gh("nvim-treesitter/nvim-treesitter"),
+})
