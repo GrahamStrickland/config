@@ -86,6 +86,9 @@ dap.configurations.cpp = {
 }
 dap.configurations.objcpp = dap.configurations.cpp
 
+-- C#
+require("netcoredbg-macOS-arm64").setup()
+
 -- Java
 -- The `java` adapter is registered per-buffer by require("jdtls").setup_dap()
 -- in ftplugin/java.lua.
@@ -96,9 +99,6 @@ dap.configurations.java = {
         name = "Java: launch current main class",
     },
 }
-
--- C#
-require("netcoredbg-macOS-arm64").setup(dap)
 
 -- Python
 dap_python.setup(get_python_path())

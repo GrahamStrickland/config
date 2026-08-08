@@ -23,6 +23,29 @@ vim.lsp.config["clangd"] = {
 }
 vim.lsp.enable("clangd")
 
+-- C# setup
+local function roslyn_cmd()
+    local pattern = "~/.dotnet/tools/.store/roslyn-language-server/*/"
+        .. "roslyn-language-server.*/*/tools/net*/*/Microsoft.CodeAnalysis.LanguageServer.dll"
+    local dlls = vim.fn.glob(vim.fn.expand(pattern), true, true)
+    if #dlls > 0 then
+        return { "dotnet", dlls[#dlls], "--stdio" }
+    end
+    return { "roslyn-language-server", "--stdio" }
+end
+
+vim.lsp.config["roslyn_ls"] = {
+    cmd = roslyn_cmd(),
+    settings = {
+        -- better performance
+        ["csharp|background_analysis"] = {
+            dotnet_analyzer_diagnostics_scope = "openFiles",
+            dotnet_compiler_diagnostics_scope = "openFiles",
+        },
+    },
+}
+vim.lsp.enable("roslyn_ls")
+
 -- Clojure setup
 vim.lsp.config["clojure_lsp"] = {
     cmd = { "clojure-lsp" },
@@ -43,7 +66,7 @@ vim.lsp.enable("cmake")
 -- JavaScript/TypeScript setup
 vim.lsp.config["ts_go"] = {
     cmd = { "tsgo", "--lsp", "--stdio" },
-    filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+    filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json" },
     root_markers = { "tsconfig.json", "jsconfig.json", "package.json" },
 }
 vim.lsp.enable("ts_go")

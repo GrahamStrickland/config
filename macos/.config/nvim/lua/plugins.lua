@@ -7,6 +7,9 @@ vim.api.nvim_create_autocmd("PackChanged", {
         if name == "LuaSnip" and kind == "update" then
             vim.cmd(":make install_jsregexp()")
         end
+        if name == "nvim-treesitter" and kind == "update" then
+            vim.cmd("TSUpdate")
+        end
     end
 })
 
@@ -37,5 +40,6 @@ vim.pack.add({
     gh("mfussenegger/nvim-jdtls"),
     gh("mrcjkb/haskell-tools.nvim"),
     gh("Cliffback/netcoredbg-macOS-arm64.nvim"),
-    gh("GustavEikaas/easy-dotnet.nvim"),
+    gh("neovim/nvim-lspconfig"),
+    gh("nvim-treesitter/nvim-treesitter"),
 })
