@@ -1,8 +1,9 @@
 -- Adapted from https://github.com/smnatale/nvim_native/blob/main/lua/statusline.lua
-local pms = vim.api.nvim_get_hl(0, { name = "PmenuSel", link = false })
-local dir = vim.api.nvim_get_hl(0, { name = "Directory", link = false })
+local mms = vim.api.nvim_get_hl(0, { name = "ModeMsg", link = false })
 local vis = vim.api.nvim_get_hl(0, { name = "Visual", link = false })
-vim.api.nvim_set_hl(0, "StlMode", { fg = pms.fg, bg = vis.bg })
+local dir = vim.api.nvim_get_hl(0, { name = "Directory", link = false })
+local pms = vim.api.nvim_get_hl(0, { name = "PmenuSel", link = false })
+vim.api.nvim_set_hl(0, "StlMode", { fg = mms.fg, bg = vis.bg })
 vim.api.nvim_set_hl(0, "StlGit", { fg = dir.fg, bg = pms.bg })
 
 local modes = {
