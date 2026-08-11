@@ -17,6 +17,7 @@ vim.pack.add({
     gh("tpope/vim-dispatch"),
     gh("tpope/vim-unimpaired"),
     gh("tpope/vim-fugitive"),
+    gh("tpope/vim-rhubarb"),
     gh("tpope/vim-repeat"),
     gh("tpope/vim-surround"),
     gh("tpope/vim-dadbod"),

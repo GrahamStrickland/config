@@ -13,11 +13,11 @@
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "haskell-tools.nvim": {
-      "rev": "09ee0fff3b72c958b3a8d36bf44b4b5334f86022",
+      "rev": "c568fe01b79b30c4b0f7d3efac874c93cb355a9d",
       "src": "https://github.com/mrcjkb/haskell-tools.nvim"
     },
     "lean.nvim": {
-      "rev": "b2b6e0445c05f80f587af5cdb7ffad54bc513fe0",
+      "rev": "3d8027a96ada0fe43bdd01403e1bd4a09d175448",
       "src": "https://github.com/Julian/lean.nvim"
     },
     "netcoredbg-macOS-arm64.nvim": {
@@ -37,7 +37,7 @@
       "src": "https://github.com/mfussenegger/nvim-dap-python"
     },
     "nvim-dap-view": {
-      "rev": "210b2c0e4acc08aad23fbd5a7989dd0169f716d0",
+      "rev": "4e73e57008df10f9971b60c3a11e6aa11ba9f94a",
       "src": "https://github.com/igorlfs/nvim-dap-view"
     },
     "nvim-jdtls": {
@@ -45,7 +45,7 @@
       "src": "https://github.com/mfussenegger/nvim-jdtls"
     },
     "nvim-lspconfig": {
-      "rev": "43ed3797b266e1ee8d222e491379ad471c9d3146",
+      "rev": "4267d26e60323a45e18f8e7a63a964cc8f53ca4e",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
@@ -95,6 +95,10 @@
     "vim-repeat": {
       "rev": "65846025c15494983dafe5e3b46c8f88ab2e9635",
       "src": "https://github.com/tpope/vim-repeat"
+    },
+    "vim-rhubarb": {
+      "rev": "5496d7c94581c4c9ad7430357449bb57fc59f501",
+      "src": "https://github.com/tpope/vim-rhubarb"
     },
     "vim-sexp": {
       "rev": "1bf50921308f0188d1c1ecf8a712cc72ab2775e5",
