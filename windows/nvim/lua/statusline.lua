@@ -1,4 +1,3 @@
--- Adapted from https://github.com/smnatale/nvim_native/blob/main/lua/statusline.lua
 local mms = vim.api.nvim_get_hl(0, { name = "ModeMsg", link = false })
 local vis = vim.api.nvim_get_hl(0, { name = "Visual", link = false })
 local dir = vim.api.nvim_get_hl(0, { name = "Directory", link = false })
@@ -51,11 +50,40 @@ function _G._statusline()
         mode .. " %*" .. branch .. " " .. path .. "%=" .. diag .. vim.bo.filetype .. modified .. search_str .. " %l:%c"
 end
 
+local function git_dir(root)
+    local dot = root .. "/.git"
+    local st = vim.uv.fs_stat(dot)
+    if not st then return nil end
+    if st.type == "directory" then return dot end
+
+    local fd = io.open(dot, "r")
+    if not fd then return nil end
+    local line = fd:read("l") or ""
+    fd:close()
+
+    local path = line:match("^gitdir:%s*(.+)$")
+    if not path then return nil end
+    if not path:match("^/") and not path:match("^%a:") then path = root .. "/" .. path end
+    return path
+end
+
+local function git_branch(root)
+    local dir = git_dir(root)
+    if not dir then return nil end
+
+    local fd = io.open(dir .. "/HEAD", "r")
+    if not fd then return nil end
+    local head = fd:read("l") or ""
+    fd:close()
+
+    return head:match("^ref: refs/heads/(.+)$") or head:sub(1, 7)
+end
+
 vim.api.nvim_create_autocmd("BufEnter", {
     callback = function()
-        local root = vim.fn.system("git rev-parse --show-toplevel 2>nul"):gsub("%s+$", "")
-        if root ~= "" then
-            vim.b.git_branch = vim.fn.system("git branch --show-current 2>nul"):gsub("%s+$", "")
+        local root = vim.fs.root(vim.uv.cwd(), ".git")
+        if root then
+            vim.b.git_branch = git_branch(root)
             vim.b.rel_path = vim.fn.expand("%:p"):sub(#root + 2)
         else
             vim.b.git_branch = nil
