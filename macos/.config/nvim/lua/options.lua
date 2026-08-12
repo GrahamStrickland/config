@@ -1,7 +1,3 @@
--- For easy-dotnet
-vim.env.DOTNET_ROOT = "/opt/homebrew/opt/dotnet/libexec"
-vim.env.PATH = vim.env.PATH .. ":/Users/graham/.local/bin/roslyn/content/LanguageServer/osx-arm64"
-
 -- Options setup
 vim.opt.number = true           -- Add line numbers to document
 vim.opt.relativenumber = true   -- Add relative line numbers to document
@@ -29,4 +25,3 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt_local.shiftwidth = 2
     end
 })
-
