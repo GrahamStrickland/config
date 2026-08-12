@@ -15,7 +15,7 @@ vim.o.signcolumn = "yes"
 vim.o.laststatus = 3              -- Use one status for all splits
 vim.o.cmdheight = 0               -- Hide cmd entry when not in use
 vim.opt.completeopt = { "menu", "menuone", "noinsert", "noselect", "popup" }
-vim.o.autocomplete = true         -- Enable LSP autocomplete
+vim.diagnostic.config({ virtual_text = true })  -- Inline diagnostics
 
 -- Treesitter highlighting, replacing the old nvim-treesitter.configs setup.
 vim.api.nvim_create_autocmd("FileType", {

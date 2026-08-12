@@ -160,9 +160,3 @@ vim.lsp.config["rust_analyzer"] = {
     filetypes = { "rust" },
 }
 vim.lsp.enable("rust_analyzer")
-
--- Make auto-complete less annoying
-vim.cmd("set completeopt+=noselect")
-
--- Inline diagnostics
-vim.diagnostic.config({ virtual_text = true })
