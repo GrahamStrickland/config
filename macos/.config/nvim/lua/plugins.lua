@@ -14,6 +14,7 @@ vim.api.nvim_create_autocmd("PackChanged", {
 })
 
 vim.pack.add({
+    gh("wtfox/luna.nvim"),
     gh("tpope/vim-dispatch"),
     gh("tpope/vim-unimpaired"),
     gh("tpope/vim-fugitive"),

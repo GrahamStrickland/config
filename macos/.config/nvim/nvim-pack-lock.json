@@ -9,16 +9,20 @@
       "src": "https://github.com/Olical/conjure"
     },
     "gitsigns.nvim": {
-      "rev": "31d6fb2d618bca1482b9f274751ead5f03461408",
+      "rev": "5be654f2232c10ddcad19c1607a67b6b4b78fc29",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "haskell-tools.nvim": {
-      "rev": "c568fe01b79b30c4b0f7d3efac874c93cb355a9d",
+      "rev": "c0c52d50d92c8a99a52deb1785e91d51de46a573",
       "src": "https://github.com/mrcjkb/haskell-tools.nvim"
     },
     "lean.nvim": {
       "rev": "3d8027a96ada0fe43bdd01403e1bd4a09d175448",
       "src": "https://github.com/Julian/lean.nvim"
+    },
+    "luna.nvim": {
+      "rev": "6e3174384dbaf5a79be789323790f78f4c47cc5a",
+      "src": "https://github.com/wtfox/luna.nvim"
     },
     "netcoredbg-macOS-arm64.nvim": {
       "rev": "90c6fe7fa864cd753670fcd95b229da261760bc1",

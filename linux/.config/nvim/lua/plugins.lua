@@ -12,9 +12,11 @@ vim.api.nvim_create_autocmd("PackChanged", {
 })
 
 vim.pack.add({
+    gh("wtfox/luna.nvim"),
     gh("tpope/vim-dispatch"),
     gh("tpope/vim-unimpaired"),
     gh("tpope/vim-fugitive"),
+    gh("tpope/vim-rhubarb"),
     gh("tpope/vim-repeat"),
     gh("tpope/vim-surround"),
     gh("guns/vim-sexp"),
