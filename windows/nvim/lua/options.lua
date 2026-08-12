@@ -41,3 +41,12 @@ if vim.fn.has("win32") == 1 then
         return "<CR>"
     end, { expr = true, desc = "Route bare :terminal through pwsh" })
 end
+
+-- Set tabs/spaces for different file types
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "c", "cpp", "javascript", "typescript" },
+    callback = function()
+        vim.opt_local.tabstop = 2
+        vim.opt_local.shiftwidth = 2
+    end
+})

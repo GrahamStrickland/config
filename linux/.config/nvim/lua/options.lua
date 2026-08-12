@@ -16,3 +16,20 @@ vim.o.laststatus = 3              -- Use one status for all splits
 vim.o.cmdheight = 0               -- Hide cmd entry when not in use
 vim.opt.completeopt = { "menu", "menuone", "noinsert", "noselect", "popup" }
 vim.o.autocomplete = true         -- Enable LSP autocomplete
+
+-- Treesitter highlighting, replacing the old nvim-treesitter.configs setup.
+vim.api.nvim_create_autocmd("FileType", {
+    group = vim.api.nvim_create_augroup("treesitter_start", { clear = true }),
+    callback = function(args)
+        pcall(vim.treesitter.start, args.buf)
+    end,
+})
+
+-- Set tabs/spaces for different file types
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "c", "cpp", "javascript", "r", "typescript" },
+    callback = function()
+        vim.opt_local.tabstop = 2
+        vim.opt_local.shiftwidth = 2
+    end
+})
