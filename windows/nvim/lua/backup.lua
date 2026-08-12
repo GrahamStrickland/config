@@ -1,8 +1,12 @@
 -- Adapted for Windows from
 -- https://toddknutson.bio/posts/how-to-enable-neovim-undo-backup-and-swap-files-when-switching-linux-groups/
-SWAPDIR = [[C:\Users\graham\AppData\Local\nvim\swap\]]
-BACKUPDIR = [[C:\Users\graham\AppData\Local\nvim\backup\]]
-UNDODIR = [[C:\Users\graham\AppData\Local\nvim\undo\]]
+-- Kept under stdpath("state") (%LOCALAPPDATA%\nvim-data) so a fresh machine needs
+-- no setup and no user/host name is baked into the config.
+local STATE = vim.fn.stdpath("state")
+
+SWAPDIR = STATE .. "/swap//"
+BACKUPDIR = STATE .. "/backup//"
+UNDODIR = STATE .. "/undo//"
 
 if vim.fn.isdirectory(SWAPDIR) == 0 then
     vim.fn.mkdir(SWAPDIR, "p", "0o700")
