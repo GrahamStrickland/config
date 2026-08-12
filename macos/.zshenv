@@ -5,7 +5,7 @@ export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 . "$HOME/.cargo/env"
 
 # uv
-export PATH="/Users/graham/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # JDK
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
@@ -17,9 +17,9 @@ export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
 
 # GHC/Haskell
-[ -f "/Users/graham/.ghcup/env" ] && . "/Users/graham/.ghcup/env" # ghcup-env
+[ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env" # ghcup-env
 export PATH="$PATH:$HOME/.ghcup/bin"
-export PATH="$PATH:/Users/graham/.cabal/bin"
+export PATH="$PATH:$HOME/.cabal/bin"
 
 # Harbour
 export PATH="/opt/harbour/bin:$PATH"
@@ -28,7 +28,7 @@ export PATH="/opt/harbour/bin:$PATH"
 export PATH="/opt/homebrew/opt/qt/bin:$PATH"
 
 # .NET tools
-export PATH="$PATH:/Users/graham/.dotnet/tools"
+export PATH="$PATH:$HOME/.dotnet/tools"
 export DOTNET_ROOT="/opt/homebrew/opt/dotnet/libexec"
 
 # For QML debugging
