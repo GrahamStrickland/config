@@ -46,15 +46,6 @@ vim.lsp.config["roslyn_ls"] = {
 }
 vim.lsp.enable("roslyn_ls")
 
--- Clojure setup
-vim.lsp.config["clojure_lsp"] = {
-    cmd = { "clojure-lsp" },
-    filetypes = { "clojure" },
-    root_markers = { "project.clj", "deps.edn", "build.boot", "shadow-cljs.edn", ".git" },
-    single_file_support = true,
-}
-vim.lsp.enable("clojure_lsp")
-
 -- CMake setup
 vim.lsp.config["cmake"] = {
     cmd = { "cmake-language-server" },
