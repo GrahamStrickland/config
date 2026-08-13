@@ -13,11 +13,11 @@ config.default_prog = { "C:\\Program Files\\PowerShell\\7\\pwsh.exe", "-NoLogo" 
 config.window_decorations = "RESIZE|INTEGRATED_BUTTONS"
 
 config.keys = {
-    {   
+    {
         key = "Home",
         action = wezterm.action.SendString "\x1bb",
     },
-    {   
+    {
         key = "End",
         action = wezterm.action.SendString "\x1bf",
     },
@@ -71,10 +71,10 @@ local function segments_for_right_status(window, pane)
             hostname = wezterm.hostnam()
         end
 
-        table.insert(cells, cwd)
+        table.insert(cells, cwd:sub(2))
         table.insert(cells, hostname)
     end
-        
+
     local date = wezterm.strftime "%a %-d %b %H:%M"
     table.insert(cells, date)
 
@@ -82,7 +82,7 @@ local function segments_for_right_status(window, pane)
         table.insert(cells, string.format("%.0f%%", b.state_of_charge * 100))
     end
 
-    return cells 
+    return cells
 end
 
 wezterm.on("update-status", function(window, pane)
