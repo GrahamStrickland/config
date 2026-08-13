@@ -1,5 +1,6 @@
 -- Plugin management
 local gh = function(x) return "https://github.com/" .. x end
+local cb = function(x) return 'https://codeberg.org/' .. x end
 
 vim.api.nvim_create_autocmd("PackChanged", {
     callback = function(ev)
@@ -12,7 +13,6 @@ vim.api.nvim_create_autocmd("PackChanged", {
 })
 
 vim.pack.add({
-    gh("wtfox/luna.nvim"),
     gh("tpope/vim-dispatch"),
     gh("tpope/vim-unimpaired"),
     gh("tpope/vim-fugitive"),
@@ -20,12 +20,15 @@ vim.pack.add({
     gh("tpope/vim-repeat"),
     gh("tpope/vim-surround"),
     gh("guns/vim-sexp"),
+    gh("neovim/nvim-lspconfig"),
+    gh("nvim-treesitter/nvim-treesitter"),
     gh("easymotion/vim-easymotion"),
     gh("tomtom/tcomment_vim"),
     gh("radenling/vim-dispatch-neovim"),
     gh("mfussenegger/nvim-dap"),
-    gh("igorlfs/nvim-dap-view"),
+    cb("Jorenar/nvim-dap-disasm"),
+    gh("nvim-neotest/nvim-nio"),
+    gh("rcarriga/nvim-dap-ui"),
+    gh("theHamsta/nvim-dap-virtual-text"),
     gh("mfussenegger/nvim-dap-python"),
-    gh("neovim/nvim-lspconfig"),
-    gh("nvim-treesitter/nvim-treesitter"),
 })

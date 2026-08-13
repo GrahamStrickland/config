@@ -14,7 +14,6 @@ vim.api.nvim_create_autocmd("PackChanged", {
 })
 
 vim.pack.add({
-    gh("wtfox/luna.nvim"),
     gh("tpope/vim-dispatch"),
     gh("tpope/vim-unimpaired"),
     gh("tpope/vim-fugitive"),
@@ -25,6 +24,8 @@ vim.pack.add({
     gh("guns/vim-sexp"),
     gh("kristijanhusak/vim-dadbod-completion"),
     gh("kristijanhusak/vim-dadbod-ui"),
+    gh("neovim/nvim-lspconfig"),
+    gh("nvim-treesitter/nvim-treesitter"),
     gh("lewis6991/gitsigns.nvim"),
     gh("easymotion/vim-easymotion"),
     gh("tomtom/tcomment_vim"),
@@ -34,11 +35,11 @@ vim.pack.add({
     gh("Julian/lean.nvim"),
     gh("mfussenegger/nvim-dap"),
     cb("Jorenar/nvim-dap-disasm"),
-    gh("igorlfs/nvim-dap-view"),
+    gh("nvim-neotest/nvim-nio"),
+    gh("rcarriga/nvim-dap-ui"),
+    gh("theHamsta/nvim-dap-virtual-text"),
     gh("mfussenegger/nvim-dap-python"),
     gh("mfussenegger/nvim-jdtls"),
     gh("mrcjkb/haskell-tools.nvim"),
     gh("Cliffback/netcoredbg-macOS-arm64.nvim"),
-    gh("neovim/nvim-lspconfig"),
-    gh("nvim-treesitter/nvim-treesitter"),
 })

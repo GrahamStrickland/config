@@ -1,0 +1,12 @@
+require("nvim-treesitter").install({
+    "c",
+    "cmake",
+    "cpp",
+    "javascript",
+    "lua",
+    "markdown",
+    "markdown_inline",
+    "python",
+    "rust",
+    "typescript",
+})

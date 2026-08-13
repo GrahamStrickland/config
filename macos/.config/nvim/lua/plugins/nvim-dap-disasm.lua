@@ -1,12 +1,4 @@
 require("dap-disasm").setup({
-    dapview_register = true,
-
-    dapview = {
-        keymap = "D",
-        label = "Disassembly [D]",
-        short_label = "󰒓 [D]",
-    },
-
     -- Show winbar with buttons to step into the code with instruction granularity
     -- This settings is overriden (disabled) if the dapview integration is enabled and the plugin is installed
     winbar = {

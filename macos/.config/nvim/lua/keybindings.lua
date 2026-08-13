@@ -89,7 +89,7 @@ vim.keymap.set(
 )
 vim.keymap.set(
     "n",
-    "<S-F5>",
+    "<F13>",
     function() require("dap").terminate() end
 )
 vim.keymap.set(
@@ -104,7 +104,7 @@ vim.keymap.set(
 )
 vim.keymap.set(
     "n",
-    "<S-F11>",
+    "<F19>",
     function() require("dap").step_out() end
 )
 vim.keymap.set(
@@ -115,54 +115,34 @@ vim.keymap.set(
 vim.keymap.set(
     "n",
     "<leader>db",
-    function() require("dap").set_breakpoint() end
-)
-vim.keymap.set(
-    "n",
-    "<leader>dc",
     function() require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: ")) end
 )
 vim.keymap.set(
     "n",
-    "<leader>dpr",
+    "<leader>dr",
     function() require("dap").repl.open() end
 )
 vim.keymap.set(
     "n",
-    "<leader>dpa",
+    "<leader>dl",
     function() require("dap").run_last() end
 )
 
--- nvim-dap-view key bindings
+-- nvim-dap-ui key bindings
 vim.keymap.set(
     "n",
-    "<leader>dvo",
-    function() require("dap-view").open() end
+    "<leader>do",
+    function() require("dapui").open() end
 )
 vim.keymap.set(
     "n",
-    "<leader>dvc",
-    function() require("dap-view").close() end
+    "<leader>dc",
+    function() require("dapui").close() end
 )
 vim.keymap.set(
     "n",
-    "<leader>dvt",
-    function() require("dap-view").toggle() end
-)
-vim.keymap.set(
-    "n",
-    "<leader>dve",
-    function() require("dap-view").virtual_text_enable() end
-)
-vim.keymap.set(
-    "n",
-    "<leader>dvd",
-    function() require("dap-view").virtual_text_disable() end
-)
-vim.keymap.set(
-    "n",
-    "<leader>dvv",
-    function() require("dap-view").virtual_text_toggle() end
+    "<leader>dt",
+    function() require("dapui").toggle() end
 )
 
 -- LuaSnip + native LSP completion keybindings

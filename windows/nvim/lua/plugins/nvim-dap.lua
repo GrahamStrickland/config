@@ -3,6 +3,29 @@ vim.env.HARBOUR_DBG_TRACE = "1"
 -- DAP adapter setup
 local dap = require("dap")
 
+-- Signs and highlights
+local set_dap_highlights = function()
+    vim.api.nvim_set_hl(0, "DapStoppedLine", { bg = "#5f5f00", ctermbg = 58 })
+    vim.api.nvim_set_hl(0, "DapStoppedSign", { fg = "#ffaf00", ctermfg = 214, bold = true })
+    vim.api.nvim_set_hl(0, "DapBreakpointSign", { fg = "#ff5f5f", ctermfg = 203, bold = true })
+    vim.api.nvim_set_hl(0, "DapLogPointSign", { fg = "#87afaf", ctermfg = 109, bold = true })
+    vim.api.nvim_set_hl(0, "DapBreakpointRejectedSign", { fg = "#949494", ctermfg = 246 })
+end
+
+set_dap_highlights()
+vim.api.nvim_create_autocmd("ColorScheme", { callback = set_dap_highlights })
+
+vim.fn.sign_define("DapBreakpoint",
+    { text = "●", texthl = "DapBreakpointSign", linehl = "", numhl = "" })
+vim.fn.sign_define("DapBreakpointCondition",
+    { text = "◆", texthl = "DapBreakpointSign", linehl = "", numhl = "" })
+vim.fn.sign_define("DapBreakpointRejected",
+    { text = "○", texthl = "DapBreakpointRejectedSign", linehl = "", numhl = "" })
+vim.fn.sign_define("DapLogPoint",
+    { text = "◆", texthl = "DapLogPointSign", linehl = "", numhl = "" })
+vim.fn.sign_define("DapStopped",
+    { text = "→", texthl = "DapStoppedSign", linehl = "DapStoppedLine", numhl = "DapStoppedSign" })
+
 dap.adapters.lldb = {
     type = "executable",
     command = "C:/Program Files/LLVM/bin/lldb-dap.exe",
