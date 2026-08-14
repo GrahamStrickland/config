@@ -17,16 +17,17 @@ config.window_decorations = "RESIZE|INTEGRATED_BUTTONS"
 config.keys = {
     {
         key = "Home",
-        action = wezterm.action.SendString "\x1bb",
+        action = wezterm.action.SendString "\x1b[H",
     },
     {
         key = "End",
-        action = wezterm.action.SendString "\x1bf",
+        action = wezterm.action.SendString "\x1b[F",
     },
     {
-        key = "f",
-        mods = "WIN|CTRL",
-        action = wezterm.action.ToggleFullScreen,
+        key = "a", mods = "CTRL", action = act.SendKey{ key = "a", mods = "CTRL" }
+    },
+    {
+        key = "e", mods = "CTRL", action = act.SendKey{ key = "e", mods = "CTRL" }
     },
     {
         key = "c",

@@ -17,6 +17,8 @@ Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' `
 
 # Override default tab completion
 Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
+Set-PSReadLineKeyHandler -Key "Ctrl+a" -Function BeginningOfLine
+Set-PSReadLineKeyHandler -Key "Ctrl+e" -Function EndOfLine
 
 # Oh My Posh - https://ohmyposh.dev/docs/installation/prompt
 oh-my-posh init pwsh --config "$PSScriptRoot\grahamstrickland.omp.json" | Invoke-Expression
