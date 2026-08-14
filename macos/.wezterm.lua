@@ -8,15 +8,16 @@ config.freetype_load_flags = "NO_HINTING"
 config.freetype_load_target = "Light"
 config.freetype_render_target = "HorizontalLcd"
 config.cell_width = 0.9
+config.default_cwd = wezterm.home_dir
 
 config.window_decorations = "RESIZE|INTEGRATED_BUTTONS"
 
 config.keys = {
-    {   
+    {
         key = "Home",
         action = wezterm.action.SendString "\x1bb",
     },
-    {   
+    {
         key = "End",
         action = wezterm.action.SendString "\x1bf",
     },
@@ -40,7 +41,7 @@ for i = 1, 8 do
     })
 end
 
-local function segments_for_right_status(window, pane)
+local function segments_for_right_status(_, pane)
     local cells = {}
     local cwd_uri = pane:get_current_working_dir()
 
@@ -73,7 +74,7 @@ local function segments_for_right_status(window, pane)
         table.insert(cells, cwd)
         table.insert(cells, hostname)
     end
-        
+
     local date = wezterm.strftime "%a %-d %b %H:%M"
     table.insert(cells, date)
 
@@ -81,7 +82,7 @@ local function segments_for_right_status(window, pane)
         table.insert(cells, string.format("%.0f%%", b.state_of_charge * 100))
     end
 
-    return cells 
+    return cells
 end
 
 wezterm.on("update-status", function(window, pane)
@@ -92,8 +93,8 @@ wezterm.on("update-status", function(window, pane)
     local bg = wezterm.color.parse(color_scheme.background)
     local fg = color_scheme.foreground
 
-    local gradient_to, gradient_from = bg
-    gradient_from = gradient_to:lighten(0.2)
+    local gradient_to = bg
+    local gradient_from = gradient_to:lighten(0.2)
 
     local gradient = wezterm.color.gradient(
         {
@@ -123,4 +124,3 @@ wezterm.on("update-status", function(window, pane)
 end)
 
 return config
-
