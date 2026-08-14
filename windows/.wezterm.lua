@@ -115,8 +115,7 @@ wezterm.on("update-status", function(window, pane)
     local fg = color_scheme.foreground
 
     local gradient_to = bg
-    local gradient_from = bg
-    gradient_from = gradient_to:lighten(0.2)
+    local gradient_from = gradient_to:lighten(0.2)
 
     local gradient = wezterm.color.gradient(
         {
