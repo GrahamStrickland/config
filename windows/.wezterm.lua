@@ -1,5 +1,6 @@
 local wezterm = require "wezterm"
 local config = wezterm.config_builder()
+local act = wezterm.action
 
 config.color_scheme = "Apple System Colors"
 config.font = wezterm.font({ family = "MesloLGM Nerd Font" })
@@ -9,6 +10,7 @@ config.freetype_load_target = "Light"
 config.freetype_render_target = "HorizontalLcd"
 config.cell_width = 0.9
 config.default_prog = { "C:\\Program Files\\PowerShell\\7\\pwsh.exe", "-NoLogo" }
+config.default_cwd = wezterm.home_dir
 
 config.window_decorations = "RESIZE|INTEGRATED_BUTTONS"
 
@@ -25,6 +27,25 @@ config.keys = {
         key = "f",
         mods = "WIN|CTRL",
         action = wezterm.action.ToggleFullScreen,
+    },
+    {
+        key = "c",
+        mods = "CTRL",
+        action = wezterm.action_callback(function(window, pane)
+            local has_selection = window:get_selection_text_for_pane(pane) ~= ""
+
+            if has_selection then
+                window:perform_action(act.CopyTo "ClipboardAndPrimarySelection", pane)
+                window:perform_action(act.ClearSelection, pane)
+            else
+                window:perform_action(act.SendKey { key = "c", mods = "CTRL" }, pane)
+            end
+        end),
+    },
+    {
+        key = "v",
+        mods = "CTRL",
+        action = act.PasteFrom "Clipboard"
     }
 }
 
@@ -41,7 +62,7 @@ for i = 1, 8 do
     })
 end
 
-local function segments_for_right_status(window, pane)
+local function segments_for_right_status(_, pane)
     local cells = {}
     local cwd_uri = pane:get_current_working_dir()
 
@@ -93,7 +114,8 @@ wezterm.on("update-status", function(window, pane)
     local bg = wezterm.color.parse(color_scheme.background)
     local fg = color_scheme.foreground
 
-    local gradient_to, gradient_from = bg
+    local gradient_to = bg
+    local gradient_from = bg
     gradient_from = gradient_to:lighten(0.2)
 
     local gradient = wezterm.color.gradient(
