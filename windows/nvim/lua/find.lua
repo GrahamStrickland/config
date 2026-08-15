@@ -13,7 +13,6 @@ local ignore_patterns = {
 }
 
 function _G.native_find(text, _)
-
     local files = vim.fn.glob("**/*", true, true)
     local result = {}
 
@@ -35,7 +34,6 @@ function _G.native_find(text, _)
     end
 
     return vim.fn.matchfuzzy(result, text)
-
 end
 
 vim.opt.findfunc = "v:lua.native_find"

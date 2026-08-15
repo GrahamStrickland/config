@@ -9,7 +9,7 @@
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "haskell-tools.nvim": {
-      "rev": "f9405195d2f917a98955378b50f79d40c09f884c",
+      "rev": "50313ae592d8b2bfca8332d35c0dc8926325d8cf",
       "src": "https://github.com/mrcjkb/haskell-tools.nvim"
     },
     "lean.nvim": {
@@ -53,7 +53,7 @@
       "src": "https://github.com/nvim-neotest/nvim-nio"
     },
     "nvim-treesitter": {
-      "rev": "a1bcffc8095c142ad1f7a9671a4ae180333f9209",
+      "rev": "074aa4422bf029908338e855d0c0f71470a971bb",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "plenary.nvim": {
@@ -109,7 +109,7 @@
       "src": "https://github.com/tpope/vim-unimpaired"
     },
     "vimtex": {
-      "rev": "65e9e9a048e641403731187283e5ea986f00b3ff",
+      "rev": "c49ffdc34e7cec3a1a5b5befba7ca7f7b4916fee",
       "src": "https://github.com/lervag/vimtex"
     }
   }

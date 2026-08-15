@@ -24,10 +24,10 @@ config.keys = {
         action = wezterm.action.SendString "\x1b[F",
     },
     {
-        key = "a", mods = "CTRL", action = act.SendKey{ key = "a", mods = "CTRL" }
+        key = "a", mods = "CTRL", action = act.SendKey { key = "a", mods = "CTRL" }
     },
     {
-        key = "e", mods = "CTRL", action = act.SendKey{ key = "e", mods = "CTRL" }
+        key = "e", mods = "CTRL", action = act.SendKey { key = "e", mods = "CTRL" }
     },
     {
         key = "c",
