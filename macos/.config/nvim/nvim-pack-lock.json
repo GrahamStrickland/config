@@ -109,7 +109,7 @@
       "src": "https://github.com/tpope/vim-unimpaired"
     },
     "vimtex": {
-      "rev": "c49ffdc34e7cec3a1a5b5befba7ca7f7b4916fee",
+      "rev": "b652447a39eeb180ea103d6b39efe84e7cf74117",
       "src": "https://github.com/lervag/vimtex"
     }
   }
