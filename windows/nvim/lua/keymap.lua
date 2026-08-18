@@ -1,4 +1,3 @@
--- Map the leader key to a space
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
@@ -24,7 +23,7 @@ vim.api.nvim_set_keymap(
     { noremap = true }
 )
 
--- LSP keybindings
+-- LSP key mappings
 vim.keymap.set(
     "n",
     "gd",
@@ -40,8 +39,21 @@ vim.keymap.set(
     "gt",
     function() vim.lsp.buf.type_definition() end
 )
+vim.keymap.set(
+    "n",
+    "<leader>h",
+    function() vim.lsp.buf.hover() end
+)
+vim.keymap.set(
+    "n",
+    "<leader>cf",
+    function()
+        vim.lsp.buf.format()
+    end,
+    { noremap = true, silent = true }
+)
 
--- Diagnostics/hover
+-- Diagnostics
 vim.keymap.set(
     "n",
     "<leader>dn",
@@ -59,18 +71,8 @@ vim.keymap.set(
 )
 vim.keymap.set(
     "n",
-    "<leader>h",
-    function() vim.lsp.buf.hover() end
-)
-
--- Formatting
-vim.keymap.set(
-    "n",
-    "<leader>cf",
-    function()
-        vim.lsp.buf.format()
-    end,
-    { noremap = true, silent = true }
+    "<leader>dq",
+    function() vim.diagnostic.setqflist() end
 )
 
 -- Plugin-dependent key mappings
@@ -82,7 +84,7 @@ vim.keymap.set(
 )
 vim.keymap.set(
     "n",
-    "<F13>",
+    "<S-F5>",
     function() require("dap").terminate() end
 )
 vim.keymap.set(
@@ -97,7 +99,7 @@ vim.keymap.set(
 )
 vim.keymap.set(
     "n",
-    "<F19>",
+    "<S-F11>",
     function() require("dap").step_out() end
 )
 vim.keymap.set(
@@ -121,7 +123,7 @@ vim.keymap.set(
     function() require("dap").run_last() end
 )
 
--- nvim-dap-ui key bindings
+-- nvim-dap-ui key mappings
 vim.keymap.set(
     "n",
     "<leader>do",
@@ -138,7 +140,7 @@ vim.keymap.set(
     function() require("dapui").toggle() end
 )
 
--- Telescope key bindings
+-- Telescope key mappings
 local builtin = require("telescope.builtin")
 vim.keymap.set(
     "n",
@@ -183,7 +185,7 @@ vim.keymap.set(
     {}
 )
 
--- oil.nvim keybindings
+-- oil.nvim key mappings
 vim.keymap.set(
     "n",
     "-",
@@ -191,67 +193,3 @@ vim.keymap.set(
     { desc = "Open parent directory" }
 )
 
--- LuaSnip + native LSP completion keybindings
-local ls = require("luasnip")
-
--- <cr>: expand a snippet trigger, else accept the pum item, else newline
-vim.keymap.set("i", "<cr>", function()
-    if ls.expandable() then
-        ls.expand()
-        return ""
-    elseif vim.fn.pumvisible() == 1 then
-        return "<C-y>"
-    end
-    return "<CR>"
-end, { expr = true, silent = true })
-
--- <tab>: next pum item, else jump forward in snippet, else literal tab
-vim.keymap.set({ "i", "s" }, "<tab>", function()
-    if vim.fn.pumvisible() == 1 then
-        return "<C-n>"
-    elseif ls.locally_jumpable(1) then
-        ls.jump(1)
-        return ""
-    end
-    return "<Tab>"
-end, { expr = true, silent = true })
-
--- <s-tab>: prev pum item, else jump back in snippet, else literal shift-tab
-vim.keymap.set({ "i", "s" }, "<s-tab>", function()
-    if vim.fn.pumvisible() == 1 then
-        return "<C-p>"
-    elseif ls.locally_jumpable(-1) then
-        ls.jump(-1)
-        return ""
-    end
-    return "<S-Tab>"
-end, { expr = true, silent = true })
-
--- <down>: cycle through LuaSnip choice nodes when active
-vim.keymap.set({ "i", "s" }, "<down>", function()
-    if ls.choice_active() then
-        ls.change_choice(1)
-        return ""
-    end
-    return "<Down>"
-end, { expr = true, silent = true })
-
--- VimTeX keybindings
-vim.keymap.set(
-    "n",
-    "<leader>wc",
-    "<cmd>VimtexCountWords<cr>",
-    { noremap = true }
-)
-vim.keymap.set(
-    "n",
-    "<leader>ll",
-    "<cmd>VimtexCompile<cr>",
-    { noremap = true }
-)
-vim.keymap.set(
-    "n",
-    "<leader>v",
-    "<plug>(vimtex-view)",
-    { noremap = true }
-)

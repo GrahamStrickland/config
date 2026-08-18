@@ -1,5 +1,3 @@
--- Pre-plugin key mappings
--- Map the leader key to a space
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
@@ -25,7 +23,7 @@ vim.api.nvim_set_keymap(
     { noremap = true }
 )
 
--- LSP keybindings
+-- LSP key mappings
 vim.keymap.set(
     "n",
     "gd",
@@ -40,6 +38,19 @@ vim.keymap.set(
     "n",
     "gt",
     function() vim.lsp.buf.type_definition() end
+)
+vim.keymap.set(
+    "n",
+    "<leader>h",
+    function() vim.lsp.buf.hover() end
+)
+vim.keymap.set(
+    "n",
+    "<leader>cf",
+    function()
+        vim.lsp.buf.format()
+    end,
+    { noremap = true, silent = true }
 )
 
 -- Diagnostics/hover
@@ -60,33 +71,8 @@ vim.keymap.set(
 )
 vim.keymap.set(
     "n",
-    "<leader>o",
-    function() vim.diagnostic.open_float() end
-)
-vim.keymap.set(
-    "n",
-    "<leader>h",
-    function() vim.lsp.buf.hover() end
-)
-
--- Code actions
-vim.keymap.set(
-    "n",
-    "<leader>ca",
-    function()
-        vim.lsp.buf.code_action()
-    end,
-    { noremap = true, silent = true }
-)
-
--- Formatting
-vim.keymap.set(
-    "n",
-    "<leader>cf",
-    function()
-        vim.lsp.buf.format()
-    end,
-    { noremap = true, silent = true }
+    "<leader>dq",
+    function() vim.diagnostic.setqflist() end
 )
 
 -- Plugin-dependent key mappings
@@ -137,7 +123,7 @@ vim.keymap.set(
     function() require("dap").run_last() end
 )
 
--- nvim-dap-ui key bindings
+-- nvim-dap-ui key mappings
 vim.keymap.set(
     "n",
     "<leader>do",
@@ -154,7 +140,7 @@ vim.keymap.set(
     function() require("dapui").toggle() end
 )
 
--- Telescope key bindings
+-- Telescope key mappings
 local builtin = require("telescope.builtin")
 vim.keymap.set(
     "n",
@@ -199,7 +185,7 @@ vim.keymap.set(
     {}
 )
 
--- oil.nvim keybindings
+-- oil.nvim key mappings
 vim.keymap.set(
     "n",
     "-",

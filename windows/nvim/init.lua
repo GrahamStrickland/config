@@ -1,6 +1,6 @@
 require("plugins")
 require("ui")
-require("keybindings")
+require("keymap")
 require("options")
 require("backup")
 require("lsp")
