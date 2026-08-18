@@ -242,3 +242,35 @@ dap.configurations.python = {
         end,
     },
 }
+
+-- Rust
+dap.configurations.rust = {
+    {
+        name = "Rust: launch process",
+        type = "lldb",
+        request = "launch",
+        program = function()
+            vim.fn.system("cargo build")
+            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/target/debug/", "file")
+        end,
+        cwd = "${workspaceFolder}",
+        stopOnEntry = false,
+        showDisassembly = "never",
+    },
+    {
+        name = "Rust: launch process with arguments",
+        type = "lldb",
+        request = "launch",
+        program = function()
+            vim.fn.system("cargo build")
+            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/target/debug/", "file")
+        end,
+        args = function()
+            local args_string = vim.fn.input("Arguments: ")
+            return vim.split(args_string, " ")
+        end,
+        cwd = "${workspaceFolder}",
+        stopOnEntry = false,
+        showDisassembly = "never",
+    },
+}
