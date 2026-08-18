@@ -3,48 +3,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
--- Save a file with leader-w
-vim.api.nvim_set_keymap(
-    "n",
-    "<leader>w",
-    ":w<cr>",
-    { noremap = true }
-)
-
--- Quit buffer with leader-q
-vim.api.nvim_set_keymap(
-    "n",
-    "<leader>q",
-    ":q<cr>",
-    { noremap = true }
-)
-
--- Fast split navigation with <Ctrl> + hjkl
-vim.api.nvim_set_keymap(
-    "n",
-    "<c-h>",
-    "<c-w><c-h>",
-    { noremap = true }
-)
-vim.api.nvim_set_keymap(
-    "n",
-    "<c-j>",
-    "<c-w><c-j>",
-    { noremap = true }
-)
-vim.api.nvim_set_keymap(
-    "n",
-    "<c-k>",
-    "<c-w><c-k>",
-    { noremap = true }
-)
-vim.api.nvim_set_keymap(
-    "n",
-    "<c-l>",
-    "<c-w><c-l>",
-    { noremap = true }
-)
-
 -- Page down/up and center
 vim.api.nvim_set_keymap(
     "n",
@@ -59,47 +17,11 @@ vim.api.nvim_set_keymap(
     { noremap = true }
 )
 
--- Immediately add closing quotes or braces in insert mode
-vim.api.nvim_set_keymap(
-    "i",
-    "(",
-    "()<esc>i",
-    { noremap = true }
-)
-vim.api.nvim_set_keymap(
-    "i",
-    "{",
-    "{}<esc>i",
-    { noremap = true }
-)
-vim.api.nvim_set_keymap(
-    "i",
-    "[",
-    "[]<esc>i",
-    { noremap = true }
-)
-
 -- Remap terminal mode escape
 vim.api.nvim_set_keymap(
     "t",
     "<esc>",
     "<c-\\><c-n>",
-    { noremap = true }
-)
-
--- Browse files with netrw, replacing NERDTree
-vim.api.nvim_set_keymap(
-    "n",
-    "<leader>n",
-    ":Lexplore<cr>",
-    { silent = true }
-)
-
--- Pick a buffer, replacing CtrlPBuffer
-vim.api.nvim_set_keymap(
-    "n",
-    "<c-b>",
-    ":buffers<cr>:buffer ",
     { noremap = true }
 )
 
@@ -232,27 +154,56 @@ vim.keymap.set(
     function() require("dapui").toggle() end
 )
 
--- Native LSP completion keybindings, replacing nvim-cmp
--- <cr>: accept the pum item, else newline
-vim.keymap.set("i", "<cr>", function()
-    if vim.fn.pumvisible() == 1 then
-        return "<C-y>"
-    end
-    return "<CR>"
-end, { expr = true, silent = true })
+-- Telescope key bindings
+local builtin = require("telescope.builtin")
+vim.keymap.set(
+    "n",
+    "<leader>ff",
+    builtin.find_files,
+    {}
+)
+vim.keymap.set(
+    "n",
+    "<leader>fg",
+    builtin.live_grep,
+    {}
+)
+vim.keymap.set(
+    "n",
+    "<leader>fb",
+    builtin.buffers,
+    {}
+)
+vim.keymap.set(
+    "n",
+    "<leader>fh",
+    builtin.help_tags,
+    {}
+)
+vim.keymap.set(
+    "n",
+    "<leader>fd",
+    builtin.lsp_definitions,
+    {}
+)
+vim.keymap.set(
+    "n",
+    "<leader>fi",
+    builtin.lsp_implementations,
+    {}
+)
+vim.keymap.set(
+    "n",
+    "<leader>fr",
+    builtin.lsp_references,
+    {}
+)
 
--- <tab>: next pum item, else literal tab
-vim.keymap.set("i", "<tab>", function()
-    if vim.fn.pumvisible() == 1 then
-        return "<C-n>"
-    end
-    return "<Tab>"
-end, { expr = true, silent = true })
+-- oil.nvim keybindings
+vim.keymap.set(
+    "n",
+    "-",
+    "<CMD>Oil<CR>",
+    { desc = "Open parent directory" }
+)
 
--- <s-tab>: prev pum item, else literal shift-tab
-vim.keymap.set("i", "<s-tab>", function()
-    if vim.fn.pumvisible() == 1 then
-        return "<C-p>"
-    end
-    return "<S-Tab>"
-end, { expr = true, silent = true })
