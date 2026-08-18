@@ -26,6 +26,7 @@ vim.pack.add({
     gh("neovim/nvim-lspconfig"),
     gh("nvim-treesitter/nvim-treesitter"),
     gh("lewis6991/gitsigns.nvim"),
+    gh("nvim-lua/plenary.nvim"),
     gh("nvim-telescope/telescope.nvim"),
     gh("nvim-telescope/telescope-ui-select.nvim"),
     gh("stevearc/oil.nvim"),
