@@ -23,6 +23,8 @@ vim.pack.add({
     gh("easymotion/vim-easymotion"),
     gh("kristijanhusak/vim-dadbod-completion"),
     gh("kristijanhusak/vim-dadbod-ui"),
+    gh("nvim-mini/mini.icons"),
+    gh("nvim-tree/nvim-web-devicons"),
     gh("neovim/nvim-lspconfig"),
     gh("nvim-treesitter/nvim-treesitter"),
     gh("lewis6991/gitsigns.nvim"),
