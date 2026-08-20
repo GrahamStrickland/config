@@ -54,6 +54,14 @@ vim.lsp.config["cmake"] = {
 }
 vim.lsp.enable("cmake")
 
+-- Go setup
+vim.lsp.config["gopls"] = {
+    cmd = { "gopls", "--remote=auto" },
+    filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+    root_markers = { "go.mod" },
+}
+vim.lsp.enable("gopls")
+
 -- JavaScript/TypeScript setup
 vim.lsp.config["ts_go"] = {
     cmd = { "tsgo", "--lsp", "--stdio" },

@@ -36,3 +36,6 @@ export DOTNET_ROOT="/opt/homebrew/opt/dotnet/libexec"
 
 # Lean
 export PATH="$HOME/.elan/bin:$PATH"
+
+# Go
+export PATH="$PATH:$(go env GOPATH)/bin"

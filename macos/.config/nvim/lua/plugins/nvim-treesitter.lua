@@ -5,6 +5,7 @@ require("nvim-treesitter").install({
     "c_sharp",
     "commonlisp",
     "cpp",
+    "go",
     "haskell",
     "java",
     "javascript",
