@@ -111,8 +111,8 @@ local config = {
                 -- Named JDKs jdtls can bind to a project's required environment.
                 runtimes = {
                     {
-                        name = "JavaSE-11",
-                        path = "/opt/homebrew/opt/openjdk@11/libexec/openjdk.jdk/Contents/Home",
+                        name = "JavaSE-26",
+                        path = "/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home",
                         default = true,
                     },
                 },
