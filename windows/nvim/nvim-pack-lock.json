@@ -8,6 +8,10 @@
       "rev": "221ce6b2d999187044529f49da6554a92f740a96",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
+    "mini.icons": {
+      "rev": "98faae31e9be1cc054ae63485e58ceb185efcad0",
+      "src": "https://github.com/nvim-mini/mini.icons"
+    },
     "nvim-dap": {
       "rev": "9e848e09a697ee95302a3ef2dd43fd6eb709e570",
       "src": "https://github.com/mfussenegger/nvim-dap"
@@ -29,7 +33,7 @@
       "src": "https://github.com/theHamsta/nvim-dap-virtual-text"
     },
     "nvim-lspconfig": {
-      "rev": "0662886bc0a4e0c199dec65cee23a4319dd79f55",
+      "rev": "221c43884319e791519f0d6c94a7f2fbcd653278",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -37,8 +41,12 @@
       "src": "https://github.com/nvim-neotest/nvim-nio"
     },
     "nvim-treesitter": {
-      "rev": "074aa4422bf029908338e855d0c0f71470a971bb",
+      "rev": "e82ef6ae2c3eeb96c6916b29917f96bf630b2cdb",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+    },
+    "nvim-web-devicons": {
+      "rev": "2ae6958df7ced50baac5035cec0c15799eedfbf7",
+      "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "oil.nvim": {
       "rev": "b73018b75affd13fa38e2fc94ef753b465f770d7",
