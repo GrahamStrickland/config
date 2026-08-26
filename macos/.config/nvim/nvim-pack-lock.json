@@ -9,7 +9,7 @@
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "haskell-tools.nvim": {
-      "rev": "8174171ab38a6a3632db6b96a48ef4340a478c31",
+      "rev": "d4975540b7489cd77ad5b47b7fb9ed69ee8571ea",
       "src": "https://github.com/mrcjkb/haskell-tools.nvim"
     },
     "lean.nvim": {
