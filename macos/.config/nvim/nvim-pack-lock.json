@@ -9,7 +9,7 @@
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "haskell-tools.nvim": {
-      "rev": "70bf5bde6823d141cf077ecdbe96c9f34ec54d03",
+      "rev": "8174171ab38a6a3632db6b96a48ef4340a478c31",
       "src": "https://github.com/mrcjkb/haskell-tools.nvim"
     },
     "lean.nvim": {
@@ -53,7 +53,7 @@
       "src": "https://github.com/mfussenegger/nvim-jdtls"
     },
     "nvim-lspconfig": {
-      "rev": "221c43884319e791519f0d6c94a7f2fbcd653278",
+      "rev": "af9adce488c75ca0a81017945c2b7fa7b461bc23",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -75,6 +75,10 @@
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
+    "quicker.nvim": {
+      "rev": "4a6883cb13fe097a20a046eb55f6dffd239276e3",
+      "src": "https://github.com/stevearc/quicker.nvim"
     },
     "tcomment_vim": {
       "rev": "48ab639a461d9b8344f7fee06cb69b4374863b13",

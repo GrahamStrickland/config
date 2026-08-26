@@ -37,6 +37,7 @@ vim.pack.add({
     gh("nvim-telescope/telescope.nvim"),
     gh("nvim-telescope/telescope-ui-select.nvim"),
     gh("stevearc/oil.nvim"),
+    gh("stevearc/quicker.nvim"),
     gh("nvim-lualine/lualine.nvim"),
     gh("mfussenegger/nvim-dap"),
     cb("Jorenar/nvim-dap-disasm"),
