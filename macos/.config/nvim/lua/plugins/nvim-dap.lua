@@ -25,7 +25,7 @@ vim.fn.sign_define("DapStopped",
 
 dap.adapters.lldb = {
     type = "executable",
-    command = "/opt/homebrew/opt/llvm/bin/lldb-dap",
+    command = "/Library/Developer/CommandLineTools/usr/bin/lldb-dap",
     name = "lldb",
 }
 
