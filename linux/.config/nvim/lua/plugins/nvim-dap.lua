@@ -3,7 +3,7 @@ local dap = require("dap")
 
 -- Signs and highlights
 local set_dap_highlights = function()
-    vim.api.nvim_set_hl(0, "DapStoppedLine", { bg = "#87af87", ctermbg = 58 })
+    vim.api.nvim_set_hl(0, "DapStoppedLine", { bg = "#949494", ctermbg = 58 })
     vim.api.nvim_set_hl(0, "DapStoppedSign", { fg = "#ffaf00", ctermfg = 214, bold = true })
     vim.api.nvim_set_hl(0, "DapBreakpointSign", { fg = "#ff5f5f", ctermfg = 203, bold = true })
     vim.api.nvim_set_hl(0, "DapLogPointSign", { fg = "#87afaf", ctermfg = 109, bold = true })
