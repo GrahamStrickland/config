@@ -13,6 +13,7 @@ vim.api.nvim_create_autocmd("PackChanged", {
 })
 
 vim.pack.add({
+    gh("sainnhe/everforest"),
     gh("tpope/vim-dispatch"),
     gh("tpope/vim-unimpaired"),
     gh("tpope/vim-fugitive"),
