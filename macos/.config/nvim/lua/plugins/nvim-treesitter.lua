@@ -3,6 +3,7 @@ require("nvim-treesitter").install({
     "bash",
     "c",
     "c_sharp",
+    "clojure",
     "commonlisp",
     "cpp",
     "go",

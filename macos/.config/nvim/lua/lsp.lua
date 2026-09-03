@@ -54,6 +54,15 @@ vim.lsp.config["cmake"] = {
 }
 vim.lsp.enable("cmake")
 
+-- Clojure setup
+vim.lsp.config["clojure_lsp"] = {
+    cmd = { "clojure-lsp" },
+    filetypes = { "clojure" },
+    root_markers = { "project.clj", "deps.edn", "build.boot", "shadow-cljs.edn", ".git" },
+    single_file_support = true,
+}
+vim.lsp.enable("clojure_lsp")
+
 -- Go setup
 vim.lsp.config["gopls"] = {
     cmd = { "gopls", "--remote=auto" },
