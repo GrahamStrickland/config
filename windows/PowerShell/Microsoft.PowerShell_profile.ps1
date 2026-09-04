@@ -8,15 +8,7 @@ if ($host.Name -eq 'ConsoleHost')
     Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 }
 
-# PSFzf - https://github.com/kelleyma49/PSFzf and https://github.com/junegunn/fzf
-Import-Module PSFzf
-
-# Override PSReadLine's history search
-Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' `
-                -PSReadlineChordReverseHistory 'Ctrl+r'
-
 # Override default tab completion
-Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 Set-PSReadLineKeyHandler -Key "Ctrl+a" -Function BeginningOfLine
 Set-PSReadLineKeyHandler -Key "Ctrl+e" -Function EndOfLine
 

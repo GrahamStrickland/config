@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "avalonia.nvim": {
+      "rev": "1581e50cb2fa9a65e7bcfa169469bef8e0032955",
+      "src": "https://github.com/Johanw123/avalonia.nvim"
+    },
     "everforest": {
       "rev": "85a86eb62409e3ec88713bff3d1b9d7374e112e4",
       "src": "https://github.com/sainnhe/everforest"
@@ -37,7 +41,7 @@
       "src": "https://github.com/theHamsta/nvim-dap-virtual-text"
     },
     "nvim-lspconfig": {
-      "rev": "16286347bdba1333c7d124d9de9fe6630731b2b2",
+      "rev": "84252f9832fb5b9024fe9f7258e7c2aff915e6fb",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
