@@ -17,7 +17,7 @@
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "haskell-tools.nvim": {
-      "rev": "de819999db6ef74ccf93d26926a31b55bf947192",
+      "rev": "b6132975c0327a14918a80aac05d7b0b105afc02",
       "src": "https://github.com/mrcjkb/haskell-tools.nvim"
     },
     "jupyter.nvim": {
@@ -25,7 +25,7 @@
       "src": "https://github.com/idossha/jupyter.nvim"
     },
     "lean.nvim": {
-      "rev": "3d8027a96ada0fe43bdd01403e1bd4a09d175448",
+      "rev": "5a2c1dff42ca1055dc8977f1ad3217e42ce72659",
       "src": "https://github.com/Julian/lean.nvim"
     },
     "lualine.nvim": {
@@ -65,7 +65,7 @@
       "src": "https://github.com/mfussenegger/nvim-jdtls"
     },
     "nvim-lspconfig": {
-      "rev": "ee1e369181a9e64904cdd7b739e98c70778cfc71",
+      "rev": "615d7b2712efb2f530a83a9d0466acafba6b1d6f",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -73,7 +73,7 @@
       "src": "https://github.com/nvim-neotest/nvim-nio"
     },
     "nvim-treesitter": {
-      "rev": "427e9222363d07c32d6db6169e4049c28d58d141",
+      "rev": "0d0969030ad955b510d7c8012b40252a25c12a6d",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-web-devicons": {
@@ -153,7 +153,7 @@
       "src": "https://github.com/tpope/vim-unimpaired"
     },
     "vimtex": {
-      "rev": "cb81778aee678b513af3de7f1ca5943e7ee31b2f",
+      "rev": "e355987594cbf16283bee7b37e3aa3a65d5e1c5c",
       "src": "https://github.com/lervag/vimtex"
     }
   }
