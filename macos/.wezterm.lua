@@ -1,7 +1,42 @@
 local wezterm = require "wezterm"
 local config = wezterm.config_builder()
 
-config.color_scheme = "Material Darker (base16)"
+-- Converted from "Material Darker.itermcolors" (see this directory)
+config.color_schemes = {
+    ["Material Darker"] = {
+        foreground = "#EEFFFF",
+        background = "#101010",
+
+        cursor_bg = "#FFFFFF",
+        cursor_fg = "#101010",
+        cursor_border = "#FFFFFF",
+
+        selection_bg = "#B2CCD6",
+        selection_fg = "#101010",
+
+        ansi = {
+            "#303030", -- black
+            "#CC425A", -- red
+            "#A1BF74", -- green
+            "#CCA256", -- yellow
+            "#6888CC", -- blue
+            "#A377BF", -- magenta
+            "#6EB1CC", -- cyan
+            "#EEFFFF", -- white
+        },
+        brights = {
+            "#545454", -- bright black
+            "#FF5370", -- bright red
+            "#C3E88D", -- bright green
+            "#FFCB6B", -- bright yellow
+            "#82AAFF", -- bright blue
+            "#C792EA", -- bright magenta
+            "#89DDFF", -- bright cyan
+            "#FFFFFF", -- bright white
+        },
+    },
+}
+config.color_scheme = "Material Darker"
 config.font = wezterm.font({ family = "MesloLGM Nerd Font Mono" })
 config.font_size = 12
 config.freetype_load_flags = "NO_HINTING"
