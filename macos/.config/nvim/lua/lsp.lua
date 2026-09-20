@@ -111,6 +111,7 @@ vim.g.filetype_pl = "prolog"
 vim.lsp.enable({ "prolog" })
 
 -- Python setup
+vim.g.python3_host_prog = "/opt/homebrew/bin/python3"
 vim.lsp.config["ruff"] = {
     cmd = { "uv", "run", "ruff", "server" },
     on_attach = function(client, _)
