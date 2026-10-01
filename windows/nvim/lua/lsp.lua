@@ -115,3 +115,11 @@ vim.lsp.config["ty"] = {
     filetypes = { "python" },
 }
 vim.lsp.enable({ "ty", "ruff" })
+
+-- QML setup
+vim.lsp.config["qmlls"] = {
+    cmd = { "qmlls" },
+    root_markers = { ".git", "qmlls.ini", "." },
+    filetypes = { "qml" }
+}
+vim.lsp.enable("qmlls")

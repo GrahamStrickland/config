@@ -169,3 +169,11 @@ vim.lsp.config["rust_analyzer"] = {
     filetypes = { "rust" },
 }
 vim.lsp.enable("rust_analyzer")
+
+-- QML setup
+vim.lsp.config["qmlls"] = {
+    cmd = { "qmlls" },
+    root_markers = { ".git", "qmlls.ini", "." },
+    filetypes = { "qml" }
+}
+vim.lsp.enable("qmlls")

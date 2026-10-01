@@ -7,5 +7,7 @@ require("nvim-treesitter").install({
     "markdown",
     "markdown_inline",
     "python",
+    "qmldir",
+    "qmljs",
     "typescript",
 })

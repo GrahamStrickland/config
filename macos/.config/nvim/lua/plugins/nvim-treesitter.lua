@@ -15,6 +15,8 @@ require("nvim-treesitter").install({
     "markdown_inline",
     "objc",
     "python",
+    "qmldir",
+    "qmljs",
     "r",
     "rust",
     "sql",
