@@ -25,7 +25,7 @@ export PATH="$PATH:$HOME/.cabal/bin"
 export PATH="/opt/harbour/bin:$PATH"
 
 # Qt
-export PATH="/opt/homebrew/opt/qt/bin:$PATH"
+export PATH="$HOME/Qt/6.12.0/macos/bin:$PATH"
 
 # .NET tools
 export PATH="$PATH:$HOME/.dotnet/tools"
