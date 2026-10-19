@@ -1,6 +1,7 @@
 local wezterm = require "wezterm"
 local config = wezterm.config_builder()
 
+config.enable_wayland = false
 config.color_scheme = "Material Darker (base16)"
 config.font = wezterm.font({ family = "MesloLGM Nerd Font" })
 config.font_size = 10
@@ -67,7 +68,7 @@ local function segments_for_right_status(window, pane)
             hostname = hostname:sub(1, dot - 1)
         end
         if hostname == "" then
-            hostname = wezterm.hostnam()
+            hostname = wezterm.hostname()
         end
 
         table.insert(cells, cwd)
