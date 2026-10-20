@@ -23,17 +23,9 @@ vim.lsp.config["clangd"] = {
 }
 vim.lsp.enable("clangd")
 
--- CMake setup
-vim.lsp.config["cmake"] = {
-    cmd = { "cmake-language-server" },
-    filetypes = { "cmake" },
-    root_markers = { "CMakeLists.txt" },
-}
-vim.lsp.enable("cmake")
-
 -- JavaScript/TypeScript setup
 vim.lsp.config["ts_go"] = {
-    cmd = { "tsgo", "--lsp", "--stdio" },
+    cmd = { "npx", "tsgo", "--lsp", "--stdio" },
     filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
     root_markers = { "tsconfig.json", "jsconfig.json", "package.json" },
 }
