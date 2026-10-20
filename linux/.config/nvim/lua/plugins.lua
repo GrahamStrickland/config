@@ -29,6 +29,7 @@ vim.pack.add({
     gh("nvim-tree/nvim-web-devicons"),
     gh("neovim/nvim-lspconfig"),
     gh("nvim-treesitter/nvim-treesitter"),
+    gh("lewis6991/gitsigns.nvim"),
     gh("radenling/vim-dispatch-neovim"),
     gh("nvim-lua/plenary.nvim"),
     gh("nvim-telescope/telescope.nvim"),
