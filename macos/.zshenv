@@ -13,9 +13,6 @@ export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 # LLVM
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 
-# PostgreSQL
-export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
-
 # GHC/Haskell
 [ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env" # ghcup-env
 export PATH="$PATH:$HOME/.ghcup/bin"
@@ -33,9 +30,3 @@ export DOTNET_ROOT="/opt/homebrew/opt/dotnet/libexec"
 
 # For QML debugging
 # export QML_IMPORT_TRACE=1
-
-# Lean
-export PATH="$HOME/.elan/bin:$PATH"
-
-# Go
-export PATH="$PATH:$(go env GOPATH)/bin"
