@@ -46,23 +46,6 @@ vim.lsp.config["roslyn_ls"] = {
 }
 vim.lsp.enable("roslyn_ls")
 
--- Clojure setup
-vim.lsp.config["clojure_lsp"] = {
-    cmd = { "clojure-lsp" },
-    filetypes = { "clojure" },
-    root_markers = { "project.clj", "deps.edn", "build.boot", "shadow-cljs.edn", ".git" },
-    single_file_support = true,
-}
-vim.lsp.enable("clojure_lsp")
-
--- Go setup
-vim.lsp.config["gopls"] = {
-    cmd = { "gopls", "--remote=auto" },
-    filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
-    root_markers = { "go.mod" },
-}
-vim.lsp.enable("gopls")
-
 -- JavaScript/TypeScript setup
 vim.lsp.config["ts_go"] = {
     cmd = { "tsgo", "--lsp", "--stdio" },
@@ -85,22 +68,6 @@ vim.lsp.config["luals"] = {
     filetypes = { "lua" },
 }
 vim.lsp.enable("luals")
-
--- Prolog setup
-vim.lsp.config("prolog", {
-    cmd = { "swipl",
-        "-g", "use_module(library(lsp_server))",
-        "-g", "lsp_server:main",
-        "-t", "halt",
-        "--", "stdio" },
-    root_markers = { ".git", },
-    filetypes = { "prolog" },
-})
-
--- Override filetype settings
-vim.g.filetype_pl = "prolog"
-
-vim.lsp.enable({ "prolog" })
 
 -- Python setup
 vim.g.python3_host_prog = "/opt/homebrew/bin/python3"
