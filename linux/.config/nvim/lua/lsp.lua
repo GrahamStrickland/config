@@ -1,21 +1,11 @@
 vim.lsp.config("*", {
-    capabilities = vim.tbl_deep_extend("force",
-        vim.lsp.protocol.make_client_capabilities(),
-        {
-            textDocument = {
-                semanticTokens = { multilineTokenSupport = true },
-                completion = {
-                    completionItem = { snippetSupport = true },
-                },
-            },
-        }),
     root_markers = { ".git" },
 })
 
 -- C/C++ setup
 vim.lsp.config["clangd"] = {
     name = "clangd",
-    cmd = { "clangd", "--background-index", "--clang-tidy", "--log=verbose" },
+    cmd = { "clangd", "--background-index", "--clang-tidy" },
     initialization_options = {
         fallback_flags = { "-std=c++20" },
     },
@@ -35,12 +25,8 @@ vim.lsp.enable("ts_go")
 vim.lsp.config["ruff"] = {
     cmd = { "uv", "run", "ruff", "server" },
     on_attach = function(client, _)
-        -- Disable capabilities that ty should handle
+        -- Let ty handle hover
         client.server_capabilities.hoverProvider = false
-        client.server_capabilities.definitionProvider = false
-        client.server_capabilities.referencesProvider = false
-        client.server_capabilities.documentSymbolProvider = false
-        client.server_capabilities.imports = false
     end,
     root_markers = { "pyproject.toml", "ruff.toml" },
     filetypes = { "python" },
