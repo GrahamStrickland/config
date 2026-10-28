@@ -82,4 +82,5 @@ vim.lsp.config["ty"] = {
 vim.lsp.enable({ "ty", "ruff" })
 
 -- QML setup
+vim.lsp.config("qmlls", { filetypes = { "qml" } })
 vim.lsp.enable("qmlls")
