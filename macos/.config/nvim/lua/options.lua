@@ -16,7 +16,6 @@ vim.o.laststatus = 3            -- Use one status for all splits
 vim.o.cmdheight = 0             -- Hide cmd entry when not in use
 vim.opt.completeopt = { "menu", "menuone", "noinsert", "noselect" , "popup" }
 vim.diagnostic.config({ virtual_text = true })  -- Inline diagnostics
-vim.g.python3_host_prog = "/opt/homebrew/bin/python3"  -- Python provider
 
 -- Set tabs/spaces for different file types
 vim.api.nvim_create_autocmd("FileType", {
