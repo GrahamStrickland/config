@@ -9,5 +9,6 @@ require("nvim-treesitter").install({
     "python",
     "qmldir",
     "qmljs",
+    "tsx",
     "typescript",
 })

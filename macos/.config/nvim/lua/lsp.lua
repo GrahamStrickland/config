@@ -1,10 +1,10 @@
+-- Defaults for each server come from nvim-lspconfig; settings here extend them.
 vim.lsp.config("*", {
     root_markers = { ".git" },
 })
 
 -- C/C++ setup
 vim.lsp.config["clangd"] = {
-    name = "clangd",
     cmd = { "clangd", "--background-index", "--clang-tidy" },
     initialization_options = {
         fallback_flags = { "-std=c++20" },
@@ -39,56 +39,35 @@ vim.lsp.enable("roslyn_ls")
 -- JavaScript/TypeScript setup
 vim.lsp.config["ts_go"] = {
     cmd = { "tsgo", "--lsp", "--stdio" },
-    filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json" },
+    filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
     root_markers = { "tsconfig.json", "jsconfig.json", "package.json" },
 }
 vim.lsp.enable("ts_go")
 
 -- LaTeX setup
-vim.lsp.config["texlab"] = {
-    cmd = { "texlab" },
-    filetypes = { "tex" }
-}
 vim.lsp.enable("texlab")
 
 -- Lua setup
-vim.lsp.config["luals"] = {
-    cmd = { "lua-language-server" },
-    root_markers = { ".luarc.json", ".luarc.jsonc" },
-    filetypes = { "lua" },
-}
-vim.lsp.enable("luals")
+vim.lsp.enable("lua_ls")
 
 -- Python setup
-vim.g.python3_host_prog = "/opt/homebrew/bin/python3"
 vim.lsp.config["ruff"] = {
     cmd = { "uv", "run", "ruff", "server" },
     on_attach = function(client, _)
         -- Let ty handle hover
         client.server_capabilities.hoverProvider = false
     end,
-    root_markers = { "pyproject.toml", "ruff.toml" },
-    filetypes = { "python" },
 }
 vim.lsp.config["ty"] = {
     cmd = { "uv", "run", "ty", "server" },
-    settings = {
-    },
-    root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt" },
-    filetypes = { "python" },
 }
 vim.lsp.enable({ "ty", "ruff" })
 
 -- R setup
-vim.lsp.config["r_language_server"] = {
-    cmd = { "R", "--no-echo", "-e", "languageserver::run()" },
-    filetypes = { "r" },
-}
 vim.lsp.enable("r_language_server")
 
 -- Rust setup
 vim.lsp.config["rust_analyzer"] = {
-    cmd = { "rust-analyzer" },
     workspace_required = true,
     on_attach = function(_, bufnr)
         vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
@@ -111,14 +90,8 @@ vim.lsp.config["rust_analyzer"] = {
             },
         }
     },
-    filetypes = { "rust" },
 }
 vim.lsp.enable("rust_analyzer")
 
 -- QML setup
-vim.lsp.config["qmlls"] = {
-    cmd = { "qmlls" },
-    root_markers = { ".git", "qmlls.ini", "." },
-    filetypes = { "qml" }
-}
 vim.lsp.enable("qmlls")

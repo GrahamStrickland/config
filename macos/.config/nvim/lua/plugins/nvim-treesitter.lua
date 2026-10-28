@@ -17,5 +17,6 @@ require("nvim-treesitter").install({
     "r",
     "rust",
     "sql",
+    "tsx",
     "typescript",
 })

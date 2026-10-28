@@ -8,5 +8,6 @@ require("nvim-treesitter").install({
     "markdown_inline",
     "python",
     "rust",
+    "tsx",
     "typescript",
 })

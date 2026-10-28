@@ -1,10 +1,10 @@
+-- Defaults for each server come from nvim-lspconfig; settings here extend them.
 vim.lsp.config("*", {
     root_markers = { ".git" },
 })
 
 -- C/C++ setup
 vim.lsp.config["clangd"] = {
-    name = "clangd",
     cmd = { "clangd", "--background-index", "--clang-tidy" },
     initialization_options = {
         fallback_flags = { "-std=c++20" },
@@ -34,15 +34,8 @@ vim.lsp.config["ts_go"] = {
 vim.lsp.enable("ts_go")
 
 -- Lua setup
-vim.lsp.config["luals"] = {
+vim.lsp.config["lua_ls"] = {
     cmd = { "lua-language-server", "--logpath=" .. vim.fn.stdpath("cache") .. "/luals.log" },
-    root_markers = { { ".luarc.json", ".luarc.jsonc" }, ".git" },
-    filetypes = { "lua" },
-    on_attach = function(client, bufnr)
-        if client:supports_method("textDocument/formatting") then
-            vim.lsp.buf.format({ bufnr = bufnr })
-        end
-    end,
     settings = {
         Lua = {
             workspace = {
@@ -57,21 +50,13 @@ vim.lsp.config["luals"] = {
         },
     },
 }
-vim.lsp.enable("luals")
+vim.lsp.enable("lua_ls")
 
 -- Harbour setup
 local harbour = require("plugins.harbour")
 vim.lsp.config["harbour_ls"] = {
     cmd = { "node", [[C:\Users\graham\dev\harbourCodeExtension\server\dist\hb_server.js]], "--stdio" },
     filetypes = { "clipper" },
-    root_markers = { ".git" },
-    on_attach = function(_, _)
-        print("Harbour LSP attached")
-    end,
-    flags = {
-        allow_incremental_sync = true,
-        debounce_text_changes = 150,
-    },
     settings = {
         harbour = {
             workspaceDepth = 3,
@@ -90,22 +75,11 @@ vim.lsp.config["ruff"] = {
         -- Let ty handle hover
         client.server_capabilities.hoverProvider = false
     end,
-    root_markers = { "pyproject.toml", "ruff.toml" },
-    filetypes = { "python" },
 }
 vim.lsp.config["ty"] = {
     cmd = { "uv", "run", "ty", "server" },
-    settings = {
-    },
-    root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt" },
-    filetypes = { "python" },
 }
 vim.lsp.enable({ "ty", "ruff" })
 
 -- QML setup
-vim.lsp.config["qmlls"] = {
-    cmd = { "qmlls" },
-    root_markers = { ".git", "qmlls.ini", "." },
-    filetypes = { "qml" }
-}
 vim.lsp.enable("qmlls")
