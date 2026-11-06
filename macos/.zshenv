@@ -18,9 +18,6 @@ export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export PATH="$PATH:$HOME/.ghcup/bin"
 export PATH="$PATH:$HOME/.cabal/bin"
 
-# Harbour
-export PATH="/opt/harbour/bin:$PATH"
-
 # Qt
 export PATH="$HOME/Qt/6.12.0/macos/bin:$PATH"
 
